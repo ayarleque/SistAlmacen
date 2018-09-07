@@ -16,6 +16,7 @@ public class frmModificMarca extends javax.swing.JFrame {
      */
     public frmModificMarca() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -41,6 +42,7 @@ public class frmModificMarca extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(0, 135, 236));
 

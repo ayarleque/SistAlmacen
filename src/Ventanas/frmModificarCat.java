@@ -16,6 +16,7 @@ public class frmModificarCat extends javax.swing.JFrame {
      */
     public frmModificarCat() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**

@@ -16,6 +16,7 @@ public class frmNvoProveedor extends javax.swing.JFrame {
      */
     public frmNvoProveedor() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -51,6 +52,7 @@ public class frmNvoProveedor extends javax.swing.JFrame {
         rSButtonMetro5 = new rsbuttom.RSButtonMetro();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(0, 135, 236));
 

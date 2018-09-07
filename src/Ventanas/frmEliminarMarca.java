@@ -16,6 +16,8 @@ public class frmEliminarMarca extends javax.swing.JFrame {
      */
     public frmEliminarMarca() {
         initComponents();
+        setLocationRelativeTo(null);
+        
     }
 
     /**
@@ -38,6 +40,7 @@ public class frmEliminarMarca extends javax.swing.JFrame {
         rSButtonMetro3 = new rsbuttom.RSButtonMetro();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(0, 135, 236));
 

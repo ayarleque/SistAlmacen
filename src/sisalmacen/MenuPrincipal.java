@@ -55,15 +55,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         MenuModifProv = new javax.swing.JMenuItem();
         MenuElimProv = new javax.swing.JMenuItem();
         jMenu9 = new javax.swing.JMenu();
-        jMenuItem20 = new javax.swing.JMenuItem();
-        jMenuItem22 = new javax.swing.JMenuItem();
-        jMenuItem21 = new javax.swing.JMenuItem();
+        MenuNvoTrab = new javax.swing.JMenuItem();
+        MenuModifTrab = new javax.swing.JMenuItem();
+        MenuEliminarTrab = new javax.swing.JMenuItem();
         jMenu10 = new javax.swing.JMenu();
-        jMenuItem23 = new javax.swing.JMenuItem();
-        jMenuItem25 = new javax.swing.JMenuItem();
-        jMenuItem24 = new javax.swing.JMenuItem();
+        MenuAsigUser = new javax.swing.JMenuItem();
+        MenuModifUser = new javax.swing.JMenuItem();
+        MenuEliminUser = new javax.swing.JMenuItem();
         jMenu11 = new javax.swing.JMenu();
-        jMenuItem26 = new javax.swing.JMenuItem();
+        MenuNvoAlmacen = new javax.swing.JMenuItem();
         jMenuItem28 = new javax.swing.JMenuItem();
         jMenuItem27 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
@@ -349,20 +349,35 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu9.setText("Trabajador");
         jMenu9.setFont(new java.awt.Font("Poetsen One", 0, 13)); // NOI18N
 
-        jMenuItem20.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
-        jMenuItem20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ingresar.png"))); // NOI18N
-        jMenuItem20.setText("Nuevo");
-        jMenu9.add(jMenuItem20);
+        MenuNvoTrab.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
+        MenuNvoTrab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ingresar.png"))); // NOI18N
+        MenuNvoTrab.setText("Nuevo");
+        MenuNvoTrab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuNvoTrabActionPerformed(evt);
+            }
+        });
+        jMenu9.add(MenuNvoTrab);
 
-        jMenuItem22.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
-        jMenuItem22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/modificar.png"))); // NOI18N
-        jMenuItem22.setText("Modificar");
-        jMenu9.add(jMenuItem22);
+        MenuModifTrab.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
+        MenuModifTrab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/modificar.png"))); // NOI18N
+        MenuModifTrab.setText("Modificar");
+        MenuModifTrab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuModifTrabActionPerformed(evt);
+            }
+        });
+        jMenu9.add(MenuModifTrab);
 
-        jMenuItem21.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
-        jMenuItem21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/eliminar.png"))); // NOI18N
-        jMenuItem21.setText("Eliminar");
-        jMenu9.add(jMenuItem21);
+        MenuEliminarTrab.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
+        MenuEliminarTrab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/eliminar.png"))); // NOI18N
+        MenuEliminarTrab.setText("Eliminar");
+        MenuEliminarTrab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuEliminarTrabActionPerformed(evt);
+            }
+        });
+        jMenu9.add(MenuEliminarTrab);
 
         jMenu1.add(jMenu9);
 
@@ -370,20 +385,35 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu10.setText("Usuario");
         jMenu10.setFont(new java.awt.Font("Poetsen One", 0, 13)); // NOI18N
 
-        jMenuItem23.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
-        jMenuItem23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ingresar.png"))); // NOI18N
-        jMenuItem23.setText("Nuevo");
-        jMenu10.add(jMenuItem23);
+        MenuAsigUser.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
+        MenuAsigUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/nuevo-usuario.png"))); // NOI18N
+        MenuAsigUser.setText("Asignar");
+        MenuAsigUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuAsigUserActionPerformed(evt);
+            }
+        });
+        jMenu10.add(MenuAsigUser);
 
-        jMenuItem25.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
-        jMenuItem25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/modificar.png"))); // NOI18N
-        jMenuItem25.setText("Modificar");
-        jMenu10.add(jMenuItem25);
+        MenuModifUser.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
+        MenuModifUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/modificar.png"))); // NOI18N
+        MenuModifUser.setText("Modificar");
+        MenuModifUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuModifUserActionPerformed(evt);
+            }
+        });
+        jMenu10.add(MenuModifUser);
 
-        jMenuItem24.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
-        jMenuItem24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/eliminar.png"))); // NOI18N
-        jMenuItem24.setText("Eliminar");
-        jMenu10.add(jMenuItem24);
+        MenuEliminUser.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
+        MenuEliminUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/eliminar.png"))); // NOI18N
+        MenuEliminUser.setText("Eliminar");
+        MenuEliminUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuEliminUserActionPerformed(evt);
+            }
+        });
+        jMenu10.add(MenuEliminUser);
 
         jMenu1.add(jMenu10);
 
@@ -391,10 +421,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu11.setText("Almacén");
         jMenu11.setFont(new java.awt.Font("Poetsen One", 0, 13)); // NOI18N
 
-        jMenuItem26.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
-        jMenuItem26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ingresar.png"))); // NOI18N
-        jMenuItem26.setText("Nuevo");
-        jMenu11.add(jMenuItem26);
+        MenuNvoAlmacen.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
+        MenuNvoAlmacen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ingresar.png"))); // NOI18N
+        MenuNvoAlmacen.setText("Nuevo");
+        jMenu11.add(MenuNvoAlmacen);
 
         jMenuItem28.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
         jMenuItem28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/modificar.png"))); // NOI18N
@@ -515,16 +545,22 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     private void menuElimProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuElimProdActionPerformed
+        panelContenedor.removeAll();
+        panelContenedor.updateUI();
         Ventanas.frmEliminarProducto ver= new Ventanas.frmEliminarProducto();
         ver.show();
     }//GEN-LAST:event_menuElimProdActionPerformed
 
     private void MenuNvaCatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuNvaCatActionPerformed
+        panelContenedor.removeAll();
+        panelContenedor.updateUI();
         Ventanas.frmNuevaCat ver = new Ventanas.frmNuevaCat();
         ver.show();
     }//GEN-LAST:event_MenuNvaCatActionPerformed
 
     private void MenuModifCatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuModifCatActionPerformed
+        panelContenedor.removeAll();
+        panelContenedor.updateUI();
         Ventanas.frmModificarCat ver = new Ventanas.frmModificarCat();
         ver.show();
     }//GEN-LAST:event_MenuModifCatActionPerformed
@@ -538,27 +574,36 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuEliminCatActionPerformed
 
     private void MenuNvaMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuNvaMarcaActionPerformed
+        panelContenedor.removeAll();
+        panelContenedor.updateUI();
         Ventanas.frmNvaMarca ver = new Ventanas.frmNvaMarca();
         ver.show();
     }//GEN-LAST:event_MenuNvaMarcaActionPerformed
 
     private void MenuModifMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuModifMarcaActionPerformed
+        panelContenedor.removeAll();
+        panelContenedor.updateUI();
         Ventanas.frmModificMarca ver= new Ventanas.frmModificMarca();
         ver.show();
     }//GEN-LAST:event_MenuModifMarcaActionPerformed
 
     private void MenuEliminarMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuEliminarMarcaActionPerformed
+        panelContenedor.removeAll();
+        panelContenedor.updateUI();
         Ventanas.frmEliminarMarca ver=new Ventanas.frmEliminarMarca();
         ver.show();
     }//GEN-LAST:event_MenuEliminarMarcaActionPerformed
 
     private void MenuNvoProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuNvoProvActionPerformed
+        panelContenedor.removeAll();
+        panelContenedor.updateUI();
         Ventanas.frmNvoProveedor ver = new Ventanas.frmNvoProveedor();
         ver.show();
     }//GEN-LAST:event_MenuNvoProvActionPerformed
 
     private void MenuModifProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuModifProvActionPerformed
         panelContenedor.removeAll();
+        panelContenedor.updateUI();
         Paneles.pnlModificarProv ver=new Paneles.pnlModificarProv();
         ver.setBounds(0, 0,panelContenedor.getWidth(),panelContenedor.getHeight());
         panelContenedor.add(ver);
@@ -566,9 +611,54 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuModifProvActionPerformed
 
     private void MenuElimProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuElimProvActionPerformed
+        panelContenedor.removeAll();
+        panelContenedor.updateUI();
         Ventanas.frmEliminarProv ver = new Ventanas.frmEliminarProv();
         ver.show();
     }//GEN-LAST:event_MenuElimProvActionPerformed
+
+    private void MenuNvoTrabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuNvoTrabActionPerformed
+        panelContenedor.removeAll();
+        panelContenedor.updateUI();
+        Ventanas.frmNvoTrabajador ver = new Ventanas.frmNvoTrabajador();
+        ver.show();
+    }//GEN-LAST:event_MenuNvoTrabActionPerformed
+
+    private void MenuModifTrabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuModifTrabActionPerformed
+        panelContenedor.removeAll();
+        Paneles.pnlModifTrab ver=new Paneles.pnlModifTrab();
+        ver.setBounds(0, 0,panelContenedor.getWidth(),panelContenedor.getHeight());
+        panelContenedor.add(ver);
+        panelContenedor.updateUI();
+    }//GEN-LAST:event_MenuModifTrabActionPerformed
+
+    private void MenuEliminarTrabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuEliminarTrabActionPerformed
+        panelContenedor.removeAll();
+        panelContenedor.updateUI();
+        Ventanas.frmEliminarTrab ver = new Ventanas.frmEliminarTrab();
+        ver.show();
+    }//GEN-LAST:event_MenuEliminarTrabActionPerformed
+
+    private void MenuAsigUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuAsigUserActionPerformed
+        panelContenedor.removeAll();
+        panelContenedor.updateUI();
+        Ventanas.frmAsignarUser ver = new Ventanas.frmAsignarUser();
+        ver.show();
+    }//GEN-LAST:event_MenuAsigUserActionPerformed
+
+    private void MenuModifUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuModifUserActionPerformed
+        panelContenedor.removeAll();
+        panelContenedor.updateUI();
+        Ventanas.frmModifUser ver = new Ventanas.frmModifUser();
+        ver.show();
+    }//GEN-LAST:event_MenuModifUserActionPerformed
+
+    private void MenuEliminUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuEliminUserActionPerformed
+        panelContenedor.removeAll();
+        panelContenedor.updateUI();
+        Ventanas.frmEliminarUser ver = new Ventanas.frmEliminarUser();
+        ver.show();
+    }//GEN-LAST:event_MenuEliminUserActionPerformed
 
     /**
      * @param args the command line arguments
@@ -606,15 +696,22 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem MenuAsigUser;
     private javax.swing.JMenuItem MenuElimProv;
     private javax.swing.JMenuItem MenuEliminCat;
+    private javax.swing.JMenuItem MenuEliminUser;
     private javax.swing.JMenuItem MenuEliminarMarca;
+    private javax.swing.JMenuItem MenuEliminarTrab;
     private javax.swing.JMenuItem MenuModifCat;
     private javax.swing.JMenuItem MenuModifMarca;
     private javax.swing.JMenuItem MenuModifProv;
+    private javax.swing.JMenuItem MenuModifTrab;
+    private javax.swing.JMenuItem MenuModifUser;
     private javax.swing.JMenuItem MenuNvaCat;
     private javax.swing.JMenuItem MenuNvaMarca;
+    private javax.swing.JMenuItem MenuNvoAlmacen;
     private javax.swing.JMenuItem MenuNvoProv;
+    private javax.swing.JMenuItem MenuNvoTrab;
     private javax.swing.JPanel PanelMenu;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -635,13 +732,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem20;
-    private javax.swing.JMenuItem jMenuItem21;
-    private javax.swing.JMenuItem jMenuItem22;
-    private javax.swing.JMenuItem jMenuItem23;
-    private javax.swing.JMenuItem jMenuItem24;
-    private javax.swing.JMenuItem jMenuItem25;
-    private javax.swing.JMenuItem jMenuItem26;
     private javax.swing.JMenuItem jMenuItem27;
     private javax.swing.JMenuItem jMenuItem28;
     private javax.swing.JMenuItem jMenuItem29;

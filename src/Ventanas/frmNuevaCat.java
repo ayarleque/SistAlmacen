@@ -16,6 +16,7 @@ public class frmNuevaCat extends javax.swing.JFrame {
      */
     public frmNuevaCat() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**

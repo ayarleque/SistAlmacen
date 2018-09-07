@@ -16,6 +16,8 @@ public class frmBuscaProd extends javax.swing.JFrame {
      */
     public frmBuscaProd() {
         initComponents();
+        setLocationRelativeTo(null);
+        
     }
 
     /**
@@ -42,6 +44,7 @@ public class frmBuscaProd extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(0, 135, 236));
+        setLocation(new java.awt.Point(0, 0));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(0, 135, 236));
