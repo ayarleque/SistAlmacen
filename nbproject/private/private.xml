@@ -3,11 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/anthony/GITHUB/SistAlmacen/src/Ventanas/frmEliminarTrab.java</file>
-            <file>file:/C:/anthony/GITHUB/SistAlmacen/src/Ventanas/frmAsignarUser.java</file>
-            <file>file:/C:/anthony/GITHUB/SistAlmacen/src/sisalmacen/MenuPrincipal.java</file>
-            <file>file:/C:/anthony/GITHUB/SistAlmacen/src/Ventanas/frmModifUser.java</file>
-            <file>file:/C:/anthony/GITHUB/SistAlmacen/src/Ventanas/frmEliminarUser.java</file>
+            <file>file:/C:/anthony/GIT/SistAlmacen/src/sisalmacen/MenuPrincipal.java</file>
+            <file>file:/C:/anthony/GIT/SistAlmacen/src/sisalmacen/login.java</file>
+            <file>file:/C:/anthony/GIT/SistAlmacen/src/Paneles/pnlIngresoProd.java</file>
+            <file>file:/C:/anthony/GIT/SistAlmacen/src/Paneles/pnlSalidaProd.java</file>
+            <file>file:/C:/anthony/GIT/SistAlmacen/src/Paneles/pnlNvoPedido.java</file>
+            <file>file:/C:/anthony/GIT/SistAlmacen/src/Paneles/PnlRegistrarProd.java</file>
         </group>
     </open-files>
 </project-private>

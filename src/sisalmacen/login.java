@@ -9,6 +9,7 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,9 +19,10 @@ public class login extends javax.swing.JFrame {
 
     Statement stmt;
     Connection con=null;
-    String order;
     ResultSet rs;
     
+    String user;
+    int nivel;
     public login() {
         initComponents();
         
@@ -331,10 +333,29 @@ public class login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int id;
-        con=Conexion.geconnection();
-        //CallableStatement cst = con.prepareCall("call paValidaUsuario (?,?)");
-        //cst.setString(1, txtUser.getText());
+        //JOptionPane.showMessageDialog(null,txtPass.getText());
+        try{
+            con=Conexion.geconnection();
+            
+            CallableStatement cst = con.prepareCall("{call paValidaUsuario (?,?)}");
+            cst.setString(1, txtUser.getText());
+            cst.setString(2, txtPass.getText());
+            cst.execute();
+            
+            rs=cst.getResultSet();
+            
+            if(rs.next()){
+                MenuPrincipal ver = new MenuPrincipal(rs.getString(3),rs.getInt(2),rs.getString(4));
+                ver.show();
+                this.dispose();
+            }
+            else JOptionPane.showMessageDialog(null,"Usuario o contraseña incorrecta");
+            //JOptionPane.showMessageDialog(null,"Error de conexion"+ resul);
+        }
+        catch (Exception ex){
+            JOptionPane.showMessageDialog(null,"Error de conexion"+ ex);
+        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
