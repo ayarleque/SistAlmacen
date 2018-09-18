@@ -5,9 +5,11 @@
  */
 package sisalmacen;
 import Conexion.Conexion;
+import java.awt.HeadlessException;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 
@@ -25,7 +27,6 @@ public class login extends javax.swing.JFrame {
     int nivel;
     public login() {
         initComponents();
-        
         setTitle("Acceso al Usuario");
     }
 
@@ -335,7 +336,7 @@ public class login extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //JOptionPane.showMessageDialog(null,txtPass.getText());
         try{
-            con=Conexion.geconnection();
+            con=Conexion.getconnection();
             
             CallableStatement cst = con.prepareCall("{call paValidaUsuario (?,?)}");
             cst.setString(1, txtUser.getText());
@@ -352,9 +353,10 @@ public class login extends javax.swing.JFrame {
             else JOptionPane.showMessageDialog(null,"Usuario o contraseña incorrecta");
             //JOptionPane.showMessageDialog(null,"Error de conexion"+ resul);
         }
-        catch (Exception ex){
+        catch (SQLException ex){
             JOptionPane.showMessageDialog(null,"Error de conexion"+ ex);
         }
+        
         
     }//GEN-LAST:event_jButton1ActionPerformed
 

@@ -11,7 +11,7 @@ public class Conexion {
     private static String url = "jdbc:mysql://localhost/"+bd+ "?user=" + USER + "&password=" + PASSWORD+"&useSSL=false";
     private static Connection con;
     
-    public static Connection geconnection (){
+    public static Connection getconnection (){
         try {
             Class.forName("com.mysql.jdbc.Driver");
             con=DriverManager.getConnection(url,USER,PASSWORD);
