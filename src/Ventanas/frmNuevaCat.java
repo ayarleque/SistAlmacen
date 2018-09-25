@@ -194,11 +194,11 @@ public class frmNuevaCat extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Categoría ingresada correctamente");
             
             switch (tipoLlama) {
-                case 0: //es llamado por el panel de registro de productos
+                case 0: //es llamado por el panel principal
                     JOptionPane.showMessageDialog(null, "En proceso");
                     break;
                     
-                case 1:
+                case 1: //es llamado por el panel de registro de productos
                     //pnlRegProd.cboCategoria.addItem("fdg");
                     pnlRegProd.listaCategoria();
                     break;

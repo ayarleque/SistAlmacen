@@ -29,6 +29,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panelImage = new org.edisoncor.gui.panel.PanelImage();
         panelContenedor = new javax.swing.JPanel();
         PanelMenu = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -85,17 +86,36 @@ public class MenuPrincipal extends javax.swing.JFrame {
         setResizable(false);
         setSize(new java.awt.Dimension(0, 0));
 
+        panelImage.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        panelImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Background.png"))); // NOI18N
+
         panelContenedor.setBackground(new java.awt.Color(0, 135, 236));
+        panelContenedor.setOpaque(false);
 
         javax.swing.GroupLayout panelContenedorLayout = new javax.swing.GroupLayout(panelContenedor);
         panelContenedor.setLayout(panelContenedorLayout);
         panelContenedorLayout.setHorizontalGroup(
             panelContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 722, Short.MAX_VALUE)
+            .addGap(0, 718, Short.MAX_VALUE)
         );
         panelContenedorLayout.setVerticalGroup(
             panelContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 496, Short.MAX_VALUE)
+            .addGap(0, 492, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout panelImageLayout = new javax.swing.GroupLayout(panelImage);
+        panelImage.setLayout(panelImageLayout);
+        panelImageLayout.setHorizontalGroup(
+            panelImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 718, Short.MAX_VALUE)
+            .addGroup(panelImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(panelContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        panelImageLayout.setVerticalGroup(
+            panelImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 492, Short.MAX_VALUE)
+            .addGroup(panelImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(panelContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         PanelMenu.setBackground(new java.awt.Color(153, 153, 153));
@@ -556,12 +576,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(PanelMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(panelContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(panelContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panelImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PanelMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -575,7 +595,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuIngrProdActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        Paneles.PnlRegistrarProd ver=new Paneles.PnlRegistrarProd(userID);
+        Paneles.PnlRegistrarProd ver=new Paneles.PnlRegistrarProd(userID,this);
         cargarPanel(panelContenedor,ver );
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
@@ -613,7 +633,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void MenuNvaMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuNvaMarcaActionPerformed
         panelContenedor.removeAll();
         panelContenedor.updateUI();
-        Ventanas.frmNvaMarca ver = new Ventanas.frmNvaMarca();
+        Ventanas.frmNvaMarca ver = new Ventanas.frmNvaMarca(0,this,null);
         ver.show();
     }//GEN-LAST:event_MenuNvaMarcaActionPerformed
 
@@ -829,5 +849,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuElimProd;
     private javax.swing.JMenuItem menuValidarPedid;
     private javax.swing.JPanel panelContenedor;
+    private org.edisoncor.gui.panel.PanelImage panelImage;
     // End of variables declaration//GEN-END:variables
 }

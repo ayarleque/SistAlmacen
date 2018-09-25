@@ -374,6 +374,7 @@ public class pnlModificarProv extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField19;
     private javax.swing.JTextField jTextField20;
     private javax.swing.JTextField jTextField21;
+    private org.edisoncor.gui.panel.PanelImage panelImage7;
     private rsbuttom.RSButtonMetro rSButtonMetro4;
     private rsbuttom.RSButtonMetro rSButtonMetro5;
     // End of variables declaration//GEN-END:variables

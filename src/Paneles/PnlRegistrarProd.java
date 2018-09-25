@@ -2,12 +2,15 @@ package Paneles;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import javax.swing.SwingConstants;
 import Conexion.Conexion;
+import java.awt.FileDialog;
 import java.sql.CallableStatement;
 import java.sql.SQLException;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import sisalmacen.MenuPrincipal;
+import clases.*;
 /**
  *
  * @author CONTABILIDAD_3
@@ -15,47 +18,88 @@ import javax.swing.JOptionPane;
 public class PnlRegistrarProd extends javax.swing.JPanel {
 
     String userID;
+    String directorio;
+    String nombreArchivo; 
+    String rutatotal;
     
-    Statement stmt;
+    int idCat[] = new int[1];
+    int idMarc[] = new int[1];
+    
+    CallableStatement cst;
     Connection con=null;
     ResultSet rs;
     
-    public PnlRegistrarProd(String idUser) {
+    MenuPrincipal principal;
+            
+    public PnlRegistrarProd(String idUser, MenuPrincipal princip) {
         initComponents();
         this.cboCategoria.setEditable(true);
         jLabel2.setHorizontalAlignment(SwingConstants.CENTER);
         userID=idUser;
+        principal=princip;
         listaCategoria(); 
+        listaMarca();
     }
 
     public void listaCategoria(){
-        
+        int i=0;
         cboCategoria.removeAllItems();
         
         try{
             con=Conexion.getconnection();
         
-            CallableStatement cst=con.prepareCall("{call paMuestraCategoria ()}");
+            cst=con.prepareCall("{call paMuestraCategoria ()}");
             cst.execute();
             
             rs= cst.getResultSet();
             
             while(rs.next()){
                 cboCategoria.addItem(rs.getString(2));
-                System.out.println(rs.getString(2));
+                idCat[i]=rs.getInt(1);
+                idCat = redimArray.resizeArray(idCat.length+1,idCat);
+                i++;
             }
             
+            cst.close();
+            rs.close();
             con.close();
         }
         catch (SQLException ex){
-            JOptionPane.showMessageDialog(null,"Error de conexion"+ ex);
+            JOptionPane.showMessageDialog(null,"Error: "+ ex);
         }
     }
     
+    
+    public void listaMarca(){
+        cboMarca.removeAllItems();
+        int i=0;
+        try{
+            con=Conexion.getconnection();
+        
+            cst=con.prepareCall("{call paMuestraMarca ()}");
+            cst.execute();
+            
+            rs= cst.getResultSet();
+            
+            while(rs.next()){
+                cboMarca.addItem(rs.getString(2));
+                idMarc[i]=rs.getInt(1);
+                idMarc = redimArray.resizeArray(idMarc.length+1,idMarc);
+                i++;
+            }
+            cst.close();
+            rs.close();
+            con.close();
+        }
+        catch (SQLException ex){
+            JOptionPane.showMessageDialog(null,"Error: "+ ex);
+        }
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panelImage1 = new org.edisoncor.gui.panel.PanelImage();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -65,37 +109,40 @@ public class PnlRegistrarProd extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         cboCategoria = new javax.swing.JComboBox<>();
-        jTextField1 = new javax.swing.JTextField();
+        txtProducto = new javax.swing.JTextField();
         btnNuevaCat = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jTextField2 = new javax.swing.JTextField();
+        cboMarca = new javax.swing.JComboBox<>();
+        txtModelo = new javax.swing.JTextField();
         btnNvaMarca = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        txtSerie = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        txtUbicacion = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        txtDescrip = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        txtUnidMed = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        rSButtonMetro1 = new rsbuttom.RSButtonMetro();
-        panelImage1 = new org.edisoncor.gui.panel.PanelImage();
+        btnExaminar = new rsbuttom.RSButtonMetro();
+        panelImage = new org.edisoncor.gui.panel.PanelImage();
         jPanel5 = new javax.swing.JPanel();
-        rSButtonMetro3 = new rsbuttom.RSButtonMetro();
-        rSButtonMetro4 = new rsbuttom.RSButtonMetro();
+        btnGuardar = new rsbuttom.RSButtonMetro();
+        btnCancelar = new rsbuttom.RSButtonMetro();
 
         setBackground(new java.awt.Color(0, 135, 236));
+
+        panelImage1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        panelImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Background.png"))); // NOI18N
 
         jPanel1.setBackground(new java.awt.Color(252, 253, 242));
         jPanel1.setOpaque(false);
@@ -130,7 +177,7 @@ public class PnlRegistrarProd extends javax.swing.JPanel {
 
         cboCategoria.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
 
-        jTextField1.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
+        txtProducto.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
 
         btnNuevaCat.setBackground(new java.awt.Color(204, 204, 204));
         btnNuevaCat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/anadir.png"))); // NOI18N
@@ -165,7 +212,7 @@ public class PnlRegistrarProd extends javax.swing.JPanel {
                         .addComponent(cboCategoria, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnNuevaCat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -182,7 +229,7 @@ public class PnlRegistrarProd extends javax.swing.JPanel {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22))
         );
 
@@ -206,9 +253,9 @@ public class PnlRegistrarProd extends javax.swing.JPanel {
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText(":");
 
-        jComboBox2.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
+        cboMarca.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
 
-        jTextField2.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
+        txtModelo.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
 
         btnNvaMarca.setBackground(new java.awt.Color(204, 204, 204));
         btnNvaMarca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/anadir.png"))); // NOI18N
@@ -216,6 +263,11 @@ public class PnlRegistrarProd extends javax.swing.JPanel {
         btnNvaMarca.setContentAreaFilled(false);
         btnNvaMarca.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnNvaMarca.setPreferredSize(new java.awt.Dimension(20, 20));
+        btnNvaMarca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNvaMarcaActionPerformed(evt);
+            }
+        });
 
         jLabel10.setFont(new java.awt.Font("Poetsen One", 0, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
@@ -225,7 +277,7 @@ public class PnlRegistrarProd extends javax.swing.JPanel {
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText(":");
 
-        jTextField3.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
+        txtSerie.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
 
         jLabel12.setFont(new java.awt.Font("Poetsen One", 0, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
@@ -235,7 +287,7 @@ public class PnlRegistrarProd extends javax.swing.JPanel {
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText(":");
 
-        jTextField4.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
+        txtUbicacion.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
 
         jLabel14.setFont(new java.awt.Font("Poetsen One", 0, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
@@ -245,7 +297,7 @@ public class PnlRegistrarProd extends javax.swing.JPanel {
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText(":");
 
-        jTextField5.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
+        txtDescrip.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
 
         jLabel16.setFont(new java.awt.Font("Poetsen One", 0, 14)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
@@ -255,7 +307,7 @@ public class PnlRegistrarProd extends javax.swing.JPanel {
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText(":");
 
-        jTextField6.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
+        txtUnidMed.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
 
         jLabel18.setFont(new java.awt.Font("Poetsen One", 0, 14)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
@@ -265,22 +317,27 @@ public class PnlRegistrarProd extends javax.swing.JPanel {
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setText(":");
 
-        rSButtonMetro1.setBackground(new java.awt.Color(0, 102, 0));
-        rSButtonMetro1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/examinarB.png"))); // NOI18N
-        rSButtonMetro1.setText("Examinar");
-        rSButtonMetro1.setColorHover(new java.awt.Color(153, 0, 0));
-        rSButtonMetro1.setColorNormal(new java.awt.Color(0, 102, 0));
+        btnExaminar.setBackground(new java.awt.Color(0, 102, 0));
+        btnExaminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/examinarB.png"))); // NOI18N
+        btnExaminar.setText("Examinar");
+        btnExaminar.setColorHover(new java.awt.Color(153, 0, 0));
+        btnExaminar.setColorNormal(new java.awt.Color(0, 102, 0));
+        btnExaminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExaminarActionPerformed(evt);
+            }
+        });
 
-        panelImage1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        panelImage.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        javax.swing.GroupLayout panelImage1Layout = new javax.swing.GroupLayout(panelImage1);
-        panelImage1.setLayout(panelImage1Layout);
-        panelImage1Layout.setHorizontalGroup(
-            panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout panelImageLayout = new javax.swing.GroupLayout(panelImage);
+        panelImage.setLayout(panelImageLayout);
+        panelImageLayout.setHorizontalGroup(
+            panelImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 184, Short.MAX_VALUE)
         );
-        panelImage1Layout.setVerticalGroup(
-            panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        panelImageLayout.setVerticalGroup(
+            panelImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
@@ -304,10 +361,10 @@ public class PnlRegistrarProd extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jComboBox2, 0, 126, Short.MAX_VALUE)
+                                .addComponent(cboMarca, 0, 126, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnNvaMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jTextField2)))
+                            .addComponent(txtModelo)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
@@ -321,8 +378,8 @@ public class PnlRegistrarProd extends javax.swing.JPanel {
                             .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
-                            .addComponent(jTextField3)))
+                            .addComponent(txtUbicacion, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
+                            .addComponent(txtSerie)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel4Layout.createSequentialGroup()
@@ -335,8 +392,8 @@ public class PnlRegistrarProd extends javax.swing.JPanel {
                                 .addComponent(jLabel15)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField5)
-                            .addComponent(jTextField6))))
+                            .addComponent(txtDescrip)
+                            .addComponent(txtUnidMed))))
                 .addGap(76, 76, 76)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
@@ -344,8 +401,8 @@ public class PnlRegistrarProd extends javax.swing.JPanel {
                         .addGap(32, 32, 32)
                         .addComponent(jLabel19)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(rSButtonMetro1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(panelImage1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnExaminar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(panelImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -354,7 +411,7 @@ public class PnlRegistrarProd extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(cboMarca, javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(btnNvaMarca, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
@@ -363,7 +420,7 @@ public class PnlRegistrarProd extends javax.swing.JPanel {
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel18)
                             .addComponent(jLabel19)
-                            .addComponent(rSButtonMetro1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnExaminar, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(1, 1, 1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -371,44 +428,49 @@ public class PnlRegistrarProd extends javax.swing.JPanel {
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
                             .addComponent(jLabel9)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel10)
                             .addComponent(jLabel11)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtSerie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(13, 13, 13)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel12)
                             .addComponent(jLabel13)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel14)
                             .addComponent(jLabel15)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtDescrip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel16)
                             .addComponent(jLabel17)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(panelImage1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(txtUnidMed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(panelImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
         jPanel5.setOpaque(false);
 
-        rSButtonMetro3.setBackground(new java.awt.Color(0, 102, 0));
-        rSButtonMetro3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/guardar.png"))); // NOI18N
-        rSButtonMetro3.setText("Guardar");
-        rSButtonMetro3.setColorHover(new java.awt.Color(153, 0, 0));
-        rSButtonMetro3.setColorNormal(new java.awt.Color(0, 102, 0));
+        btnGuardar.setBackground(new java.awt.Color(0, 102, 0));
+        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/guardar.png"))); // NOI18N
+        btnGuardar.setText("Guardar");
+        btnGuardar.setColorHover(new java.awt.Color(153, 0, 0));
+        btnGuardar.setColorNormal(new java.awt.Color(0, 102, 0));
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
-        rSButtonMetro4.setBackground(new java.awt.Color(0, 102, 0));
-        rSButtonMetro4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar.png"))); // NOI18N
-        rSButtonMetro4.setText("Cancelar");
-        rSButtonMetro4.setColorHover(new java.awt.Color(153, 0, 0));
-        rSButtonMetro4.setColorNormal(new java.awt.Color(0, 102, 0));
+        btnCancelar.setBackground(new java.awt.Color(0, 102, 0));
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar.png"))); // NOI18N
+        btnCancelar.setText("Cancelar");
+        btnCancelar.setColorHover(new java.awt.Color(153, 0, 0));
+        btnCancelar.setColorNormal(new java.awt.Color(0, 102, 0));
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -417,17 +479,17 @@ public class PnlRegistrarProd extends javax.swing.JPanel {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap(33, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(rSButtonMetro3, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rSButtonMetro4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(rSButtonMetro3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(rSButtonMetro4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -479,38 +541,109 @@ public class PnlRegistrarProd extends javax.swing.JPanel {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
+        javax.swing.GroupLayout panelImage1Layout = new javax.swing.GroupLayout(panelImage1);
+        panelImage1.setLayout(panelImage1Layout);
+        panelImage1Layout.setHorizontalGroup(
+            panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 754, Short.MAX_VALUE)
+            .addGroup(panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelImage1Layout.createSequentialGroup()
+                    .addGap(38, 38, 38)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(39, Short.MAX_VALUE)))
+        );
+        panelImage1Layout.setVerticalGroup(
+            panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 464, Short.MAX_VALUE)
+            .addGroup(panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelImage1Layout.createSequentialGroup()
+                    .addGap(3, 3, 3)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(41, Short.MAX_VALUE))
+            .addComponent(panelImage1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(panelImage1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNuevaCatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevaCatActionPerformed
         Ventanas.frmNuevaCat ver= new Ventanas.frmNuevaCat(1,null,this);
         ver.show();
-        /*System.out.println("entro despues de abrir la ventana categoria");
-        cboCategoria.updateUI();
-        listaCategoria();
-        cboCategoria.updateUI();*/
+        
     }//GEN-LAST:event_btnNuevaCatActionPerformed
+
+    private void btnNvaMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNvaMarcaActionPerformed
+        Ventanas.frmNvaMarca ver= new Ventanas.frmNvaMarca(1,null,this);
+        ver.show();
+    }//GEN-LAST:event_btnNvaMarcaActionPerformed
+
+    private void btnExaminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExaminarActionPerformed
+        FileDialog dialogoArchivo = null;
+        dialogoArchivo = new FileDialog(principal, "Explorador",FileDialog.LOAD);
+        dialogoArchivo.setVisible(true);
+
+        if(dialogoArchivo.getFile()!=null){ /* Validar que se haya Seleccionado un Archivo*/
+            directorio = dialogoArchivo.getDirectory();
+            nombreArchivo =dialogoArchivo.getFile(); 
+            rutatotal = directorio + nombreArchivo;
+            //System.out.println(directorio+"---"+nombreArchivo+"---"+rutatotal);
+            panelImage.removeAll();
+            panelImage.setIcon(new ImageIcon(rutatotal));
+            panelImage.updateUI();
+            
+        }
+        else{
+            rutatotal = "";
+            System.out.println("No Seleccionó Archivo");
+        }
+        
+    }//GEN-LAST:event_btnExaminarActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        try{
+            copiarArchivo.copiarArchivo(rutatotal,"\\imgProd");
+            
+            con=Conexion.getconnection();
+        
+            cst=con.prepareCall("{call paRegistraProd (?,?,?,?,?,?,?,?,?,?)}");
+            cst.setString(1,txtProducto.getText());
+            cst.setString(2,txtSerie.getText());
+            cst.setString(3,txtUnidMed.getText());
+            cst.setString(4,txtModelo.getText());
+            cst.setBoolean(5,true);
+            cst.setString(6,txtUbicacion.getText());
+            cst.setString(7,"..\\imgProd\\"+nombreArchivo);
+            cst.setInt(8,idMarc[cboMarca.getSelectedIndex()]);
+            cst.setInt(9,idCat[cboCategoria.getSelectedIndex()]);
+            cst.setString(10,txtDescrip.getText());
+            
+            cst.execute();
+            JOptionPane.showMessageDialog(null, "Producto Ingresado correctamente");
+            cst.close();
+            con.close();
+        }
+        catch (SQLException ex){
+            JOptionPane.showMessageDialog(null,"Error: "+ ex);
+        }
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private rsbuttom.RSButtonMetro btnCancelar;
+    private rsbuttom.RSButtonMetro btnExaminar;
+    private rsbuttom.RSButtonMetro btnGuardar;
     private javax.swing.JButton btnNuevaCat;
     private javax.swing.JButton btnNvaMarca;
     public javax.swing.JComboBox<String> cboCategoria;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> cboMarca;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -535,15 +668,13 @@ public class PnlRegistrarProd extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
+    private org.edisoncor.gui.panel.PanelImage panelImage;
     private org.edisoncor.gui.panel.PanelImage panelImage1;
-    private rsbuttom.RSButtonMetro rSButtonMetro1;
-    private rsbuttom.RSButtonMetro rSButtonMetro3;
-    private rsbuttom.RSButtonMetro rSButtonMetro4;
+    private javax.swing.JTextField txtDescrip;
+    private javax.swing.JTextField txtModelo;
+    private javax.swing.JTextField txtProducto;
+    private javax.swing.JTextField txtSerie;
+    private javax.swing.JTextField txtUbicacion;
+    private javax.swing.JTextField txtUnidMed;
     // End of variables declaration//GEN-END:variables
 }

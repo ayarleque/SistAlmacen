@@ -5,18 +5,35 @@
  */
 package Ventanas;
 
+import Paneles.PnlRegistrarProd;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import sisalmacen.MenuPrincipal;
+
 /**
  *
  * @author Oficina
  */
 public class frmNvaMarca extends javax.swing.JFrame {
 
-    /**
-     * Creates new form frmNvaMarca
-     */
-    public frmNvaMarca() {
+    String userID;
+    CallableStatement cst;
+    Connection con=null;
+    
+    int tipoLlama;
+    
+    MenuPrincipal menuP;
+    PnlRegistrarProd pnlRegProd;
+    
+    public frmNvaMarca(int tipo, MenuPrincipal menuP, PnlRegistrarProd pnlRegProd) {
         initComponents();
         setLocationRelativeTo(null);
+        
+        tipoLlama=tipo;
+        this.menuP=menuP;
+        this.pnlRegProd=pnlRegProd;
     }
 
     /**
@@ -28,20 +45,25 @@ public class frmNvaMarca extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panelImage = new org.edisoncor.gui.panel.PanelImage();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        rSButtonMetro3 = new rsbuttom.RSButtonMetro();
-        rSButtonMetro4 = new rsbuttom.RSButtonMetro();
+        txtMarca = new javax.swing.JTextField();
+        btnGuardar = new rsbuttom.RSButtonMetro();
+        btnCancelar = new rsbuttom.RSButtonMetro();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
+        panelImage.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        panelImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Background.png"))); // NOI18N
+
         jPanel1.setBackground(new java.awt.Color(0, 135, 236));
+        jPanel1.setOpaque(false);
 
         jPanel2.setOpaque(false);
 
@@ -77,19 +99,24 @@ public class frmNvaMarca extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText(":");
 
-        jTextField3.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
+        txtMarca.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
 
-        rSButtonMetro3.setBackground(new java.awt.Color(0, 102, 0));
-        rSButtonMetro3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/guardar.png"))); // NOI18N
-        rSButtonMetro3.setText("Guardar");
-        rSButtonMetro3.setColorHover(new java.awt.Color(153, 0, 0));
-        rSButtonMetro3.setColorNormal(new java.awt.Color(0, 102, 0));
+        btnGuardar.setBackground(new java.awt.Color(0, 102, 0));
+        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/guardar.png"))); // NOI18N
+        btnGuardar.setText("Guardar");
+        btnGuardar.setColorHover(new java.awt.Color(153, 0, 0));
+        btnGuardar.setColorNormal(new java.awt.Color(0, 102, 0));
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
-        rSButtonMetro4.setBackground(new java.awt.Color(0, 102, 0));
-        rSButtonMetro4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar.png"))); // NOI18N
-        rSButtonMetro4.setText("Cancelar");
-        rSButtonMetro4.setColorHover(new java.awt.Color(153, 0, 0));
-        rSButtonMetro4.setColorNormal(new java.awt.Color(0, 102, 0));
+        btnCancelar.setBackground(new java.awt.Color(0, 102, 0));
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar.png"))); // NOI18N
+        btnCancelar.setText("Cancelar");
+        btnCancelar.setColorHover(new java.awt.Color(153, 0, 0));
+        btnCancelar.setColorNormal(new java.awt.Color(0, 102, 0));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -104,12 +131,12 @@ public class frmNvaMarca extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(48, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(rSButtonMetro3, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(rSButtonMetro4, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(24, 24, 24))))
         );
         jPanel3Layout.setVerticalGroup(
@@ -119,11 +146,11 @@ public class frmNvaMarca extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rSButtonMetro3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rSButtonMetro4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29))
         );
 
@@ -148,64 +175,80 @@ public class frmNvaMarca extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        javax.swing.GroupLayout panelImageLayout = new javax.swing.GroupLayout(panelImage);
+        panelImage.setLayout(panelImageLayout);
+        panelImageLayout.setHorizontalGroup(
+            panelImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 415, Short.MAX_VALUE)
+            .addGroup(panelImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelImageLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        panelImageLayout.setVerticalGroup(
+            panelImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 207, Short.MAX_VALUE)
+            .addGroup(panelImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelImageLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(panelImage, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(panelImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+            con=Conexion.Conexion.getconnection();
+            cst=con.prepareCall("{call paIngresaMarca (?)}");
+            cst.setString(1,txtMarca.getText());
+            cst.execute();
+            JOptionPane.showMessageDialog(null,"Marca ingresada correctamente");
+            
+            switch (tipoLlama) {
+                case 0: //es llamado por el panel de registro de productos
+                    JOptionPane.showMessageDialog(null, "En proceso");
                     break;
-                }
+                    
+                case 1:
+                    //pnlRegProd.cboCategoria.addItem("fdg");
+                    pnlRegProd.listaMarca();
+                    break;
+                default:
+                    throw new AssertionError();
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmNvaMarca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmNvaMarca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmNvaMarca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmNvaMarca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            
+            
+            this.dispose();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Error al intentar ingresar los datos"+ ex);
         }
-        //</editor-fold>
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new frmNvaMarca().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private rsbuttom.RSButtonMetro btnCancelar;
+    private rsbuttom.RSButtonMetro btnGuardar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTextField3;
-    private rsbuttom.RSButtonMetro rSButtonMetro3;
-    private rsbuttom.RSButtonMetro rSButtonMetro4;
+    private org.edisoncor.gui.panel.PanelImage panelImage;
+    private javax.swing.JTextField txtMarca;
     // End of variables declaration//GEN-END:variables
 }
