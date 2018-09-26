@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `almacenbd` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `almacenbd`;
 -- MySQL dump 10.13  Distrib 8.0.12, for Win64 (x86_64)
 --
 -- Host: localhost    Database: almacenbd
@@ -37,7 +39,7 @@ CREATE TABLE `categoria` (
 
 LOCK TABLES `categoria` WRITE;
 /*!40000 ALTER TABLE `categoria` DISABLE KEYS */;
-INSERT INTO `categoria` VALUES (1,'EPP',_binary ''),(2,'MOTOBOMBA',_binary ''),(3,'DISCO DE CORTE',_binary ''),(4,'LUBRICANTE',_binary ''),(5,'SILICONA',_binary ''),(6,'TRANSFORMADOR',_binary ''),(7,'ABRAZADERA',_binary ''),(8,'AEROSOL',_binary ''),(9,'CONECTOR',_binary ''),(10,'CINTA',_binary ''),(11,'FUSIBLE',_binary ''),(12,'FILTRO',_binary ''),(13,'KIT DE REPARACION',_binary ''),(14,'LIMPIEZA',_binary ''),(15,'PARCHE',_binary ''),(16,'RETEN',_binary ''),(17,'SOLDADURA',_binary ''),(18,'TAPA CIEGA',_binary ''),(19,'TERMINAL',_binary ''),(20,'MENEKE',_binary ''),(21,'ENCHUFE',_binary '');
+INSERT INTO `categoria` VALUES (1,'EPP',_binary ''),(2,'MOTOBOMBA',_binary ''),(3,'DISCO DE CORTE',_binary ''),(4,'LUBRICANTE',_binary ''),(5,'SILICONA',_binary ''),(6,'TRANSFORMADOR',_binary ''),(7,'ABRAZADERA',_binary ''),(8,'AEROSOL',_binary ''),(9,'CONECTOR',_binary ''),(10,'CINTA',_binary ''),(11,'FUSIBLE',_binary ''),(12,'FILTRO',_binary ''),(13,'KIT DE REPARACION',_binary ''),(14,'LIMPIEZA',_binary ''),(15,'PARCHE',_binary ''),(16,'RETEN',_binary ''),(17,'SOLDADURA',_binary ''),(18,'TAPA CIEGA',_binary ''),(19,'TERMINAL',_binary ''),(20,'MENEKE',_binary ''),(21,'ENCHUFE',_binary ''),(22,'ALARMA',_binary '');
 /*!40000 ALTER TABLE `categoria` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -50,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-09-17 19:05:27
+-- Dump completed on 2018-09-26 15:56:49

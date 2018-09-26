@@ -11,6 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import sisalmacen.MenuPrincipal;
 import clases.*;
+import java.io.File;
 /**
  *
  * @author CONTABILIDAD_3
@@ -33,6 +34,7 @@ public class PnlRegistrarProd extends javax.swing.JPanel {
             
     public PnlRegistrarProd(String idUser, MenuPrincipal princip) {
         initComponents();
+        System.out.println (new File (".").getAbsolutePath ());
         this.cboCategoria.setEditable(true);
         jLabel2.setHorizontalAlignment(SwingConstants.CENTER);
         userID=idUser;
@@ -606,7 +608,7 @@ public class PnlRegistrarProd extends javax.swing.JPanel {
         }
         
     }//GEN-LAST:event_btnExaminarActionPerformed
-
+    
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         try{
             copiarArchivo.copiarArchivo(rutatotal,"\\imgProd");
@@ -620,7 +622,7 @@ public class PnlRegistrarProd extends javax.swing.JPanel {
             cst.setString(4,txtModelo.getText());
             cst.setBoolean(5,true);
             cst.setString(6,txtUbicacion.getText());
-            cst.setString(7,"..\\imgProd\\"+nombreArchivo);
+            cst.setString(7,"\\src\\img\\"+nombreArchivo);
             cst.setInt(8,idMarc[cboMarca.getSelectedIndex()]);
             cst.setInt(9,idCat[cboCategoria.getSelectedIndex()]);
             cst.setString(10,txtDescrip.getText());

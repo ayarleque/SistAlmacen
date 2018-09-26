@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `almacenbd` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `almacenbd`;
 -- MySQL dump 10.13  Distrib 8.0.12, for Win64 (x86_64)
 --
 -- Host: localhost    Database: almacenbd
@@ -16,28 +18,32 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `almacen`
+-- Table structure for table `pedido`
 --
 
-DROP TABLE IF EXISTS `almacen`;
+DROP TABLE IF EXISTS `pedido`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `almacen` (
-  `idAlmacen` int(11) NOT NULL,
-  `nomAlmacen` varchar(50) DEFAULT NULL,
-  `estado` bit(1) DEFAULT NULL,
-  PRIMARY KEY (`idAlmacen`)
+CREATE TABLE `pedido` (
+  `idPedido` int(11) NOT NULL,
+  `nroPedido` varchar(7) NOT NULL,
+  `total` decimal(10,2) DEFAULT NULL,
+  `fecha` date NOT NULL,
+  `Usuario_idUsuario` int(11) NOT NULL,
+  `validado` bit(1) DEFAULT NULL,
+  PRIMARY KEY (`idPedido`),
+  KEY `fk_Pedido_Usuario1_idx` (`Usuario_idUsuario`),
+  CONSTRAINT `fk_Pedido_Usuario1` FOREIGN KEY (`Usuario_idUsuario`) REFERENCES `usuario` (`idusuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `almacen`
+-- Dumping data for table `pedido`
 --
 
-LOCK TABLES `almacen` WRITE;
-/*!40000 ALTER TABLE `almacen` DISABLE KEYS */;
-INSERT INTO `almacen` VALUES (1,'Almacen 01',_binary '');
-/*!40000 ALTER TABLE `almacen` ENABLE KEYS */;
+LOCK TABLES `pedido` WRITE;
+/*!40000 ALTER TABLE `pedido` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pedido` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -49,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-09-17 19:05:28
+-- Dump completed on 2018-09-26 15:56:50

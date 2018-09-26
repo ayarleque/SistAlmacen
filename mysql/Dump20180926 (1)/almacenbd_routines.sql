@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `almacenbd` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `almacenbd`;
 -- MySQL dump 10.13  Distrib 8.0.12, for Win64 (x86_64)
 --
 -- Host: localhost    Database: almacenbd
@@ -115,7 +117,8 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `paMuestraCategoria`()
 BEGIN
 	select idCategoria, NomCategoria from categoria
-		where estado=true;
+		where estado=true
+        order by NomCategoria;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -135,7 +138,45 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `paMuestraMarca`()
 BEGIN
 	select idMarca, marca from marca
-		where estado=true;
+		where estado=true
+        order by marca;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `paRegistraProd` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `paRegistraProd`(
+	descrip varchar(80),
+	nroSerie varchar(20), 
+	unidMed varchar(10),
+	modelo varchar(50),
+	estado bit,
+    ubicacion varchar(45),
+	foto varchar(400),
+	idMarca int,
+	idCategoria int,
+    obs varchar(80)
+)
+BEGIN
+	declare idProd int;
+    
+    set idProd:= (select count(*) from producto);
+    set idProd=idProd+1;
+	start transaction;
+    insert into producto
+		values (idProd,descrip,nroSerie,0,unidMed,modelo,0,estado,ubicacion,foto,idMarca,idCategoria,obs);
+    commit;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -175,4 +216,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-09-17 19:05:31
+-- Dump completed on 2018-09-26 15:56:52

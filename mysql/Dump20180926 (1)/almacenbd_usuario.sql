@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `almacenbd` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `almacenbd`;
 -- MySQL dump 10.13  Distrib 8.0.12, for Win64 (x86_64)
 --
 -- Host: localhost    Database: almacenbd
@@ -16,33 +18,33 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `detalle_pedido`
+-- Table structure for table `usuario`
 --
 
-DROP TABLE IF EXISTS `detalle_pedido`;
+DROP TABLE IF EXISTS `usuario`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `detalle_pedido` (
-  `idPedido` int(11) NOT NULL,
-  `idProducto` int(11) NOT NULL,
-  `Precio` decimal(10,2) NOT NULL,
-  `Cantidad` decimal(10,2) DEFAULT NULL,
-  `SubTotal` decimal(10,2) DEFAULT NULL,
-  PRIMARY KEY (`idPedido`,`idProducto`),
-  KEY `fk_Detalle_Pedido_Pedido_idx` (`idPedido`),
-  KEY `fk_Detalle_Pedido_Producto1_idx` (`idProducto`),
-  CONSTRAINT `fk_Detalle_Pedido_Pedido` FOREIGN KEY (`idPedido`) REFERENCES `pedido` (`idpedido`),
-  CONSTRAINT `fk_Detalle_Pedido_Producto1` FOREIGN KEY (`idProducto`) REFERENCES `producto` (`idproducto`)
+CREATE TABLE `usuario` (
+  `idUsuario` int(11) NOT NULL,
+  `usuario` varchar(45) DEFAULT NULL,
+  `pass` varchar(350) DEFAULT NULL,
+  `idTrabajador` int(11) NOT NULL,
+  `estado` bit(1) NOT NULL,
+  `nivel` bit(1) NOT NULL,
+  PRIMARY KEY (`idUsuario`),
+  KEY `fk_Usuario_Trabajador1_idx` (`idTrabajador`),
+  CONSTRAINT `fk_Usuario_Trabajador1` FOREIGN KEY (`idTrabajador`) REFERENCES `trabajador` (`idtrabajador`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `detalle_pedido`
+-- Dumping data for table `usuario`
 --
 
-LOCK TABLES `detalle_pedido` WRITE;
-/*!40000 ALTER TABLE `detalle_pedido` DISABLE KEYS */;
-/*!40000 ALTER TABLE `detalle_pedido` ENABLE KEYS */;
+LOCK TABLES `usuario` WRITE;
+/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
+INSERT INTO `usuario` VALUES (1,'anya','e10adc3949ba59abbe56e057f20f883e',1,_binary '',_binary '');
+/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -54,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-09-17 19:05:30
+-- Dump completed on 2018-09-26 15:56:50

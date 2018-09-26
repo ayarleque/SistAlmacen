@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `almacenbd` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `almacenbd`;
 -- MySQL dump 10.13  Distrib 8.0.12, for Win64 (x86_64)
 --
 -- Host: localhost    Database: almacenbd
@@ -16,35 +18,33 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `compra`
+-- Table structure for table `detalle_pedido`
 --
 
-DROP TABLE IF EXISTS `compra`;
+DROP TABLE IF EXISTS `detalle_pedido`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `compra` (
-  `idCompra` int(11) NOT NULL,
-  `idProveedor` int(11) NOT NULL,
-  `subTotal` decimal(10,2) NOT NULL,
-  `igv` decimal(10,2) NOT NULL,
-  `dcto` decimal(10,2) NOT NULL,
-  `total` decimal(10,2) NOT NULL,
-  `nroComprob` varchar(15) NOT NULL,
-  `fechaCompra` date NOT NULL,
-  `fechaIngreso` date NOT NULL,
-  PRIMARY KEY (`idCompra`),
-  KEY `fk_Compra_Proveedor1_idx` (`idProveedor`),
-  CONSTRAINT `fk_Compra_Proveedor1` FOREIGN KEY (`idProveedor`) REFERENCES `proveedor` (`idproveedor`)
+CREATE TABLE `detalle_pedido` (
+  `idPedido` int(11) NOT NULL,
+  `idProducto` int(11) NOT NULL,
+  `Precio` decimal(10,2) NOT NULL,
+  `Cantidad` decimal(10,2) DEFAULT NULL,
+  `SubTotal` decimal(10,2) DEFAULT NULL,
+  PRIMARY KEY (`idPedido`,`idProducto`),
+  KEY `fk_Detalle_Pedido_Pedido_idx` (`idPedido`),
+  KEY `fk_Detalle_Pedido_Producto1_idx` (`idProducto`),
+  CONSTRAINT `fk_Detalle_Pedido_Pedido` FOREIGN KEY (`idPedido`) REFERENCES `pedido` (`idpedido`),
+  CONSTRAINT `fk_Detalle_Pedido_Producto1` FOREIGN KEY (`idProducto`) REFERENCES `producto` (`idproducto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `compra`
+-- Dumping data for table `detalle_pedido`
 --
 
-LOCK TABLES `compra` WRITE;
-/*!40000 ALTER TABLE `compra` DISABLE KEYS */;
-/*!40000 ALTER TABLE `compra` ENABLE KEYS */;
+LOCK TABLES `detalle_pedido` WRITE;
+/*!40000 ALTER TABLE `detalle_pedido` DISABLE KEYS */;
+/*!40000 ALTER TABLE `detalle_pedido` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -56,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-09-17 19:05:30
+-- Dump completed on 2018-09-26 15:56:51

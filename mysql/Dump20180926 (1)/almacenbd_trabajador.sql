@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `almacenbd` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `almacenbd`;
 -- MySQL dump 10.13  Distrib 8.0.12, for Win64 (x86_64)
 --
 -- Host: localhost    Database: almacenbd
@@ -16,33 +18,35 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `detalle_compra`
+-- Table structure for table `trabajador`
 --
 
-DROP TABLE IF EXISTS `detalle_compra`;
+DROP TABLE IF EXISTS `trabajador`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `detalle_compra` (
-  `idCompra` int(11) NOT NULL,
-  `idProducto` int(11) NOT NULL,
-  `cantidad` decimal(10,2) NOT NULL,
-  `precUnit` decimal(10,2) NOT NULL,
-  `Total` decimal(10,2) NOT NULL,
-  PRIMARY KEY (`idCompra`,`idProducto`),
-  KEY `fk_Detalle_Compra_Compra1_idx` (`idCompra`),
-  KEY `fk_Detalle_Compra_Producto1_idx` (`idProducto`),
-  CONSTRAINT `fk_Detalle_Compra_Compra1` FOREIGN KEY (`idCompra`) REFERENCES `compra` (`idcompra`),
-  CONSTRAINT `fk_Detalle_Compra_Producto1` FOREIGN KEY (`idProducto`) REFERENCES `producto` (`idproducto`)
+CREATE TABLE `trabajador` (
+  `idTrabajador` int(11) NOT NULL,
+  `Nombre` varchar(50) DEFAULT NULL,
+  `Apellidos` varchar(100) DEFAULT NULL,
+  `Dni` varchar(8) DEFAULT NULL,
+  `Direcc` varchar(60) DEFAULT NULL,
+  `idEmpresa` int(11) NOT NULL,
+  `telefono` varchar(11) DEFAULT NULL,
+  `estado` bit(1) NOT NULL,
+  PRIMARY KEY (`idTrabajador`),
+  KEY `fk_Trabajador_Empresa1_idx` (`idEmpresa`),
+  CONSTRAINT `fk_Trabajador_Empresa1` FOREIGN KEY (`idEmpresa`) REFERENCES `empresa` (`idempresa`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `detalle_compra`
+-- Dumping data for table `trabajador`
 --
 
-LOCK TABLES `detalle_compra` WRITE;
-/*!40000 ALTER TABLE `detalle_compra` DISABLE KEYS */;
-/*!40000 ALTER TABLE `detalle_compra` ENABLE KEYS */;
+LOCK TABLES `trabajador` WRITE;
+/*!40000 ALTER TABLE `trabajador` DISABLE KEYS */;
+INSERT INTO `trabajador` VALUES (1,'Anthony Alexis','Yarleque Galan','7289097','Calle cuba mz D 21 lote 13 Santa Julia',1,'920466951',_binary '');
+/*!40000 ALTER TABLE `trabajador` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -54,4 +58,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-09-17 19:05:29
+-- Dump completed on 2018-09-26 15:56:51
