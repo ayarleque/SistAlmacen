@@ -6,6 +6,7 @@
 package Ventanas;
 
 import Paneles.PnlRegistrarProd;
+import Paneles.pnlModificarProd;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -26,14 +27,16 @@ public class frmNvaMarca extends javax.swing.JFrame {
     
     MenuPrincipal menuP;
     PnlRegistrarProd pnlRegProd;
+    pnlModificarProd pnlModifProd;
     
-    public frmNvaMarca(int tipo, MenuPrincipal menuP, PnlRegistrarProd pnlRegProd) {
+    public frmNvaMarca(int tipo, MenuPrincipal menuP, PnlRegistrarProd pnlRegProd, pnlModificarProd pnlModifProd) {
         initComponents();
         setLocationRelativeTo(null);
         
         tipoLlama=tipo;
         this.menuP=menuP;
         this.pnlRegProd=pnlRegProd;
+        this.pnlModifProd=pnlModifProd;
     }
 
     /**
@@ -226,6 +229,11 @@ public class frmNvaMarca extends javax.swing.JFrame {
                 case 1:
                     //pnlRegProd.cboCategoria.addItem("fdg");
                     pnlRegProd.listaMarca();
+                    break;
+                
+                case 2:
+                    //pnlRegProd.cboCategoria.addItem("fdg");
+                    pnlModifProd.listaMarca();
                     break;
                 default:
                     throw new AssertionError();

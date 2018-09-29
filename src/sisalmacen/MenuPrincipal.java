@@ -600,7 +600,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
-        Paneles.pnlModificarProd ver=new Paneles.pnlModificarProd();
+        Paneles.pnlModificarProd ver=new Paneles.pnlModificarProd(userID,this);
         cargarPanel(panelContenedor,ver );
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
@@ -614,7 +614,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void MenuNvaCatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuNvaCatActionPerformed
         panelContenedor.removeAll();
         panelContenedor.updateUI();
-        Ventanas.frmNuevaCat ver = new Ventanas.frmNuevaCat(0,this,null);
+        Ventanas.frmNuevaCat ver = new Ventanas.frmNuevaCat(0,this,null,null);
         ver.show();
     }//GEN-LAST:event_MenuNvaCatActionPerformed
 
@@ -633,7 +633,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void MenuNvaMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuNvaMarcaActionPerformed
         panelContenedor.removeAll();
         panelContenedor.updateUI();
-        Ventanas.frmNvaMarca ver = new Ventanas.frmNvaMarca(0,this,null);
+        Ventanas.frmNvaMarca ver = new Ventanas.frmNvaMarca(0,this,null,null);
         ver.show();
     }//GEN-LAST:event_MenuNvaMarcaActionPerformed
 
@@ -771,34 +771,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         this.pack(); // Hacemos esto para que se reestructure el JFrame principal y autoajuste su tamano a lo que contiene dentro
         contenedorHijo.setBounds(0, 0,contenedor.getWidth(),contenedor.getHeight());
     }
-    /**
-     * @param args the command line arguments
-     */
-    /*public static void main(String args[]) {
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new MenuPrincipal().setVisible(true);
-            }
-        });
-    }*/
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem MenuAsigUser;
     private javax.swing.JMenuItem MenuElimProv;
@@ -848,7 +821,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblUsuario1;
     private javax.swing.JMenuItem menuElimProd;
     private javax.swing.JMenuItem menuValidarPedid;
-    private javax.swing.JPanel panelContenedor;
+    public javax.swing.JPanel panelContenedor;
     private org.edisoncor.gui.panel.PanelImage panelImage;
     // End of variables declaration//GEN-END:variables
 }

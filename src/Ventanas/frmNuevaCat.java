@@ -25,7 +25,9 @@ public class frmNuevaCat extends javax.swing.JFrame {
     
     MenuPrincipal menuP;
     PnlRegistrarProd pnlRegProd;
-    public frmNuevaCat(int tipo, MenuPrincipal menuP, PnlRegistrarProd pnlRegProd) { 
+    pnlModificarProd pnlModifProd;
+    
+    public frmNuevaCat(int tipo, MenuPrincipal menuP, PnlRegistrarProd pnlRegProd, pnlModificarProd pnlModifProd) { 
         initComponents();
         setLocationRelativeTo(null);
         
@@ -36,6 +38,7 @@ public class frmNuevaCat extends javax.swing.JFrame {
         tipoLlama=tipo;
         this.menuP=menuP;
         this.pnlRegProd=pnlRegProd;
+        this.pnlModifProd=pnlModifProd;
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -216,7 +219,12 @@ public class frmNuevaCat extends javax.swing.JFrame {
                     
                 case 1: //es llamado por el panel de registro de productos
                     //pnlRegProd.cboCategoria.addItem("fdg");
-                    pnlRegProd.listaCategoria();
+                    pnlRegProd.listaCat();
+                    break;
+                
+                case 2:
+                    //pnlRegProd.cboCategoria.addItem("fdg");
+                    pnlModifProd.listaCat();
                     break;
                 default:
                     throw new AssertionError();

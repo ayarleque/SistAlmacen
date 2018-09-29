@@ -22,9 +22,9 @@ public class PnlRegistrarProd extends javax.swing.JPanel {
     String directorio;
     String nombreArchivo; 
     String rutatotal;
-    
-    int idCat[] = new int[1];
-    int idMarc[] = new int[1];
+    String rutaProyect;
+    int idCat[] = new int[2];
+    int idMarc[] = new int[2];
     
     CallableStatement cst;
     Connection con=null;
@@ -34,68 +34,22 @@ public class PnlRegistrarProd extends javax.swing.JPanel {
             
     public PnlRegistrarProd(String idUser, MenuPrincipal princip) {
         initComponents();
-        System.out.println (new File (".").getAbsolutePath ());
+        rutaProyect=new File ("").getAbsolutePath ();
+        System.out.println(rutaProyect);
         this.cboCategoria.setEditable(true);
         jLabel2.setHorizontalAlignment(SwingConstants.CENTER);
         userID=idUser;
         principal=princip;
-        listaCategoria(); 
+        listaCat();
         listaMarca();
     }
 
-    public void listaCategoria(){
-        int i=0;
-        cboCategoria.removeAllItems();
-        
-        try{
-            con=Conexion.getconnection();
-        
-            cst=con.prepareCall("{call paMuestraCategoria ()}");
-            cst.execute();
-            
-            rs= cst.getResultSet();
-            
-            while(rs.next()){
-                cboCategoria.addItem(rs.getString(2));
-                idCat[i]=rs.getInt(1);
-                idCat = redimArray.resizeArray(idCat.length+1,idCat);
-                i++;
-            }
-            
-            cst.close();
-            rs.close();
-            con.close();
-        }
-        catch (SQLException ex){
-            JOptionPane.showMessageDialog(null,"Error: "+ ex);
-        }
+    public void listaCat(){
+        clases.ListaCombos.listaCategoria(cboCategoria,idCat); 
     }
     
-    
     public void listaMarca(){
-        cboMarca.removeAllItems();
-        int i=0;
-        try{
-            con=Conexion.getconnection();
-        
-            cst=con.prepareCall("{call paMuestraMarca ()}");
-            cst.execute();
-            
-            rs= cst.getResultSet();
-            
-            while(rs.next()){
-                cboMarca.addItem(rs.getString(2));
-                idMarc[i]=rs.getInt(1);
-                idMarc = redimArray.resizeArray(idMarc.length+1,idMarc);
-                i++;
-            }
-            cst.close();
-            rs.close();
-            con.close();
-        }
-        catch (SQLException ex){
-            JOptionPane.showMessageDialog(null,"Error: "+ ex);
-        }
+        clases.ListaCombos.listaMarca(cboMarca,idMarc);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -473,6 +427,11 @@ public class PnlRegistrarProd extends javax.swing.JPanel {
         btnCancelar.setText("Cancelar");
         btnCancelar.setColorHover(new java.awt.Color(153, 0, 0));
         btnCancelar.setColorNormal(new java.awt.Color(0, 102, 0));
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -577,13 +536,13 @@ public class PnlRegistrarProd extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNuevaCatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevaCatActionPerformed
-        Ventanas.frmNuevaCat ver= new Ventanas.frmNuevaCat(1,null,this);
+        Ventanas.frmNuevaCat ver= new Ventanas.frmNuevaCat(1,null,this,null);
         ver.show();
         
     }//GEN-LAST:event_btnNuevaCatActionPerformed
 
     private void btnNvaMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNvaMarcaActionPerformed
-        Ventanas.frmNvaMarca ver= new Ventanas.frmNvaMarca(1,null,this);
+        Ventanas.frmNvaMarca ver= new Ventanas.frmNvaMarca(1,null,this,null);
         ver.show();
     }//GEN-LAST:event_btnNvaMarcaActionPerformed
 
@@ -611,7 +570,7 @@ public class PnlRegistrarProd extends javax.swing.JPanel {
     
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         try{
-            copiarArchivo.copiarArchivo(rutatotal,"\\imgProd");
+            copiarArchivo.copiarArchivo(rutatotal,rutaProyect+"\\src\\imgProd\\"+nombreArchivo);
             
             con=Conexion.getconnection();
         
@@ -622,7 +581,7 @@ public class PnlRegistrarProd extends javax.swing.JPanel {
             cst.setString(4,txtModelo.getText());
             cst.setBoolean(5,true);
             cst.setString(6,txtUbicacion.getText());
-            cst.setString(7,"\\src\\img\\"+nombreArchivo);
+            cst.setString(7,"\\src\\imgProd\\"+nombreArchivo);
             cst.setInt(8,idMarc[cboMarca.getSelectedIndex()]);
             cst.setInt(9,idCat[cboCategoria.getSelectedIndex()]);
             cst.setString(10,txtDescrip.getText());
@@ -636,6 +595,11 @@ public class PnlRegistrarProd extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null,"Error: "+ ex);
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        principal.panelContenedor.removeAll();
+        principal.panelContenedor.updateUI();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
