@@ -5,11 +5,10 @@
         <group>
             <file>file:/C:/anthony/GIT/SistAlmacen/src/sisalmacen/MenuPrincipal.java</file>
             <file>file:/C:/anthony/GIT/SistAlmacen/src/clases/ListaCombos.java</file>
-            <file>file:/C:/anthony/GIT/SistAlmacen/src/Paneles/pnlModificarProd.java</file>
             <file>file:/C:/anthony/GIT/SistAlmacen/src/Ventanas/frmNuevaCat.java</file>
-            <file>file:/C:/anthony/GIT/SistAlmacen/src/Ventanas/frmNvaMarca.java</file>
+            <file>file:/C:/anthony/GIT/SistAlmacen/src/Paneles/pnlModificarProd.java</file>
+            <file>file:/C:/anthony/GIT/SistAlmacen/src/Paneles/pnlNvoPedido.java</file>
             <file>file:/C:/anthony/GIT/SistAlmacen/src/Paneles/PnlRegistrarProd.java</file>
-            <file>file:/C:/anthony/GIT/SistAlmacen/src/clases/copiarArchivo.java</file>
         </group>
     </open-files>
 </project-private>

@@ -23,12 +23,13 @@ public class pnlModificarProd extends javax.swing.JPanel {
     String userID,rutaProyect;
     
     String directorio;
-    String nombreArchivo=""; 
+    String nombreArchivo="";
     String rutatotal, rutaAnt;
     
-    int idCatN[] = new int[2];
-    int idMarc[] = new int[2];
-    int idProd[] = new int[2];
+    int idCatN[];// = new int[2];
+    int idMarc[];//=new int[2];
+    int idProd[];// = new int[2];
+    int idProdModif;
     
     public pnlModificarProd(String idUser, MenuPrincipal princip) {
         initComponents();
@@ -37,14 +38,23 @@ public class pnlModificarProd extends javax.swing.JPanel {
         rutaProyect=new File ("").getAbsolutePath ();
         listaCat();
         listaMarca();
-        ListaCombos.listaProductos(cboProd, idProd);
+        listaProd();
+        //JOptionPane.showMessageDialog(null, idMarc.length);
+        
+        //JOptionPane.showMessageDialog(null, idProd.length);
     }
     public void listaMarca(){
-        ListaCombos.listaMarca(cboMarca,idMarc);
+        idMarc=ListaCombos.listaMarca(cboMarca,idMarc);
+        
+    }
+    
+    public void listaProd(){
+        idProd=ListaCombos.listaProductos(cboProd, idProd);
+        
     }
     
     public void listaCat(){
-        ListaCombos.listaCategoria(cboCatNvo, idCatN); 
+        idCatN=ListaCombos.listaCategoria(cboCatNvo, idCatN);
     }
     
     @SuppressWarnings("unchecked")
@@ -60,6 +70,9 @@ public class pnlModificarProd extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         btnBuscar = new javax.swing.JButton();
         cboProd = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        txtBusqSerie = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -139,11 +152,26 @@ public class pnlModificarProd extends javax.swing.JPanel {
         });
 
         cboProd.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
+        cboProd.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cboProdItemStateChanged(evt);
+            }
+        });
         cboProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboProdActionPerformed(evt);
             }
         });
+
+        jLabel4.setFont(new java.awt.Font("Poetsen One", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Serie");
+
+        jLabel26.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel26.setText(":");
+
+        txtBusqSerie.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -151,28 +179,38 @@ public class pnlModificarProd extends javax.swing.JPanel {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4))
                 .addGap(32, 32, 32)
-                .addComponent(jLabel5)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel26))
                 .addGap(18, 18, 18)
-                .addComponent(cboProd, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(cboProd, 0, 197, Short.MAX_VALUE)
+                    .addComponent(txtBusqSerie))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel3)
-                        .addComponent(jLabel5)
-                        .addComponent(cboProd)))
-                .addGap(19, 19, 19))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel5)
+                            .addComponent(cboProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(7, 7, 7)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel26)
+                            .addComponent(txtBusqSerie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 255, 255)), "Datos Opcionales", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Poetsen One", 0, 16), new java.awt.Color(255, 255, 255))); // NOI18N
@@ -485,13 +523,14 @@ public class pnlModificarProd extends javax.swing.JPanel {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(111, 111, 111)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(95, 95, 95)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -500,7 +539,7 @@ public class pnlModificarProd extends javax.swing.JPanel {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         jPanel5.setOpaque(false);
@@ -563,7 +602,7 @@ public class pnlModificarProd extends javax.swing.JPanel {
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(130, 130, 130)
+                .addGap(138, 138, 138)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -576,7 +615,7 @@ public class pnlModificarProd extends javax.swing.JPanel {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addGap(23, 23, 23))
         );
 
         javax.swing.GroupLayout panelImageLayout = new javax.swing.GroupLayout(panelImage);
@@ -613,30 +652,19 @@ public class pnlModificarProd extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        Ventanas.frmBuscaProd ver = new Ventanas.frmBuscaProd();
-        ver.show();
-    }//GEN-LAST:event_btnBuscarActionPerformed
-
-    private void btnAgregarMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarMarcaActionPerformed
-        Ventanas.frmNvaMarca ver= new Ventanas.frmNvaMarca(2,null,null,this);
-        ver.show();
-    }//GEN-LAST:event_btnAgregarMarcaActionPerformed
-
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        principal.panelContenedor.removeAll();
-        principal.panelContenedor.updateUI();
-    }//GEN-LAST:event_btnCancelarActionPerformed
-
-    private void cboProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboProdActionPerformed
         CallableStatement cst;
         Connection con=null;
         ResultSet rs;
         
+        /*JOptionPane.showMessageDialog(null, "Tamaño del arreglo: "+idProd.length);
+        JOptionPane.showMessageDialog(null, "Primer id: "+idProd[1]);
+        JOptionPane.showMessageDialog(null, "change del combo: "+cboProd.getSelectedIndex());*/
         try{
             con=Conexion.getconnection();
         
-            cst=con.prepareCall("{call paMuestraDatosProd(?)}");
+            cst=con.prepareCall("{call paMuestraDatosProd(?,?)}");
             cst.setInt(1, idProd[cboProd.getSelectedIndex()]);
+            cst.setString(2, txtBusqSerie.getText());
             cst.execute();
             
             rs= cst.getResultSet();
@@ -652,6 +680,7 @@ public class pnlModificarProd extends javax.swing.JPanel {
                 txtUnidMed.setText(rs.getString(8));
                 txtPrecio.setText(rs.getString(9));
                 rutaAnt=rs.getString(10);
+                idProdModif=rs.getInt(11);
                 panelImagen.removeAll();
                 panelImagen.setIcon(new ImageIcon(rutaProyect+rutaAnt));
                 panelImagen.updateUI();
@@ -663,10 +692,24 @@ public class pnlModificarProd extends javax.swing.JPanel {
         catch (SQLException ex){
             JOptionPane.showMessageDialog(null,"Error: "+ ex);
         }
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnAgregarMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarMarcaActionPerformed
+        Ventanas.frmNvaMarca ver= new Ventanas.frmNvaMarca(2,null,null,this);
+        ver.show();
+    }//GEN-LAST:event_btnAgregarMarcaActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        principal.panelContenedor.removeAll();
+        principal.panelContenedor.updateUI();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void cboProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboProdActionPerformed
+        
     }//GEN-LAST:event_cboProdActionPerformed
 
     private void btnAgregarCatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCatActionPerformed
-        Ventanas.frmNuevaCat ver= new Ventanas.frmNuevaCat(2,null,null,this);
+        Ventanas.frmNuevaCat ver= new Ventanas.frmNuevaCat(2,null,null,this,null);
         ver.show();
     }//GEN-LAST:event_btnAgregarCatActionPerformed
 
@@ -678,11 +721,11 @@ public class pnlModificarProd extends javax.swing.JPanel {
             if(nombreArchivo!=""){
                 copiarArchivo.copiarArchivo(rutatotal,rutaProyect+"\\src\\imgProd\\"+nombreArchivo);
             }
-                        
+            
             con=Conexion.getconnection();
         
             cst=con.prepareCall("{call paModificarProd (?,?,?,?,?,?,?,?,?,?,?)}");
-            cst.setInt(1,idProd[cboProd.getSelectedIndex()]);
+            cst.setInt(1,idProdModif);
             cst.setString(2,txtProducto.getText());
             cst.setString(3,txtSerie.getText());
             cst.setString(4,txtUnidMed.getText());
@@ -705,12 +748,33 @@ public class pnlModificarProd extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Producto Modificado correctamente");
             cst.close();
             con.close();
+            limpiar();
         }
         catch (SQLException ex){
             JOptionPane.showMessageDialog(null,"Error: "+ ex);
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
+    public void limpiar(){
+        cboProd.setSelectedIndex(0);
+        txtBusqSerie.setText("");
+        txtProducto.setText("");
+        cboMarca.setSelectedIndex(0);
+        cboCatNvo.setSelectedIndex(0);
+        txtModelo.setText("");
+        txtSerie.setText("");
+        txtUbicacion.setText("");
+        txtDescrip.setText("");
+        txtUnidMed.setText("");
+        txtPrecio.setText("");
+        
+        panelImagen.removeAll();
+        panelImagen.setIcon(new ImageIcon(rutatotal));
+        panelImagen.updateUI();
+        
+        nombreArchivo="";
+    }
+    
     private void btnExaminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExaminarActionPerformed
         FileDialog dialogoArchivo = null;
         dialogoArchivo = new FileDialog(principal, "Explorador",FileDialog.LOAD);
@@ -721,9 +785,9 @@ public class pnlModificarProd extends javax.swing.JPanel {
             nombreArchivo =dialogoArchivo.getFile(); 
             rutatotal = directorio + nombreArchivo;
             //System.out.println(directorio+"---"+nombreArchivo+"---"+rutatotal);
-            panelImage.removeAll();
-            panelImage.setIcon(new ImageIcon(rutatotal));
-            panelImage.updateUI();
+            panelImagen.removeAll();
+            panelImagen.setIcon(new ImageIcon(rutatotal));
+            panelImagen.updateUI();
             
         }
         else{
@@ -731,6 +795,10 @@ public class pnlModificarProd extends javax.swing.JPanel {
             System.out.println("No Seleccionó Archivo");
         }
     }//GEN-LAST:event_btnExaminarActionPerformed
+
+    private void cboProdItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboProdItemStateChanged
+        
+    }//GEN-LAST:event_cboProdItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -760,7 +828,9 @@ public class pnlModificarProd extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -773,6 +843,7 @@ public class pnlModificarProd extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel5;
     private org.edisoncor.gui.panel.PanelImage panelImage;
     private org.edisoncor.gui.panel.PanelImage panelImagen;
+    private javax.swing.JTextField txtBusqSerie;
     private javax.swing.JTextField txtDescrip;
     private javax.swing.JTextField txtModelo;
     private javax.swing.JTextField txtPrecio;

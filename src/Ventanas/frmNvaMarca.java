@@ -120,6 +120,11 @@ public class frmNvaMarca extends javax.swing.JFrame {
         btnCancelar.setText("Cancelar");
         btnCancelar.setColorHover(new java.awt.Color(153, 0, 0));
         btnCancelar.setColorNormal(new java.awt.Color(0, 102, 0));
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -223,7 +228,7 @@ public class frmNvaMarca extends javax.swing.JFrame {
             
             switch (tipoLlama) {
                 case 0: //es llamado por el panel de registro de productos
-                    JOptionPane.showMessageDialog(null, "En proceso");
+                    this.dispose();
                     break;
                     
                 case 1:
@@ -245,6 +250,10 @@ public class frmNvaMarca extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Error al intentar ingresar los datos"+ ex);
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

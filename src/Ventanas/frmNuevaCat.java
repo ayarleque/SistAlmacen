@@ -26,19 +26,22 @@ public class frmNuevaCat extends javax.swing.JFrame {
     MenuPrincipal menuP;
     PnlRegistrarProd pnlRegProd;
     pnlModificarProd pnlModifProd;
+    pnlNvoPedido pnlNvoPed;
     
-    public frmNuevaCat(int tipo, MenuPrincipal menuP, PnlRegistrarProd pnlRegProd, pnlModificarProd pnlModifProd) { 
+    public frmNuevaCat(int tipo, MenuPrincipal menuP, PnlRegistrarProd pnlRegProd, pnlModificarProd pnlModifProd, pnlNvoPedido pnlNvoPed) { 
         initComponents();
         setLocationRelativeTo(null);
         
         /*  0: es llamado por el panel principal
             1: es llamado por el panel de registro de productos
-            2:
+            2: es llamado por el panel de modificacion de productos
+            3: es llamado por el panel de nuevo pedido
         */
         tipoLlama=tipo;
         this.menuP=menuP;
         this.pnlRegProd=pnlRegProd;
         this.pnlModifProd=pnlModifProd;
+        this.pnlNvoPed=pnlNvoPed;
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -214,7 +217,7 @@ public class frmNuevaCat extends javax.swing.JFrame {
             
             switch (tipoLlama) {
                 case 0: //es llamado por el panel principal
-                    JOptionPane.showMessageDialog(null, "En proceso");
+                    this.dispose();
                     break;
                     
                 case 1: //es llamado por el panel de registro de productos
@@ -222,9 +225,11 @@ public class frmNuevaCat extends javax.swing.JFrame {
                     pnlRegProd.listaCat();
                     break;
                 
-                case 2:
-                    //pnlRegProd.cboCategoria.addItem("fdg");
+                case 2: //es llamado por el panel de modificacion de productos
                     pnlModifProd.listaCat();
+                    break;
+                case 3:
+                    pnlNvoPed.listaCat();
                     break;
                 default:
                     throw new AssertionError();
@@ -242,33 +247,6 @@ public class frmNuevaCat extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
-    /*public static void main(String args[]) {
-        
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmNuevaCat.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmNuevaCat.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmNuevaCat.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmNuevaCat.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new frmNuevaCat().setVisible(true);
-            }
-        });
-    }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private rsbuttom.RSButtonMetro btnCancelar;

@@ -23,8 +23,8 @@ public class PnlRegistrarProd extends javax.swing.JPanel {
     String nombreArchivo; 
     String rutatotal;
     String rutaProyect;
-    int idCat[] = new int[2];
-    int idMarc[] = new int[2];
+    int idCat[];// = new int[2];
+    int idMarc[];// = new int[2];
     
     CallableStatement cst;
     Connection con=null;
@@ -45,11 +45,11 @@ public class PnlRegistrarProd extends javax.swing.JPanel {
     }
 
     public void listaCat(){
-        clases.ListaCombos.listaCategoria(cboCategoria,idCat); 
+        idCat=clases.ListaCombos.listaCategoria(cboCategoria,idCat); 
     }
     
     public void listaMarca(){
-        clases.ListaCombos.listaMarca(cboMarca,idMarc);
+        idMarc=clases.ListaCombos.listaMarca(cboMarca,idMarc);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -536,7 +536,7 @@ public class PnlRegistrarProd extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNuevaCatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevaCatActionPerformed
-        Ventanas.frmNuevaCat ver= new Ventanas.frmNuevaCat(1,null,this,null);
+        Ventanas.frmNuevaCat ver= new Ventanas.frmNuevaCat(1,null,this,null,null);
         ver.show();
         
     }//GEN-LAST:event_btnNuevaCatActionPerformed

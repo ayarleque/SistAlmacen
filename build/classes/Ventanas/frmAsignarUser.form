@@ -49,7 +49,10 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -70,11 +73,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
                   <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="13" max="32767" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -83,6 +87,7 @@
                       <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel3" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -150,9 +155,9 @@
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
-                                  <Component id="rSButtonMetro5" min="-2" pref="131" max="-2" attributes="0"/>
+                                  <Component id="btnGuardar" min="-2" pref="131" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="rSButtonMetro4" min="-2" pref="132" max="-2" attributes="0"/>
+                                  <Component id="btnCancelar" min="-2" pref="132" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -162,15 +167,15 @@
                                           <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="Cargo" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                                           <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jComboBox1" alignment="0" min="-2" pref="201" max="-2" attributes="0"/>
-                                      <Component id="jComboBox2" alignment="0" min="-2" pref="201" max="-2" attributes="0"/>
+                                      <Component id="cboTrabajador" alignment="0" min="-2" pref="201" max="-2" attributes="0"/>
+                                      <Component id="cboCat" alignment="0" min="-2" pref="201" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -183,7 +188,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jComboBox1" alignment="1" max="32767" attributes="0"/>
+                              <Component id="cboTrabajador" alignment="1" max="32767" attributes="0"/>
                               <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -192,15 +197,15 @@
                           <EmptySpace pref="16" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Cargo" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jComboBox2" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="cboCat" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="rSButtonMetro4" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-                              <Component id="rSButtonMetro5" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                              <Component id="btnCancelar" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                              <Component id="btnGuardar" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                       </Group>
@@ -230,25 +235,20 @@
                     <Property name="text" type="java.lang.String" value=":"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jComboBox1">
+                <Component class="javax.swing.JComboBox" name="cboTrabajador">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Poetsen One" size="12" style="0"/>
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="Item 1"/>
-                        <StringItem index="1" value="Item 2"/>
-                        <StringItem index="2" value="Item 3"/>
-                        <StringItem index="3" value="Item 4"/>
-                      </StringArray>
+                      <StringArray count="0"/>
                     </Property>
                   </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel3">
+                <Component class="javax.swing.JLabel" name="Cargo">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Poetsen One" size="14" style="0"/>
@@ -256,7 +256,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Categor&#xed;a"/>
+                    <Property name="text" type="java.lang.String" value="Cargo"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel5">
@@ -270,7 +270,7 @@
                     <Property name="text" type="java.lang.String" value=":"/>
                   </Properties>
                 </Component>
-                <Component class="rsbuttom.RSButtonMetro" name="rSButtonMetro4">
+                <Component class="rsbuttom.RSButtonMetro" name="btnCancelar">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="66" red="0" type="rgb"/>
@@ -286,18 +286,21 @@
                       <Color blue="0" green="66" red="0" type="rgb"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelarActionPerformed"/>
+                  </Events>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jComboBox2">
+                <Component class="javax.swing.JComboBox" name="cboCat">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Poetsen One" size="12" style="0"/>
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="4">
-                        <StringItem index="0" value="Item 1"/>
-                        <StringItem index="1" value="Item 2"/>
-                        <StringItem index="2" value="Item 3"/>
-                        <StringItem index="3" value="Item 4"/>
+                        <StringItem index="0" value="Seleccione..."/>
+                        <StringItem index="1" value="Responsable de Almac&#xe9;n"/>
+                        <StringItem index="2" value="Gestor Funcional"/>
+                        <StringItem index="3" value="Responsable Financiero"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -305,7 +308,7 @@
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
-                <Component class="rsbuttom.RSButtonMetro" name="rSButtonMetro5">
+                <Component class="rsbuttom.RSButtonMetro" name="btnGuardar">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="66" red="0" type="rgb"/>
@@ -321,6 +324,9 @@
                       <Color blue="0" green="66" red="0" type="rgb"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGuardarActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

@@ -63,11 +63,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         MenuEliminarTrab = new javax.swing.JMenuItem();
         jMenu10 = new javax.swing.JMenu();
         MenuAsigUser = new javax.swing.JMenuItem();
-        MenuModifUser = new javax.swing.JMenuItem();
         MenuEliminUser = new javax.swing.JMenuItem();
         jMenu11 = new javax.swing.JMenu();
         MenuNvoAlmacen = new javax.swing.JMenuItem();
-        MenuModifAlmacen = new javax.swing.JMenuItem();
         MenuEliminAlmac = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenu12 = new javax.swing.JMenu();
@@ -96,7 +94,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         panelContenedor.setLayout(panelContenedorLayout);
         panelContenedorLayout.setHorizontalGroup(
             panelContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 718, Short.MAX_VALUE)
+            .addGap(0, 682, Short.MAX_VALUE)
         );
         panelContenedorLayout.setVerticalGroup(
             panelContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,9 +105,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         panelImage.setLayout(panelImageLayout);
         panelImageLayout.setHorizontalGroup(
             panelImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 718, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
             .addGroup(panelImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(panelContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(panelImageLayout.createSequentialGroup()
+                    .addComponent(panelContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 1, Short.MAX_VALUE)))
         );
         panelImageLayout.setVerticalGroup(
             panelImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,7 +135,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblUsuario1, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
+                .addComponent(lblUsuario1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -165,7 +165,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(109, 109, 109))
         );
         jPanel3Layout.setVerticalGroup(
@@ -206,8 +206,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
             .addGroup(PanelMenuLayout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         PanelMenuLayout.setVerticalGroup(
@@ -426,16 +426,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         jMenu10.add(MenuAsigUser);
 
-        MenuModifUser.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
-        MenuModifUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/modificar.png"))); // NOI18N
-        MenuModifUser.setText("Modificar");
-        MenuModifUser.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuModifUserActionPerformed(evt);
-            }
-        });
-        jMenu10.add(MenuModifUser);
-
         MenuEliminUser.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
         MenuEliminUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/eliminar.png"))); // NOI18N
         MenuEliminUser.setText("Eliminar");
@@ -461,16 +451,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         jMenu11.add(MenuNvoAlmacen);
-
-        MenuModifAlmacen.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
-        MenuModifAlmacen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/modificar.png"))); // NOI18N
-        MenuModifAlmacen.setText("Modificar");
-        MenuModifAlmacen.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuModifAlmacenActionPerformed(evt);
-            }
-        });
-        jMenu11.add(MenuModifAlmacen);
 
         MenuEliminAlmac.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
         MenuEliminAlmac.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/eliminar.png"))); // NOI18N
@@ -575,8 +555,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PanelMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(panelImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(PanelMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -607,14 +587,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void menuElimProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuElimProdActionPerformed
         panelContenedor.removeAll();
         panelContenedor.updateUI();
-        Ventanas.frmEliminarProducto ver= new Ventanas.frmEliminarProducto();
+        Ventanas.frmEliminarProducto ver= new Ventanas.frmEliminarProducto(userID,this);
         ver.show();
     }//GEN-LAST:event_menuElimProdActionPerformed
 
     private void MenuNvaCatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuNvaCatActionPerformed
         panelContenedor.removeAll();
         panelContenedor.updateUI();
-        Ventanas.frmNuevaCat ver = new Ventanas.frmNuevaCat(0,this,null,null);
+        Ventanas.frmNuevaCat ver = new Ventanas.frmNuevaCat(0,this,null,null,null);
         ver.show();
     }//GEN-LAST:event_MenuNvaCatActionPerformed
 
@@ -626,8 +606,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuModifCatActionPerformed
 
     private void MenuEliminCatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuEliminCatActionPerformed
-        Paneles.pnlEliminarCat ver=new Paneles.pnlEliminarCat();
-        cargarPanel(panelContenedor,ver );
+        panelContenedor.removeAll();
+        panelContenedor.updateUI();
+        Ventanas.frmEliminaCat ver = new Ventanas.frmEliminaCat();
+        ver.show();
     }//GEN-LAST:event_MenuEliminCatActionPerformed
 
     private void MenuNvaMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuNvaMarcaActionPerformed
@@ -659,7 +641,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuNvoProvActionPerformed
 
     private void MenuModifProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuModifProvActionPerformed
-        Paneles.pnlModificarProv ver=new Paneles.pnlModificarProv();
+        Paneles.pnlModificarProv ver=new Paneles.pnlModificarProv(this);
         cargarPanel(panelContenedor,ver );
     }//GEN-LAST:event_MenuModifProvActionPerformed
 
@@ -678,7 +660,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuNvoTrabActionPerformed
 
     private void MenuModifTrabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuModifTrabActionPerformed
-        Paneles.pnlModifTrab ver=new Paneles.pnlModifTrab();
+        Paneles.pnlModifTrab ver=new Paneles.pnlModifTrab(this);
         cargarPanel(panelContenedor,ver );
     }//GEN-LAST:event_MenuModifTrabActionPerformed
 
@@ -696,13 +678,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         ver.show();
     }//GEN-LAST:event_MenuAsigUserActionPerformed
 
-    private void MenuModifUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuModifUserActionPerformed
-        panelContenedor.removeAll();
-        panelContenedor.updateUI();
-        Ventanas.frmModifUser ver = new Ventanas.frmModifUser();
-        ver.show();
-    }//GEN-LAST:event_MenuModifUserActionPerformed
-
     private void MenuEliminUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuEliminUserActionPerformed
         panelContenedor.removeAll();
         panelContenedor.updateUI();
@@ -717,13 +692,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         ver.show();
     }//GEN-LAST:event_MenuNvoAlmacenActionPerformed
 
-    private void MenuModifAlmacenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuModifAlmacenActionPerformed
-        panelContenedor.removeAll();
-        panelContenedor.updateUI();
-        Ventanas.frmModifAlmacen ver = new Ventanas.frmModifAlmacen();
-        ver.show();
-    }//GEN-LAST:event_MenuModifAlmacenActionPerformed
-
     private void MenuEliminAlmacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuEliminAlmacActionPerformed
         panelContenedor.removeAll();
         panelContenedor.updateUI();
@@ -732,7 +700,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuEliminAlmacActionPerformed
 
     private void MenuNvoPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuNvoPedidoActionPerformed
-        Paneles.pnlNvoPedido ver=new Paneles.pnlNvoPedido(this);
+        Paneles.pnlNvoPedido ver=new Paneles.pnlNvoPedido(this,Integer.parseInt(userID));
         cargarPanel(panelContenedor,ver );
     }//GEN-LAST:event_MenuNvoPedidoActionPerformed
 
@@ -781,12 +749,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem MenuEliminarMarca;
     private javax.swing.JMenuItem MenuEliminarTrab;
     private javax.swing.JMenuItem MenuIngrProd;
-    private javax.swing.JMenuItem MenuModifAlmacen;
     private javax.swing.JMenuItem MenuModifCat;
     private javax.swing.JMenuItem MenuModifMarca;
     private javax.swing.JMenuItem MenuModifProv;
     private javax.swing.JMenuItem MenuModifTrab;
-    private javax.swing.JMenuItem MenuModifUser;
     private javax.swing.JMenuItem MenuNvaCat;
     private javax.swing.JMenuItem MenuNvaMarca;
     private javax.swing.JMenuItem MenuNvoAlmacen;
