@@ -1,0 +1,7 @@
+CREATE DEFINER=`root`@`localhost` PROCEDURE `paMuestraPedidos`()
+BEGIN
+	select p.idPedido,p.nroPedido, concat(t.Nombre,' ',t.Apellidos) nombre, p.fecha 
+		from pedido p join usuario u on p.idUsuario=u.idUsuario
+			join trabajador t on u.idTrabajador=t.idTrabajador
+		order by nroPedido;
+END
