@@ -655,37 +655,43 @@ public class pnlNvoPedido extends javax.swing.JPanel {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        try{
-            int i=0;
-            con=Conexion.getconnection();
-            boolean band=false;
-            while (i<dtDetalle.getRowCount()){
-                cst=con.prepareCall("{call paIngresaPedido (?,?,?,?,?,?,?)}");
-                cst.setInt(1,idProdTb[i]);
-                cst.setDouble(2,Double.parseDouble(dtDetalle.getValueAt(i, 2)+""));
-                cst.setDouble(3,Double.parseDouble(dtDetalle.getValueAt(i, 0)+""));
-                System.out.println("Total: "+Double.parseDouble(dtDetalle.getValueAt(i, 3)+""));
-                cst.setDouble(4,Double.parseDouble(dtDetalle.getValueAt(i, 3)+""));
-                cst.setDouble(5,Double.parseDouble(txtTotal.getText()+""));
-                cst.setInt(6,UserID);
-                cst.setBoolean(7,band);
-                band=true;
-                i++;
-            cst.execute();
-            }
-            
-            JOptionPane.showMessageDialog(null, "Pedido Registrado correctamente");
-            cst.close();
-            con.close();
+        
+        if(dtDetalle.getRowCount()==0){
+            JOptionPane.showMessageDialog(null, "Pedido no registrado por no contener productos");
         }
-        catch (SQLException ex){
-            try {
-                con.rollback();
-                
-            } catch (SQLException ex1) {
-                Logger.getLogger(pnlNvoPedido.class.getName()).log(Level.SEVERE, null, ex1);
+        else{
+            try{
+                int i=0;
+                con=Conexion.getconnection();
+                boolean band=false;
+                while (i<dtDetalle.getRowCount()){
+                    cst=con.prepareCall("{call paIngresaPedido (?,?,?,?,?,?,?)}");
+                    cst.setInt(1,idProdTb[i]);
+                    cst.setDouble(2,Double.parseDouble(dtDetalle.getValueAt(i, 2)+""));
+                    cst.setDouble(3,Double.parseDouble(dtDetalle.getValueAt(i, 0)+""));
+                    System.out.println("Total: "+Double.parseDouble(dtDetalle.getValueAt(i, 3)+""));
+                    cst.setDouble(4,Double.parseDouble(dtDetalle.getValueAt(i, 3)+""));
+                    cst.setDouble(5,Double.parseDouble(txtTotal.getText()+""));
+                    cst.setInt(6,UserID);
+                    cst.setBoolean(7,band);
+                    band=true;
+                    i++;
+                cst.execute();
+                }
+
+                JOptionPane.showMessageDialog(null, "Pedido Registrado correctamente");
+                cst.close();
+                con.close();
             }
-            JOptionPane.showMessageDialog(null,"Error: "+ ex);
+            catch (SQLException ex){
+                try {
+                    con.rollback();
+
+                } catch (SQLException ex1) {
+                    Logger.getLogger(pnlNvoPedido.class.getName()).log(Level.SEVERE, null, ex1);
+                }
+                JOptionPane.showMessageDialog(null,"Error: "+ ex);
+            }
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 

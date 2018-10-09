@@ -316,8 +316,88 @@ public class ListaCombos {
         public void setId(int[] id) {
             this.id = id;
         }
+               
+    }
+    
+    public static class RetornaDatosPedido{
+        String[] nombre;
+        String[] fechas;
+        int[] id;
+
+        public RetornaDatosPedido(String[] nombre, String[] fechas, int[] id) {
+            this.nombre = nombre;
+            this.fechas = fechas;
+            this.id = id;
+        }
         
+        public String[] getFechas() {
+            return fechas;
+        }
+
+        public void setFechas(String[] fechas) {
+            this.fechas = fechas;
+        }
         
+        public String[] getNombre() {
+            return nombre;
+        }
+
+        public void setNombre(String[] nombre) {
+            this.nombre = nombre;
+        }
+
+        public int[] getId() {
+            return id;
+        }
+
+        public void setId(int[] id) {
+            this.id = id;
+        }      
+        
+    } 
+    
+    public static RetornaDatosPedido listaPedidos(JComboBox cbo,  String[] nom, String[] fechas, int[] id){
+        CallableStatement cst;
+        Connection con=null;
+        ResultSet rs;
+        
+        RetornaDatosPedido retorna;
+        
+        id=new int[2];
+        nom=new String[2];
+        fechas=new String[2];
+        cbo.removeAllItems();
+        cbo.addItem("Seleccione..");
+        int i=1;
+        try{
+            con=Conexion.getconnection();
+        
+            cst=con.prepareCall("{call paMuestraPedidos ()}");
+            cst.execute();
+            
+            rs= cst.getResultSet();
+            
+            while(rs.next()){
+                cbo.addItem(rs.getString(2));
+                id[i]=rs.getInt(1);
+                nom[i]= rs.getString(3);
+                fechas[i]=rs.getString(4)+"";
+                id = redimArray.resizeArray(id.length+1,id);
+                nom = redimArray.resizeArrayStr(nom.length+1,nom);
+                i++;
+            }
+            //System.out.println(id.length);
+            cst.close();
+            rs.close();
+            con.close();
+        }
+        catch (SQLException ex){
+            JOptionPane.showMessageDialog(null,"Error: "+ ex);
+        }
+        
+        retorna=new RetornaDatosPedido(nom, fechas, id);
+        
+        return retorna;
     }
     
     public static int[] listaTrabajadores(JComboBox cbo, int[] id){

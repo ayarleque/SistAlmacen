@@ -705,7 +705,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuNvoPedidoActionPerformed
 
     private void menuValidarPedidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuValidarPedidActionPerformed
-        Paneles.pnlValidarPedido ver=new Paneles.pnlValidarPedido();
+        Paneles.pnlValidarPedido ver=new Paneles.pnlValidarPedido(this, Integer.parseInt(userID));
         cargarPanel(panelContenedor,ver );
     }//GEN-LAST:event_menuValidarPedidActionPerformed
 
