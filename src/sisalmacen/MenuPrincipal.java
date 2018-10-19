@@ -570,7 +570,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     private void MenuIngrProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuIngrProdActionPerformed
-        Paneles.pnlIngresoProd ver=new Paneles.pnlIngresoProd();
+        Paneles.pnlIngresoProd ver=new Paneles.pnlIngresoProd(this,Integer.parseInt(userID));
         cargarPanel(panelContenedor,ver );
     }//GEN-LAST:event_MenuIngrProdActionPerformed
 
@@ -636,7 +636,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void MenuNvoProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuNvoProvActionPerformed
         panelContenedor.removeAll();
         panelContenedor.updateUI();
-        Ventanas.frmNvoProveedor ver = new Ventanas.frmNvoProveedor();
+        Ventanas.frmNvoProveedor ver = new Ventanas.frmNvoProveedor(0,null);
         ver.show();
     }//GEN-LAST:event_MenuNvoProvActionPerformed
 

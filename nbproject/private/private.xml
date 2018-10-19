@@ -3,12 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/anthony/GITHUB/SistAlmacen/src/clases/copiarArchivo.java</file>
-            <file>file:/C:/anthony/GITHUB/SistAlmacen/src/clases/ListaCombos.java</file>
-            <file>file:/C:/anthony/GITHUB/SistAlmacen/src/Paneles/PnlRegistrarProd.java</file>
-            <file>file:/C:/anthony/GITHUB/SistAlmacen/src/Paneles/pnlNvoPedido.java</file>
-            <file>file:/C:/anthony/GITHUB/SistAlmacen/src/sisalmacen/MenuPrincipal.java</file>
-            <file>file:/C:/anthony/GITHUB/SistAlmacen/src/Paneles/pnlValidarPedido.java</file>
+            <file>file:/C:/anthony/GIT/SistAlmacen/src/sisalmacen/MenuPrincipal.java</file>
+            <file>file:/C:/anthony/GIT/SistAlmacen/src/clases/ListaCombos.java</file>
+            <file>file:/C:/anthony/GIT/SistAlmacen/src/clases/redimArray.java</file>
+            <file>file:/C:/anthony/GIT/SistAlmacen/src/sisalmacen/login.java</file>
+            <file>file:/C:/anthony/GIT/SistAlmacen/src/Paneles/pnlIngresoProd.java</file>
+            <file>file:/C:/anthony/GIT/SistAlmacen/src/Paneles/pnlValidarPedido.java</file>
+            <file>file:/C:/anthony/GIT/SistAlmacen/src/Paneles/pnlNvoPedido.java</file>
         </group>
     </open-files>
 </project-private>

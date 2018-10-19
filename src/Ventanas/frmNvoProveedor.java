@@ -8,9 +8,7 @@ package Ventanas;
 import Conexion.Conexion;
 import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,9 +17,13 @@ import javax.swing.JOptionPane;
  */
 public class frmNvoProveedor extends javax.swing.JFrame {
 
-    public frmNvoProveedor() {
+    int origen;
+    frmValidarCompra valiCompra;
+    public frmNvoProveedor(int proveniente, frmValidarCompra valiCompra) {
         initComponents();
         setLocationRelativeTo(null);
+        origen=proveniente;
+        this.valiCompra=valiCompra;
     }
 
     @SuppressWarnings("unchecked")
@@ -333,6 +335,19 @@ public class frmNvoProveedor extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Proveedor registrado correctamente");
             cst.close();
             con.close();
+            switch (origen) {
+                case 0: //es llamado por el panel principal
+                    this.dispose();
+                    break;
+                    
+                case 1: //es llamado por el panel de registro de productos
+                    //pnlRegProd.cboCategoria.addItem("fdg");
+                    valiCompra.listaProv();
+                    break;
+                
+                default:
+                    throw new AssertionError();
+            }
             this.dispose();
         }
         catch (SQLException ex){

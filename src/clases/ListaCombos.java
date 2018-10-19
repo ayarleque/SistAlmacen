@@ -356,6 +356,43 @@ public class ListaCombos {
         
     } 
     
+    public static class RetornaDatosCompra{
+        String[] nomProv;
+        int[] idProv;
+        int[] idCompr;
+
+        public RetornaDatosCompra(String[] nomProv, int[] idProv, int[] idCompr) {
+            this.nomProv = nomProv;
+            this.idProv = idProv;
+            this.idCompr = idCompr;
+        }
+
+        public String[] getNomProv() {
+            return nomProv;
+        }
+
+        public void setNomProv(String[] nomProv) {
+            this.nomProv = nomProv;
+        }
+
+        public int[] getIdProv() {
+            return idProv;
+        }
+
+        public void setIdProv(int[] idProv) {
+            this.idProv = idProv;
+        }
+
+        public int[] getIdCompr() {
+            return idCompr;
+        }
+
+        public void setIdCompr(int[] idCompr) {
+            this.idCompr = idCompr;
+        }
+        
+    }
+    
     public static RetornaDatosPedido listaPedidos(JComboBox cbo,  String[] nom, String[] fechas, int[] id){
         CallableStatement cst;
         Connection con=null;
@@ -384,6 +421,7 @@ public class ListaCombos {
                 fechas[i]=rs.getString(4)+"";
                 id = redimArray.resizeArray(id.length+1,id);
                 nom = redimArray.resizeArrayStr(nom.length+1,nom);
+                fechas = redimArray.resizeArrayStr(fechas.length+1,fechas);
                 i++;
             }
             //System.out.println(id.length);
@@ -502,5 +540,50 @@ public class ListaCombos {
             JOptionPane.showMessageDialog(null,"Error: "+ ex);
         }
         return id;
+    }
+    
+    public static RetornaDatosCompra listaCompras(JComboBox cbo,String[] nomProv,int[] idProv, int[] idCompr){
+        CallableStatement cst;
+        Connection con=null;
+        ResultSet rs;
+        
+        RetornaDatosCompra retorna;
+        
+        idProv=new int[2];
+        idCompr=new int[2];
+        nomProv=new String[2];
+        cbo.removeAllItems();
+        cbo.addItem("Seleccione..");
+        int i=1;
+        try{
+            con=Conexion.getconnection();
+        
+            cst=con.prepareCall("{call paMuestraCompras ()}");
+            cst.execute();
+            
+            rs= cst.getResultSet();
+            
+            while(rs.next()){
+                cbo.addItem(rs.getString(1));
+                idCompr[i]=rs.getInt(2);
+                idProv[i]= rs.getInt(3);
+                nomProv[i]=rs.getString(4)+"";
+                idCompr = redimArray.resizeArray(idCompr.length+1,idCompr);
+                idProv = redimArray.resizeArray(idProv.length+1,idProv);
+                nomProv = redimArray.resizeArrayStr(nomProv.length+1,nomProv);
+                i++;
+            }
+            //System.out.println(id.length);
+            cst.close();
+            rs.close();
+            con.close();
+        }
+        catch (SQLException ex){
+            JOptionPane.showMessageDialog(null,"Error: "+ ex);
+        }
+        
+        retorna=new RetornaDatosCompra(nomProv, idProv, idCompr);
+        
+        return retorna;
     }
 }

@@ -145,6 +145,11 @@ public class pnlNvoPedido extends javax.swing.JPanel {
                 cboCatItemStateChanged(evt);
             }
         });
+        cboCat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboCatActionPerformed(evt);
+            }
+        });
 
         cboProd.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
         cboProd.addItemListener(new java.awt.event.ItemListener() {
@@ -585,6 +590,7 @@ public class pnlNvoPedido extends javax.swing.JPanel {
     private void cboCatItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboCatItemStateChanged
         if (cboCat.getSelectedIndex()>0)//evt.getStateChange() == ItemEvent.SELECTED) 
         {
+            //System.out.println("entro");
             idProd=ListaCombos.listaProdxCat(cboProd, idProd, idCat[cboCat.getSelectedIndex()] );
         }
     }//GEN-LAST:event_cboCatItemStateChanged
@@ -637,7 +643,7 @@ public class pnlNvoPedido extends javax.swing.JPanel {
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         if(!txtCant.getText().equals("") && cboProd.getSelectedIndex()!=0){
-            idProdTb[dtDetalle.getRowCount()]=cboProd.getSelectedIndex();
+            idProdTb[dtDetalle.getRowCount()]=idProd[cboProd.getSelectedIndex()];
             Double total=Double.parseDouble(txtPrecio.getText())*Double.parseDouble(txtCant.getText());
             modelo.addRow(new Object[]{txtCant.getText(),cboProd.getSelectedItem(),txtPrecio.getText(),total});
             
@@ -648,6 +654,12 @@ public class pnlNvoPedido extends javax.swing.JPanel {
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         if(dtDetalle.getSelectedRow()!=-1){
+            int temp=0;
+            for (int i = dtDetalle.getSelectedRow()+1; i <dtDetalle.getRowCount()+1 ; i++) {
+                //System.out.println("longitud de arreglo de tabla"+idProdTb.length);
+                temp=idProdTb[i];
+                idProdTb[i-1]=temp;
+            }
             modelo.removeRow(dtDetalle.getSelectedRow());
             SumarTodo();
         }
@@ -669,7 +681,6 @@ public class pnlNvoPedido extends javax.swing.JPanel {
                     cst.setInt(1,idProdTb[i]);
                     cst.setDouble(2,Double.parseDouble(dtDetalle.getValueAt(i, 2)+""));
                     cst.setDouble(3,Double.parseDouble(dtDetalle.getValueAt(i, 0)+""));
-                    System.out.println("Total: "+Double.parseDouble(dtDetalle.getValueAt(i, 3)+""));
                     cst.setDouble(4,Double.parseDouble(dtDetalle.getValueAt(i, 3)+""));
                     cst.setDouble(5,Double.parseDouble(txtTotal.getText()+""));
                     cst.setInt(6,UserID);
@@ -682,6 +693,8 @@ public class pnlNvoPedido extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "Pedido Registrado correctamente");
                 cst.close();
                 con.close();
+                principal.panelContenedor.removeAll();
+                principal.panelContenedor.updateUI();
             }
             catch (SQLException ex){
                 try {
@@ -694,6 +707,10 @@ public class pnlNvoPedido extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void cboCatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboCatActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboCatActionPerformed
 
     public void SumarTodo(){
         double suma=0;

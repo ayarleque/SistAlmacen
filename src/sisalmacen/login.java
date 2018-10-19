@@ -6,6 +6,7 @@
 package sisalmacen;
 import Conexion.Conexion;
 import java.awt.HeadlessException;
+import java.awt.event.KeyEvent;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -226,6 +227,11 @@ public class login extends javax.swing.JFrame {
         txtPass.setBorder(null);
         txtPass.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         txtPass.setPlaceholder("Contraseña");
+        txtPass.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPassKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelImage5Layout = new javax.swing.GroupLayout(panelImage5);
         panelImage5.setLayout(panelImage5Layout);
@@ -366,7 +372,11 @@ public class login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //JOptionPane.showMessageDialog(null,txtPass.getText());
+        //JOptionPane.showMessageDialog(null,txtPass.getText()); 
+        validar();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    public void validar(){
         try{
             con=Conexion.getconnection();
             
@@ -388,9 +398,13 @@ public class login extends javax.swing.JFrame {
         catch (SQLException ex){
             JOptionPane.showMessageDialog(null,"Error de conexion"+ ex);
         }
-        
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }
+    
+    private void txtPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPassKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){ 
+            validar();
+        } 
+    }//GEN-LAST:event_txtPassKeyPressed
 
     /**
      * @param args the command line arguments
