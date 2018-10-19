@@ -857,7 +857,7 @@ public class pnlIngresoProd extends javax.swing.JPanel {
             idAlmTb[dtDetalle.getRowCount()]=idAlmac[cboAlmac.getSelectedIndex()];
             
             Double total=Double.parseDouble(txtPrecUnit.getText())*Double.parseDouble(txtCant.getText());
-            modelo.addRow(new Object[]{txtCant.getText(),cboProd.getSelectedItem(),cboAlmac.getSelectedItem(),txtPrecUnit.getText(),total});
+            modelo.addRow(new Object[]{txtCant.getText(),txtProd.getText(),cboAlmac.getSelectedItem(),txtPrecUnit.getText(),total});
             
             SumarTodo();
         }
