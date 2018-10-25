@@ -1,7 +1,6 @@
 package Paneles;
 
 import Conexion.Conexion;
-import clases.ListaCombos;
 import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
 import java.io.File;
@@ -14,8 +13,6 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import sisalmacen.MenuPrincipal;
 import clases.ListaCombos;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class pnlIngresoProd extends javax.swing.JPanel {
 
@@ -107,13 +104,11 @@ public class pnlIngresoProd extends javax.swing.JPanel {
         jLabel33 = new javax.swing.JLabel();
         cboCompra = new javax.swing.JComboBox<>();
         txtSerie = new javax.swing.JTextField();
-        btnAgregarCat = new javax.swing.JButton();
         cboCat = new javax.swing.JComboBox<>();
         jLabel34 = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
         jLabel36 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
-        btnAgregarProd = new javax.swing.JButton();
         cboProd = new javax.swing.JComboBox<>();
         jPanel4 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
@@ -279,18 +274,6 @@ public class pnlIngresoProd extends javax.swing.JPanel {
             }
         });
 
-        btnAgregarCat.setBackground(new java.awt.Color(204, 204, 204));
-        btnAgregarCat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/anadir.png"))); // NOI18N
-        btnAgregarCat.setBorder(null);
-        btnAgregarCat.setContentAreaFilled(false);
-        btnAgregarCat.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnAgregarCat.setPreferredSize(new java.awt.Dimension(20, 20));
-        btnAgregarCat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarCatActionPerformed(evt);
-            }
-        });
-
         cboCat.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
         cboCat.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -313,18 +296,6 @@ public class pnlIngresoProd extends javax.swing.JPanel {
         jLabel37.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
         jLabel37.setForeground(new java.awt.Color(255, 255, 255));
         jLabel37.setText(":");
-
-        btnAgregarProd.setBackground(new java.awt.Color(204, 204, 204));
-        btnAgregarProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/anadir.png"))); // NOI18N
-        btnAgregarProd.setBorder(null);
-        btnAgregarProd.setContentAreaFilled(false);
-        btnAgregarProd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnAgregarProd.setPreferredSize(new java.awt.Dimension(20, 20));
-        btnAgregarProd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarProdActionPerformed(evt);
-            }
-        });
 
         cboProd.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
         cboProd.addItemListener(new java.awt.event.ItemListener() {
@@ -356,11 +327,7 @@ public class pnlIngresoProd extends javax.swing.JPanel {
                     .addComponent(cboCat, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cboProd, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAgregarCat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAgregarProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -373,18 +340,15 @@ public class pnlIngresoProd extends javax.swing.JPanel {
                     .addComponent(jLabel30))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAgregarCat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel31)
                         .addComponent(jLabel33))
                     .addComponent(cboCat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 11, Short.MAX_VALUE)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel34)
-                        .addComponent(jLabel35)
-                        .addComponent(txtSerie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnAgregarProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel34)
+                    .addComponent(jLabel35)
+                    .addComponent(txtSerie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel36)
@@ -786,14 +750,6 @@ public class pnlIngresoProd extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAgregarCatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCatActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAgregarCatActionPerformed
-
-    private void btnAgregarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAgregarProdActionPerformed
-
     private void txtSerieKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSerieKeyPressed
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){ 
             limpiarDetalles(0,txtSerie.getText());
@@ -839,7 +795,7 @@ public class pnlIngresoProd extends javax.swing.JPanel {
                 txtStock.setText(rs.getString(1));
                 
             }
-            else txtStock.setText("0");
+            //else txtStock.setText("0");
             cst.close();
             rs.close();
             con.close();
@@ -896,34 +852,34 @@ public class pnlIngresoProd extends javax.swing.JPanel {
             try{
                 int i=0;
                 con=Conexion.getconnection();
-                boolean band=false;
+                
                 while (i<dtDetalle.getRowCount()){
-                    cst=con.prepareCall("{call paIngresaProducto (?,?,?,?,?,?,?)}");
-                    cst.setInt(1,idProdTb[i]);
-                    cst.setDouble(2,Double.parseDouble(dtDetalle.getValueAt(i, 2)+""));
-                    cst.setDouble(3,Double.parseDouble(dtDetalle.getValueAt(i, 0)+""));
-                    cst.setDouble(4,Double.parseDouble(dtDetalle.getValueAt(i, 3)+""));
-                    cst.setDouble(5,Double.parseDouble(txtTotal.getText()+""));
-                    cst.setInt(6,UserID);
-                    cst.setBoolean(7,band);
-                    band=true;
+                    cst=con.prepareCall("{call paRegistraIngrProd (?,?,?,?,?,?,?,?,?)}");
+                    System.out.println("id compra: "+idCompr[cboCompra.getSelectedIndex()]);
+                    System.out.println("id producto: "+idProdTb[i]);
+                    System.out.println("id almacen: "+idAlmac[cboAlmac.getSelectedIndex()]);
+                    cst.setInt(1,idCompr[cboCompra.getSelectedIndex()]);
+                    cst.setInt(2,idProdTb[i]);
+                    cst.setInt(3,idAlmac[cboAlmac.getSelectedIndex()]);
+                    cst.setDouble(4,Double.parseDouble(txtCant.getText()+""));
+                    cst.setDouble(5,Double.parseDouble(txtPrecUnit.getText()+""));
+                    cst.setInt(6,null);
+                    System.out.println("id user: "+UserID);
+                    cst.setInt(7,UserID);
+                    cst.setBoolean(8,true);
+                    cst.setDouble(9,Double.parseDouble(txtStock.getText()+""));
                     i++;
                 cst.execute();
                 }
 
-                JOptionPane.showMessageDialog(null, "Pedido Registrado correctamente");
+                JOptionPane.showMessageDialog(null, "Producto ingresado al almacén "+cboAlmac.getSelectedItem()+" correctamente");
                 cst.close();
                 con.close();
                 principal.panelContenedor.removeAll();
                 principal.panelContenedor.updateUI();
             }
             catch (SQLException ex){
-                try {
-                    con.rollback();
-
-                } catch (SQLException ex1) {
-                    Logger.getLogger(pnlNvoPedido.class.getName()).log(Level.SEVERE, null, ex1);
-                }
+                
                 JOptionPane.showMessageDialog(null,"Error: "+ ex);
             }
         }
@@ -982,8 +938,6 @@ public class pnlIngresoProd extends javax.swing.JPanel {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private rsbuttom.RSButtonMetro btnAgregar;
-    private javax.swing.JButton btnAgregarCat;
-    private javax.swing.JButton btnAgregarProd;
     private rsbuttom.RSButtonMetro btnCancelar;
     private rsbuttom.RSButtonMetro btnEliminar;
     private rsbuttom.RSButtonMetro btnGuardar;
