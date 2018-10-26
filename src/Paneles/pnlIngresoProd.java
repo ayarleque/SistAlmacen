@@ -13,8 +13,6 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import sisalmacen.MenuPrincipal;
 import clases.ListaCombos;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class pnlIngresoProd extends javax.swing.JPanel {
 
@@ -797,7 +795,7 @@ public class pnlIngresoProd extends javax.swing.JPanel {
                 txtStock.setText(rs.getString(1));
                 
             }
-            else txtStock.setText("0");
+            //else txtStock.setText("0");
             cst.close();
             rs.close();
             con.close();
@@ -854,34 +852,38 @@ public class pnlIngresoProd extends javax.swing.JPanel {
             try{
                 int i=0;
                 con=Conexion.getconnection();
-                boolean band=false;
+                
                 while (i<dtDetalle.getRowCount()){
-                    cst=con.prepareCall("{call paIngresaProducto (?,?,?,?,?,?,?)}");
-                    cst.setInt(1,idProdTb[i]);
-                    cst.setDouble(2,Double.parseDouble(dtDetalle.getValueAt(i, 2)+""));
-                    cst.setDouble(3,Double.parseDouble(dtDetalle.getValueAt(i, 0)+""));
-                    cst.setDouble(4,Double.parseDouble(dtDetalle.getValueAt(i, 3)+""));
-                    cst.setDouble(5,Double.parseDouble(txtTotal.getText()+""));
-                    cst.setInt(6,UserID);
-                    cst.setBoolean(7,band);
-                    band=true;
+                    cst=con.prepareCall("{call paRegistraIngrProd (?,?,?,?,?,?,?,?,?)}");
+                    System.out.println("id compra: "+idCompr[cboCompra.getSelectedIndex()]);
+                    System.out.println("id producto: "+idProdTb[i]);
+                    System.out.println("id almacen: "+idAlmac[cboAlmac.getSelectedIndex()]);
+                    cst.setInt(1,idCompr[cboCompra.getSelectedIndex()]);
+                    cst.setInt(2,idProdTb[i]);
+                    cst.setInt(3,idAlmac[cboAlmac.getSelectedIndex()]);
+                    cst.setDouble(4,Double.parseDouble(txtCant.getText()+""));
+                    cst.setDouble(5,Double.parseDouble(txtPrecUnit.getText()+""));
+                    cst.setInt(6,null);
+                    System.out.println("id user: "+UserID);
+                    cst.setInt(7,UserID);
+                    cst.setBoolean(8,true);
+                    cst.setDouble(9,Double.parseDouble(txtStock.getText()+""));
                     i++;
                 cst.execute();
                 }
 
+<<<<<<< HEAD
                 JOptionPane.showMessageDialog(null, "Ingreso de producto registrado correctamente");
+=======
+                JOptionPane.showMessageDialog(null, "Producto ingresado al almacén "+cboAlmac.getSelectedItem()+" correctamente");
+>>>>>>> b90f574806e6908d38bec454b8861f423099b43f
                 cst.close();
                 con.close();
                 principal.panelContenedor.removeAll();
                 principal.panelContenedor.updateUI();
             }
             catch (SQLException ex){
-                try {
-                    con.rollback();
-
-                } catch (SQLException ex1) {
-                    Logger.getLogger(pnlNvoPedido.class.getName()).log(Level.SEVERE, null, ex1);
-                }
+                
                 JOptionPane.showMessageDialog(null,"Error: "+ ex);
             }
         }
