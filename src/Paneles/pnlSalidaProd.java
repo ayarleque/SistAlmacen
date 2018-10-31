@@ -827,6 +827,7 @@ public class pnlSalidaProd extends javax.swing.JPanel {
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         if(dtDetalle.getRowCount()==0){
             JOptionPane.showMessageDialog(null, "Salida no registrada porque la tabla no contiene productos");
+            System.out.println("no ingresó");
         }
         else{
             try{
