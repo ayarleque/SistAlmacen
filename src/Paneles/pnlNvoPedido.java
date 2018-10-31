@@ -2,8 +2,6 @@ package Paneles;
 
 import Conexion.Conexion;
 import clases.ListaCombos;
-import clases.copiarArchivo;
-import java.awt.event.ItemEvent;
 import java.io.File;
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -12,7 +10,6 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import sisalmacen.MenuPrincipal;
@@ -421,6 +418,11 @@ public class pnlNvoPedido extends javax.swing.JPanel {
         btnCancelar.setText("Cancelar");
         btnCancelar.setColorHover(new java.awt.Color(153, 0, 0));
         btnCancelar.setColorNormal(new java.awt.Color(0, 102, 0));
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         dtDetalle.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -711,6 +713,11 @@ public class pnlNvoPedido extends javax.swing.JPanel {
     private void cboCatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboCatActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cboCatActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        principal.panelContenedor.removeAll();
+        principal.panelContenedor.updateUI();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     public void SumarTodo(){
         double suma=0;

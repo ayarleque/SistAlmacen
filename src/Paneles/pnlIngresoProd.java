@@ -26,6 +26,8 @@ public class pnlIngresoProd extends javax.swing.JPanel {
     int idAlmac[];
     int idProdTb[];
     int idAlmTb[];
+    Double cantTb[];
+    Double stockTb[];
     
     String rutaProyect,rutaFoto;
     CallableStatement cst;
@@ -59,6 +61,8 @@ public class pnlIngresoProd extends javax.swing.JPanel {
         UserID=idUser;
         idProdTb=new int[cboProd.getItemCount()];
         idAlmTb=new int[cboProd.getItemCount()];
+        cantTb=new Double[cboProd.getItemCount()];
+        stockTb=new Double[cboProd.getItemCount()];
     }
 
     public void listaCat(){
@@ -89,14 +93,6 @@ public class pnlIngresoProd extends javax.swing.JPanel {
         panelImage = new org.edisoncor.gui.panel.PanelImage();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        txtCant = new javax.swing.JTextField();
-        txtPrecUnit = new javax.swing.JTextField();
-        btnAgregar = new rsbuttom.RSButtonMetro();
         jPanel6 = new javax.swing.JPanel();
         jLabel30 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
@@ -110,6 +106,14 @@ public class pnlIngresoProd extends javax.swing.JPanel {
         jLabel36 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
         cboProd = new javax.swing.JComboBox<>();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        txtCant = new javax.swing.JTextField();
+        txtPrecUnit = new javax.swing.JTextField();
+        btnAgregar = new rsbuttom.RSButtonMetro();
         jPanel4 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -161,84 +165,6 @@ public class pnlIngresoProd extends javax.swing.JPanel {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("REGISTRO DE PRODUCTOS");
         jLabel2.setAlignmentX(0.5F);
-
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 255, 255)), "Ingrese Datos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Poetsen One", 0, 16), new java.awt.Color(255, 255, 255))); // NOI18N
-        jPanel3.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
-        jPanel3.setOpaque(false);
-
-        jLabel1.setFont(new java.awt.Font("Poetsen One", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Cantidad");
-
-        jLabel3.setFont(new java.awt.Font("Poetsen One", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Precio Unit.");
-
-        jLabel4.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText(":");
-
-        jLabel5.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText(":");
-
-        txtCant.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
-
-        txtPrecUnit.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
-
-        btnAgregar.setBackground(new java.awt.Color(0, 102, 0));
-        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/agregarPedido.png"))); // NOI18N
-        btnAgregar.setText("Agregar");
-        btnAgregar.setColorHover(new java.awt.Color(153, 0, 0));
-        btnAgregar.setColorNormal(new java.awt.Color(0, 102, 0));
-        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel4))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel5)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtCant, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPrecUnit, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(0, 7, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel4)
-                            .addComponent(txtCant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(8, 8, 8)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtPrecUnit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel3)))
-                    .addComponent(btnAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(14, 14, 14))
-        );
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 255, 255)), "Filtro", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Poetsen One", 0, 16), new java.awt.Color(255, 255, 255))); // NOI18N
         jPanel6.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
@@ -355,6 +281,84 @@ public class pnlIngresoProd extends javax.swing.JPanel {
                     .addComponent(jLabel37)
                     .addComponent(cboProd))
                 .addContainerGap())
+        );
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 255, 255)), "Ingrese Datos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Poetsen One", 0, 16), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel3.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
+        jPanel3.setOpaque(false);
+
+        jLabel1.setFont(new java.awt.Font("Poetsen One", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Cantidad");
+
+        jLabel3.setFont(new java.awt.Font("Poetsen One", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Precio Unit.");
+
+        jLabel4.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText(":");
+
+        jLabel5.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText(":");
+
+        txtCant.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
+
+        txtPrecUnit.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
+
+        btnAgregar.setBackground(new java.awt.Color(0, 102, 0));
+        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/agregarPedido.png"))); // NOI18N
+        btnAgregar.setText("Agregar");
+        btnAgregar.setColorHover(new java.awt.Color(153, 0, 0));
+        btnAgregar.setColorNormal(new java.awt.Color(0, 102, 0));
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel4))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel5)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtCant, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPrecUnit, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(0, 7, Short.MAX_VALUE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel4)
+                            .addComponent(txtCant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(8, 8, 8)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtPrecUnit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel3)))
+                    .addComponent(btnAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(14, 14, 14))
         );
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 255, 255)), "Verifique Detalles", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Poetsen One", 0, 16), new java.awt.Color(255, 255, 255))); // NOI18N
@@ -608,6 +612,11 @@ public class pnlIngresoProd extends javax.swing.JPanel {
         btnCancelar.setText("Cancelar");
         btnCancelar.setColorHover(new java.awt.Color(153, 0, 0));
         btnCancelar.setColorNormal(new java.awt.Color(0, 102, 0));
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         btnGuardar.setBackground(new java.awt.Color(0, 102, 0));
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/guardar.png"))); // NOI18N
@@ -811,10 +820,10 @@ public class pnlIngresoProd extends javax.swing.JPanel {
             if(validarCamposVacios()){
             idProdTb[dtDetalle.getRowCount()]=idProd[cboProd.getSelectedIndex()];
             idAlmTb[dtDetalle.getRowCount()]=idAlmac[cboAlmac.getSelectedIndex()];
-            
+            cantTb[dtDetalle.getRowCount()]=Double.parseDouble(txtCant.getText());
+            stockTb[dtDetalle.getRowCount()]=Double.parseDouble(txtStock.getText())+Double.parseDouble(txtCant.getText());
             Double total=Double.parseDouble(txtPrecUnit.getText())*Double.parseDouble(txtCant.getText());
-            modelo.addRow(new Object[]{txtCant.getText(),txtProd.getText(),cboAlmac.getSelectedItem(),txtPrecUnit.getText(),total});
-            
+            modelo.addRow(new Object[]{txtCant.getText(),txtProd.getText(),cboAlmac.getSelectedItem(),txtPrecUnit.getText(),total});                
             SumarTodo();
         }
         else JOptionPane.showMessageDialog(null,"Por favor, complete todos los datos requeridos");
@@ -829,10 +838,17 @@ public class pnlIngresoProd extends javax.swing.JPanel {
         try {
             if(dtDetalle.getSelectedRow()!=-1){
             int temp=0;
+            double tmp;
             for (int i = dtDetalle.getSelectedRow()+1; i <dtDetalle.getRowCount()+1 ; i++) {
                 //System.out.println("longitud de arreglo de tabla"+idProdTb.length);
                 temp=idProdTb[i];
                 idProdTb[i-1]=temp;
+                
+                temp=idAlmTb[i];
+                idAlmTb[i-1]=temp;
+                
+                tmp=cantTb[i];
+                cantTb[i-1]=tmp;
             }
             modelo.removeRow(dtDetalle.getSelectedRow());
             SumarTodo();
@@ -854,22 +870,22 @@ public class pnlIngresoProd extends javax.swing.JPanel {
                 con=Conexion.getconnection();
                 
                 while (i<dtDetalle.getRowCount()){
-                    cst=con.prepareCall("{call paRegistraIngrProd (?,?,?,?,?,?,?,?,?)}");
-                    System.out.println("id compra: "+idCompr[cboCompra.getSelectedIndex()]);
+                    cst=con.prepareCall("{call paRegistraIngrProd (?,?,?,?,?,?,?,?)}");
+                    /*System.out.println("id compra: "+idCompr[cboCompra.getSelectedIndex()]);
                     System.out.println("id producto: "+idProdTb[i]);
-                    System.out.println("id almacen: "+idAlmac[cboAlmac.getSelectedIndex()]);
+                    System.out.println("id almacen: "+idAlmTb[i]);*/
                     cst.setInt(1,idCompr[cboCompra.getSelectedIndex()]);
                     cst.setInt(2,idProdTb[i]);
-                    cst.setInt(3,idAlmac[cboAlmac.getSelectedIndex()]);
-                    cst.setDouble(4,Double.parseDouble(txtCant.getText()+""));
+                    cst.setInt(3,idAlmTb[i]);
+                    cst.setDouble(4,cantTb[i]);
                     cst.setDouble(5,Double.parseDouble(txtPrecUnit.getText()+""));
-                    cst.setInt(6,null);
-                    System.out.println("id user: "+UserID);
-                    cst.setInt(7,UserID);
-                    cst.setBoolean(8,true);
-                    cst.setDouble(9,Double.parseDouble(txtStock.getText()+""));
+                    //cst.setInt(6,1);
+                    //System.out.println("id user: "+UserID);
+                    cst.setInt(6,UserID);
+                    cst.setBoolean(7,true);
+                    cst.setDouble(8,stockTb[i]);
                     i++;
-                cst.execute();
+                    cst.execute();
                 }
 
                 JOptionPane.showMessageDialog(null, "Producto ingresado al almacén "+cboAlmac.getSelectedItem()+" correctamente");
@@ -884,6 +900,11 @@ public class pnlIngresoProd extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        principal.panelContenedor.removeAll();
+        principal.panelContenedor.updateUI();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     public void SumarTodo(){
         double suma=0;
