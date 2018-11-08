@@ -13,6 +13,12 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import sisalmacen.MenuPrincipal;
 import clases.ListaCombos;
+import java.util.HashMap;
+import net.sf.jasperreports.engine.JREmptyDataSource;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 
 public class pnlIngresoProd extends javax.swing.JPanel {
 
@@ -343,11 +349,11 @@ public class pnlIngresoProd extends javax.swing.JPanel {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(18, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(0, 7, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
                             .addComponent(jLabel4)
@@ -356,8 +362,7 @@ public class pnlIngresoProd extends javax.swing.JPanel {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtPrecUnit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5)
-                            .addComponent(jLabel3)))
-                    .addComponent(btnAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel3))))
                 .addGap(14, 14, 14))
         );
 
@@ -863,6 +868,19 @@ public class pnlIngresoProd extends javax.swing.JPanel {
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         if(dtDetalle.getRowCount()==0){
             JOptionPane.showMessageDialog(null, "Compra no registrada por no contener productos");
+            String RutaInforme = "C:\\anthony\\GIT\\SistAlmacen\\src\\Reportes\\RptListaProducto.jasper";
+            HashMap parametro = new HashMap();
+
+            try {
+                parametro.put("idCat", "1");
+                JasperPrint informe = JasperFillManager.fillReport(RutaInforme, parametro,Conexion.getconnection() );
+                JasperViewer jviewer = new JasperViewer(informe,false);
+                jviewer.setTitle("Reporte");
+                jviewer.setVisible(true);
+
+            } catch (JRException e) {
+
+            }
         }
         else{
             try{

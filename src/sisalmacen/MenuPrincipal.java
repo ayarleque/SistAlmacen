@@ -6,7 +6,20 @@
 package sisalmacen;
 
 import java.awt.Dimension;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JRExporter;
+import net.sf.jasperreports.engine.JRExporterParameter;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.export.JRPdfExporter;
+import net.sf.jasperreports.engine.util.JRLoader;
 
 /**
  *
@@ -539,6 +552,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu3.setText("Reportes");
         jMenu3.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         jMenu3.setFont(new java.awt.Font("Poetsen One", 0, 16)); // NOI18N
+        jMenu3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu3ActionPerformed(evt);
+            }
+        });
         jMenuBar1.add(jMenu3);
 
         jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/inventario.png"))); // NOI18N
@@ -718,6 +736,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         Paneles.pnlSalidaProd ver=new Paneles.pnlSalidaProd(this,Integer.parseInt(userID));
         cargarPanel(panelContenedor,ver );
     }//GEN-LAST:event_MenuSalidProdActionPerformed
+
+    private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
+        
+    }//GEN-LAST:event_jMenu3ActionPerformed
 
     private void cargarPanel(JPanel contenedor, JPanel contenedorHijo)
     {

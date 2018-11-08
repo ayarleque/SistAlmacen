@@ -20,7 +20,7 @@ public class PnlRegistrarProd extends javax.swing.JPanel {
 
     String userID;
     String directorio;
-    String nombreArchivo; 
+    String nombreArchivo=""; 
     String rutatotal;
     String rutaProyect;
     int idCat[];// = new int[2];
@@ -570,7 +570,12 @@ public class PnlRegistrarProd extends javax.swing.JPanel {
     
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         try{
-            copiarArchivo.copiarArchivo(rutatotal,rutaProyect+"\\src\\imgProd\\"+nombreArchivo);
+            String ruta;
+            if (!nombreArchivo.equals("")){
+                copiarArchivo.copiarArchivo(rutatotal,rutaProyect+"\\src\\imgProd\\"+nombreArchivo);
+                ruta="\\src\\imgProd\\"+nombreArchivo;
+            }
+            else ruta="";
             
             con=Conexion.getconnection();
         
@@ -581,7 +586,7 @@ public class PnlRegistrarProd extends javax.swing.JPanel {
             cst.setString(4,txtModelo.getText());
             cst.setBoolean(5,true);
             cst.setString(6,txtUbicacion.getText());
-            cst.setString(7,"\\src\\imgProd\\"+nombreArchivo);
+            cst.setString(7,ruta);
             cst.setInt(8,idMarc[cboMarca.getSelectedIndex()]);
             cst.setInt(9,idCat[cboCategoria.getSelectedIndex()]);
             cst.setString(10,txtDescrip.getText());

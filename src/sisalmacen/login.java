@@ -5,7 +5,6 @@
  */
 package sisalmacen;
 import Conexion.Conexion;
-import java.awt.HeadlessException;
 import java.awt.event.KeyEvent;
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -379,7 +378,7 @@ public class login extends javax.swing.JFrame {
     public void validar(){
         try{
             con=Conexion.getconnection();
-            
+            //System.out.println("conexion: "+con);
             CallableStatement cst = con.prepareCall("{call paValidaUsuario (?,?)}");
             cst.setString(1, txtUser.getText());
             cst.setString(2, txtPass.getText());
