@@ -47,12 +47,12 @@
 				<text><![CDATA[LISTA DE REGISTRO DE PRODUCTOS DESPACHADOS DE ALMACEN]]></text>
 			</staticText>
 			<image>
-				<reportElement x="19" y="0" width="130" height="87"/>
-				<imageExpression class="java.lang.String"><![CDATA["C:\\anthony\\GIT\\SistAlmacen\\src\\img\\TP\\TP remasterizado.png"]]></imageExpression>
+				<reportElement x="18" y="0" width="133" height="83"/>
+				<imageExpression class="java.lang.String"><![CDATA["C:\\anthony\\GITHUB\\SistAlmacen\\src\\img\\TP\\TP remasterizado.png"]]></imageExpression>
 			</image>
 			<image>
-				<reportElement x="438" y="0" width="117" height="87"/>
-				<imageExpression class="java.lang.String"><![CDATA["C:\\anthony\\GIT\\SistAlmacen\\src\\img\\TO\\TO remasterizado.png"]]></imageExpression>
+				<reportElement x="439" y="0" width="116" height="87"/>
+				<imageExpression class="java.lang.String"><![CDATA["C:\\anthony\\GITHUB\\SistAlmacen\\src\\img\\TO\\TO remasterizado.png"]]></imageExpression>
 			</image>
 		</band>
 	</title>

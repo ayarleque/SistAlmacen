@@ -956,6 +956,7 @@ public class pnlIngresoProd extends javax.swing.JPanel {
             
             if(rs.next()){
                 txtProd.setText(rs.getString(1));
+                cboProd.setSelectedItem(rs.getString(1));
                 txtMarca.setText(rs.getString(2));
                 txtModelo.setText(rs.getString(4));
                 txtSerieInfo.setText(rs.getString(5));

@@ -751,7 +751,7 @@ public class pnlSalidaProd extends javax.swing.JPanel {
     }//GEN-LAST:event_cboProdItemStateChanged
 
     private void btnVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarActionPerformed
-        if (cboProd.getSelectedIndex()!=0 && cboAlmac.getSelectedIndex()!=0)//evt.getStateChange() == ItemEvent.SELECTED) 
+        if ((cboProd.getSelectedIndex()!=0 || !txtSerieProd.getText().equals("")) && cboAlmac.getSelectedIndex()!=0)//evt.getStateChange() == ItemEvent.SELECTED) 
         {
             MostrarDatosProd(idProd[cboProd.getSelectedIndex()],txtSerieProd.getText(),idAlmac[cboAlmac.getSelectedIndex()]);
         } else JOptionPane.showMessageDialog(null, "Por favor especifique el producto y/o almacén");
@@ -891,6 +891,7 @@ public class pnlSalidaProd extends javax.swing.JPanel {
             
             if(rs.next()){
                 txtProd.setText(rs.getString(1));
+                cboProd.setSelectedItem(rs.getString(1));
                 txtMarca.setText(rs.getString(2));
                 txtModelo.setText(rs.getString(4));
                 txtUbic.setText(rs.getString(6));

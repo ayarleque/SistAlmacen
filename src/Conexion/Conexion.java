@@ -8,7 +8,7 @@ public class Conexion {
     private static String bd="almacenbd";
     private static String USER = "root";
     private static String PASSWORD = "triangulo2018";
-    private static String url = "jdbc:mysql://localhost/"+bd+ "?user=" + USER + "&password=" + PASSWORD+"&useSSL=false";
+    private static String url = "jdbc:mysql://127.0.0.1/"+bd+ "?user=" + USER + "&password=" + PASSWORD+"&useSSL=false";
     private static Connection con;
     
     public static Connection getconnection (){
