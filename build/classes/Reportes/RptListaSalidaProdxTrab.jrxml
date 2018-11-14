@@ -46,14 +46,6 @@
 				</textElement>
 				<text><![CDATA[LISTA DE REGISTRO DE PRODUCTOS DESPACHADOS DE ALMACEN]]></text>
 			</staticText>
-			<image>
-				<reportElement x="18" y="0" width="133" height="83"/>
-				<imageExpression class="java.lang.String"><![CDATA["C:\\anthony\\GITHUB\\SistAlmacen\\src\\img\\TP\\TP remasterizado.png"]]></imageExpression>
-			</image>
-			<image>
-				<reportElement x="439" y="0" width="116" height="87"/>
-				<imageExpression class="java.lang.String"><![CDATA["C:\\anthony\\GITHUB\\SistAlmacen\\src\\img\\TO\\TO remasterizado.png"]]></imageExpression>
-			</image>
 		</band>
 	</title>
 	<pageHeader>

@@ -77,6 +77,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         MenuSalidProd = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
+        MenuInicializaStock = new javax.swing.JMenuItem();
+        MenuConciliar = new javax.swing.JMenuItem();
+        MenuDiferencias = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menú Principal");
@@ -550,6 +553,37 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu4.setText("Inventario");
         jMenu4.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         jMenu4.setFont(new java.awt.Font("Poetsen One", 0, 16)); // NOI18N
+
+        MenuInicializaStock.setFont(new java.awt.Font("Poetsen One", 0, 13)); // NOI18N
+        MenuInicializaStock.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/validarCompra.png"))); // NOI18N
+        MenuInicializaStock.setText("Inicializar productos");
+        MenuInicializaStock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuInicializaStockActionPerformed(evt);
+            }
+        });
+        jMenu4.add(MenuInicializaStock);
+
+        MenuConciliar.setFont(new java.awt.Font("Poetsen One", 0, 13)); // NOI18N
+        MenuConciliar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/validarCompra.png"))); // NOI18N
+        MenuConciliar.setText("Conciliar inventario");
+        MenuConciliar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuConciliarActionPerformed(evt);
+            }
+        });
+        jMenu4.add(MenuConciliar);
+
+        MenuDiferencias.setFont(new java.awt.Font("Poetsen One", 0, 13)); // NOI18N
+        MenuDiferencias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/validarCompra.png"))); // NOI18N
+        MenuDiferencias.setText("Listar Diferencias");
+        MenuDiferencias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuDiferenciasActionPerformed(evt);
+            }
+        });
+        jMenu4.add(MenuDiferencias);
+
         jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
@@ -728,6 +762,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jMenu3ActionPerformed
 
+    private void MenuInicializaStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuInicializaStockActionPerformed
+        Paneles.pnlIniciaInventario ver=new Paneles.pnlIniciaInventario(this,Integer.parseInt(userID));
+        cargarPanel(panelContenedor,ver );
+    }//GEN-LAST:event_MenuInicializaStockActionPerformed
+
+    private void MenuConciliarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuConciliarActionPerformed
+        Paneles.pnlConciliarInv ver=new Paneles.pnlConciliarInv(this,Integer.parseInt(userID));
+        cargarPanel(panelContenedor,ver );
+    }//GEN-LAST:event_MenuConciliarActionPerformed
+
+    private void MenuDiferenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuDiferenciasActionPerformed
+        
+    }//GEN-LAST:event_MenuDiferenciasActionPerformed
+
     private void cargarPanel(JPanel contenedor, JPanel contenedorHijo)
     {
         // Se definen los tamanos iniciales de cada uno
@@ -749,6 +797,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem MenuAsigUser;
+    private javax.swing.JMenuItem MenuConciliar;
+    private javax.swing.JMenuItem MenuDiferencias;
     private javax.swing.JMenuItem MenuElimProv;
     private javax.swing.JMenuItem MenuEliminAlmac;
     private javax.swing.JMenuItem MenuEliminCat;
@@ -756,6 +806,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem MenuEliminarMarca;
     private javax.swing.JMenuItem MenuEliminarTrab;
     private javax.swing.JMenuItem MenuIngrProd;
+    private javax.swing.JMenuItem MenuInicializaStock;
     private javax.swing.JMenuItem MenuModifCat;
     private javax.swing.JMenuItem MenuModifMarca;
     private javax.swing.JMenuItem MenuModifProv;

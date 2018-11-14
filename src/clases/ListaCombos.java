@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author Oficina
@@ -152,6 +153,43 @@ public class ListaCombos {
                 i++;
             }
             System.out.println(id.length);
+            cst.close();
+            rs.close();
+            con.close();
+        }
+        catch (SQLException ex){
+            JOptionPane.showMessageDialog(null,"Error: "+ ex);
+        }
+        return id;
+    }
+    
+    public static int[] listaProductos(DefaultTableModel modelo, int[] id, int idAlmac, boolean band){
+        CallableStatement cst;
+        Connection con=null;
+        ResultSet rs;
+        
+        id=new int[2];
+        //modelo.removeRow(0);
+        int i=1;
+        try{
+            con=Conexion.getconnection();
+        
+            cst=con.prepareCall("{call paMuestraDatosProdxIDAlmac (?)}");
+            cst.setInt(1,idAlmac);
+            cst.execute();
+            
+            rs= cst.getResultSet();
+            
+            while(rs.next()){
+                if (band){
+                    modelo.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(4),rs.getString(5),rs.getDouble(12)});
+                }
+                else modelo.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(4),rs.getString(5),0});
+                
+                id[i]=rs.getInt(13);
+                id = redimArray.resizeArray(id.length+1,id);
+                i++;
+            }
             cst.close();
             rs.close();
             con.close();
