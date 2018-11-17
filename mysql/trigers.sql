@@ -76,5 +76,18 @@ create TRIGGER trIngresaProdAlmacNvo after INSERT ON almacen
 
 DELIMITER ;
 
+drop trigger trIngresaModificaProd
+DELIMITER |
+
+create TRIGGER trIngresaModificaProd after update ON producto
+  FOR EACH ROW BEGIN
+  
+	update producto_almacen set idProducto=NEW.idProducto
+		where idProducto=NEW.idProducto+10;
+    
+  END
+|
+
+DELIMITER ;
 
 drop trigger trActualizaCant

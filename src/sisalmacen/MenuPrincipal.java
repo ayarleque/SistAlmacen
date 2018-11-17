@@ -773,7 +773,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuConciliarActionPerformed
 
     private void MenuDiferenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuDiferenciasActionPerformed
-        
+        panelContenedor.removeAll();
+        panelContenedor.updateUI();
+        Ventanas.frmEscojeAlmacen ver = new Ventanas.frmEscojeAlmacen(1);
+        ver.show();
     }//GEN-LAST:event_MenuDiferenciasActionPerformed
 
     private void cargarPanel(JPanel contenedor, JPanel contenedorHijo)

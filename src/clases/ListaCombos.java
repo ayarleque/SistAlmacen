@@ -184,7 +184,7 @@ public class ListaCombos {
                 if (band){
                     modelo.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(4),rs.getString(5),rs.getDouble(12)});
                 }
-                else modelo.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(4),rs.getString(5),0});
+                else modelo.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(4),rs.getString(5),""});
                 
                 id[i]=rs.getInt(13);
                 id = redimArray.resizeArray(id.length+1,id);

@@ -52,7 +52,7 @@ public class pnlIniciaInventario extends javax.swing.JPanel {
     }
     
     public void listaProd(){
-        idProd=ListaCombos.listaProductos(modelo, idProd, idAlmac[cboAlmac.getSelectedIndex()],true);   
+        idProd=ListaCombos.listaProductos(modelo, idProd, idAlmac[cboAlmac.getSelectedIndex()],false);   
         idAlm=idAlmac[cboAlmac.getSelectedIndex()];
     }
     

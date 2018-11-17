@@ -11,7 +11,8 @@
 
 			on p.idCategoria=c.idCategoria join Marca m on p.idMarca=m.idMarca
 
-				where p.estado=true;]]>
+				where p.estado=true
+			order by p.ubicacion;]]>
 	</queryString>
 	<field name="descrip" class="java.lang.String"/>
 	<field name="marca" class="java.lang.String"/>
@@ -40,14 +41,6 @@
 				</textElement>
 				<text><![CDATA[INVENTARIO DE EXISTENCIAS AL]]></text>
 			</staticText>
-			<image>
-				<reportElement x="0" y="0" width="130" height="88"/>
-				<imageExpression class="java.lang.String"><![CDATA["C:\\anthony\\GIT\\SistAlmacen\\src\\img\\TP\\TP remasterizado.png"]]></imageExpression>
-			</image>
-			<image>
-				<reportElement x="415" y="0" width="140" height="88"/>
-				<imageExpression class="java.lang.String"><![CDATA["C:\\anthony\\GIT\\SistAlmacen\\src\\img\\TO\\TO remasterizado.png"]]></imageExpression>
-			</image>
 			<textField pattern="EEEEE dd MMMMM yyyy">
 				<reportElement x="155" y="51" width="234" height="24"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -55,6 +48,14 @@
 				</textElement>
 				<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
+			<image>
+				<reportElement x="0" y="0" width="134" height="88"/>
+				<imageExpression class="java.lang.String"><![CDATA["C:\\anthony\\GITHUB\\SistAlmacen\\src\\img\\TP\\TP remasterizado.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="430" y="0" width="125" height="88"/>
+				<imageExpression class="java.lang.String"><![CDATA["C:\\anthony\\GITHUB\\SistAlmacen\\src\\img\\TO\\TO remasterizado.png"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>

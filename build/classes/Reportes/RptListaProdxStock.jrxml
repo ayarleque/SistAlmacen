@@ -44,12 +44,12 @@
 				<text><![CDATA[LISTA DE PRODUCTOS]]></text>
 			</staticText>
 			<image>
-				<reportElement x="0" y="0" width="130" height="88"/>
-				<imageExpression class="java.lang.String"><![CDATA["C:\\anthony\\GIT\\SistAlmacen\\src\\img\\TP\\TP remasterizado.png"]]></imageExpression>
+				<reportElement x="0" y="0" width="134" height="88"/>
+				<imageExpression class="java.lang.String"><![CDATA["C:\\anthony\\GITHUB\\SistAlmacen\\src\\img\\TP\\TP remasterizado.png"]]></imageExpression>
 			</image>
 			<image>
-				<reportElement x="415" y="0" width="140" height="88"/>
-				<imageExpression class="java.lang.String"><![CDATA["C:\\anthony\\GIT\\SistAlmacen\\src\\img\\TO\\TO remasterizado.png"]]></imageExpression>
+				<reportElement x="430" y="0" width="125" height="88"/>
+				<imageExpression class="java.lang.String"><![CDATA["C:\\anthony\\GITHUB\\SistAlmacen\\src\\img\\TO\\TO remasterizado.png"]]></imageExpression>
 			</image>
 		</band>
 	</title>

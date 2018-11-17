@@ -582,6 +582,7 @@ public class PnlRegistrarProd extends javax.swing.JPanel {
             cst=con.prepareCall("{call paRegistraProd (?,?,?,?,?,?,?,?,?,?)}");
             cst.setString(1,txtProducto.getText());
             cst.setString(2,txtSerie.getText());
+            //cst.setString(2,nombreArchivo);
             cst.setString(3,txtUnidMed.getText());
             cst.setString(4,txtModelo.getText());
             cst.setBoolean(5,true);

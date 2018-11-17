@@ -8,10 +8,7 @@
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[select p.descrip, m.marca, c.NomCategoria cat, p.modelo, p.nroSerie, p.ubicacion, p.obs,  p.unidMed,  p.precio,  p.foto, p.idProducto
-		from Producto p join Categoria c 
-			on p.idCategoria=c.idCategoria join Marca m on p.idMarca=m.idMarca
-				where  p.estado=true;]]>
+		<![CDATA[]]>
 	</queryString>
 	<field name="descrip" class="java.lang.String"/>
 	<field name="marca" class="java.lang.String"/>
@@ -33,19 +30,19 @@
 	<title>
 		<band height="88" splitType="Stretch">
 			<staticText>
-				<reportElement x="135" y="8" width="274" height="33"/>
+				<reportElement x="144" y="10" width="274" height="33"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Poetsen One" size="16"/>
 				</textElement>
 				<text><![CDATA[LISTA DE PRODUCTOS REGISTRADOS]]></text>
 			</staticText>
 			<image>
-				<reportElement x="0" y="0" width="130" height="88"/>
-				<imageExpression class="java.lang.String"><![CDATA["C:\\anthony\\GIT\\SistAlmacen\\src\\img\\TP\\TP remasterizado.png"]]></imageExpression>
+				<reportElement x="0" y="0" width="134" height="88"/>
+				<imageExpression class="java.lang.String"><![CDATA["C:\\anthony\\GITHUB\\SistAlmacen\\src\\img\\TP\\TP remasterizado.png"]]></imageExpression>
 			</image>
 			<image>
-				<reportElement x="415" y="0" width="140" height="88"/>
-				<imageExpression class="java.lang.String"><![CDATA["C:\\anthony\\GIT\\SistAlmacen\\src\\img\\TO\\TO remasterizado.png"]]></imageExpression>
+				<reportElement x="430" y="0" width="125" height="88"/>
+				<imageExpression class="java.lang.String"><![CDATA["C:\\anthony\\GITHUB\\SistAlmacen\\src\\img\\TO\\TO remasterizado.png"]]></imageExpression>
 			</image>
 		</band>
 	</title>
@@ -123,41 +120,6 @@
 			<rectangle>
 				<reportElement x="474" y="0" width="69" height="12"/>
 			</rectangle>
-			<textField>
-				<reportElement x="13" y="-1" width="201" height="13"/>
-				<textElement textAlignment="Justified" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{descrip}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="383" y="0" width="87" height="12"/>
-				<textElement textAlignment="Justified" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{nroSerie}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="480" y="0" width="55" height="12"/>
-				<textElement textAlignment="Justified" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{ubicacion}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="304" y="0" width="67" height="12"/>
-				<textElement textAlignment="Justified" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{modelo}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="226" y="0" width="65" height="12"/>
-				<textElement textAlignment="Justified" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{marca}]]></textFieldExpression>
-			</textField>
 		</band>
 	</detail>
 	<columnFooter>
