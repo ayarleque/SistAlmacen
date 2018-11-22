@@ -10,10 +10,13 @@ import sisalmacen.MenuPrincipal;
 import clases.*;
 import java.awt.FileDialog;
 import java.io.File;
+import java.io.IOException;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -95,7 +98,6 @@ public class pnlModificarProd extends javax.swing.JPanel {
         txtUnidMed = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        btnExaminar = new rsbuttom.RSButtonMetro();
         panelImagen = new org.edisoncor.gui.panel.PanelImage();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
@@ -108,8 +110,6 @@ public class pnlModificarProd extends javax.swing.JPanel {
         jLabel25 = new javax.swing.JLabel();
         txtPrecio = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
-        btnGuardar = new rsbuttom.RSButtonMetro();
-        btnCancelar = new rsbuttom.RSButtonMetro();
 
         setBackground(new java.awt.Color(0, 135, 236));
 
@@ -204,11 +204,12 @@ public class pnlModificarProd extends javax.swing.JPanel {
                     .addComponent(jLabel5)
                     .addComponent(cboProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(7, 7, 7)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel26)
-                    .addComponent(txtBusqSerie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4)
+                        .addComponent(jLabel26)
+                        .addComponent(txtBusqSerie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -295,17 +296,6 @@ public class pnlModificarProd extends javax.swing.JPanel {
         jLabel19.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setText(":");
-
-        btnExaminar.setBackground(new java.awt.Color(0, 102, 0));
-        btnExaminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/examinarB.png"))); // NOI18N
-        btnExaminar.setText("Examinar");
-        btnExaminar.setColorHover(new java.awt.Color(153, 0, 0));
-        btnExaminar.setColorNormal(new java.awt.Color(0, 102, 0));
-        btnExaminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExaminarActionPerformed(evt);
-            }
-        });
 
         panelImagen.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -435,9 +425,7 @@ public class pnlModificarProd extends javax.swing.JPanel {
                                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                         .addComponent(jLabel25)))
                                                 .addGap(10, 10, 10)
-                                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(btnExaminar, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                                .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel20)
                                 .addGap(47, 47, 47)
@@ -510,8 +498,7 @@ public class pnlModificarProd extends javax.swing.JPanel {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel18)
-                            .addComponent(jLabel19)
-                            .addComponent(btnExaminar, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel19))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(panelImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(25, Short.MAX_VALUE))
@@ -543,47 +530,15 @@ public class pnlModificarProd extends javax.swing.JPanel {
 
         jPanel5.setOpaque(false);
 
-        btnGuardar.setBackground(new java.awt.Color(0, 102, 0));
-        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/guardar.png"))); // NOI18N
-        btnGuardar.setText("Guardar");
-        btnGuardar.setColorHover(new java.awt.Color(153, 0, 0));
-        btnGuardar.setColorNormal(new java.awt.Color(0, 102, 0));
-        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarActionPerformed(evt);
-            }
-        });
-
-        btnCancelar.setBackground(new java.awt.Color(0, 102, 0));
-        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar.png"))); // NOI18N
-        btnCancelar.setText("Cancelar");
-        btnCancelar.setColorHover(new java.awt.Color(153, 0, 0));
-        btnCancelar.setColorNormal(new java.awt.Color(0, 102, 0));
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+            .addGap(0, 332, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 55, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -751,6 +706,8 @@ public class pnlModificarProd extends javax.swing.JPanel {
         }
         catch (SQLException ex){
             JOptionPane.showMessageDialog(null,"Error: "+ ex);
+        } catch (IOException ex) {
+            Logger.getLogger(pnlModificarProd.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
@@ -804,9 +761,6 @@ public class pnlModificarProd extends javax.swing.JPanel {
     private javax.swing.JButton btnAgregarCat;
     private javax.swing.JButton btnAgregarMarca;
     private javax.swing.JButton btnBuscar;
-    private rsbuttom.RSButtonMetro btnCancelar;
-    private rsbuttom.RSButtonMetro btnExaminar;
-    private rsbuttom.RSButtonMetro btnGuardar;
     private javax.swing.JComboBox<String> cboCatNvo;
     private javax.swing.JComboBox<String> cboMarca;
     private javax.swing.JComboBox<String> cboProd;

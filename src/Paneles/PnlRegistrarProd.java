@@ -12,6 +12,9 @@ import javax.swing.JOptionPane;
 import sisalmacen.MenuPrincipal;
 import clases.*;
 import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author CONTABILIDAD_3
@@ -599,6 +602,8 @@ public class PnlRegistrarProd extends javax.swing.JPanel {
         }
         catch (SQLException ex){
             JOptionPane.showMessageDialog(null,"Error: "+ ex);
+        } catch (IOException ex) {
+            Logger.getLogger(PnlRegistrarProd.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
