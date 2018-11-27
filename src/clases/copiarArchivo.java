@@ -17,7 +17,7 @@ public class copiarArchivo {
             //sobreescribir el fichero de destino si existe y lo copia
             Files.copy(origenPath, destinoPath, StandardCopyOption.REPLACE_EXISTING);
         } catch (FileNotFoundException ex) {
-            JOptionPane.showMessageDialog(null, "");
-        } 
+            JOptionPane.showMessageDialog(null, "Error: "+ex);
+        }
     }
 }
