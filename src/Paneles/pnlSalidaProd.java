@@ -773,6 +773,10 @@ public class pnlSalidaProd extends javax.swing.JPanel {
                     stockTb[dtDetalle.getRowCount()]=Double.parseDouble(txtStock.getText())-Double.parseDouble(txtCant.getText());
                     //System.out.println("lleno los array");
                     modelo.addRow(new Object[]{txtCant.getText(),txtProd.getText(),cboAlmac.getSelectedItem(),cboTrab.getSelectedItem(),txtArea.getText(),txtUnid.getText()});
+                    
+                    listaCat();
+                    listaProd();
+                    
                 }
                 else JOptionPane.showMessageDialog(null, "su requerimiento no puede ser procesado.\nEl Stock es de "+txtStock.getText()+" en el almacén");
             }

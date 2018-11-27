@@ -10,13 +10,16 @@
 	<parameter name="idTrab" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
+	<parameter name="hasta" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[select p.descrip, m.marca, p.modelo, p.unidMed, al.nomAlmacen, p.ubicacion, mp.cantSalida, mp.fecha, concat(mp.hora,'') hora, mp.stock, concat(t.Nombre,' ',t.Apellidos) trab, mp.area, mp.unidad
 		from producto p join movprod mp on p.idProducto=mp.idProducto
 	  join trabajador t on mp.idTrabajador=t.idTrabajador
             join almacen al on mp.idAlmacen=al.idAlmacen
             join marca m on p.idMarca=m.idMarca
-            where mp.cantSalida>0 and mp.fecha=$P{fecha} and mp.idTrabajador=$P{idTrab};]]>
+            where mp.cantSalida>0 and (mp.fecha between $P{fecha} and $P{hasta}) and mp.idTrabajador=$P{idTrab};]]>
 	</queryString>
 	<field name="descrip" class="java.lang.String"/>
 	<field name="marca" class="java.lang.String"/>
@@ -65,20 +68,6 @@
 				</textElement>
 				<text><![CDATA[Trabajador:]]></text>
 			</staticText>
-			<staticText>
-				<reportElement x="365" y="11" width="56" height="18"/>
-				<textElement verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Fecha:]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="421" y="11" width="43" height="18"/>
-				<textElement verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
-				<textFieldExpression class="java.util.Date"><![CDATA[$P{fecha}]]></textFieldExpression>
-			</textField>
 			<textField>
 				<reportElement x="148" y="11" width="170" height="18"/>
 				<textElement verticalAlignment="Middle">
@@ -141,7 +130,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="7" isBold="true"/>
 				</textElement>
-				<text><![CDATA[HORA]]></text>
+				<text><![CDATA[FECHA]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="297" y="2" width="50" height="16"/>
@@ -220,13 +209,6 @@
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{nomAlmacen}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="406" y="0" width="33" height="12"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="7"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{hora}]]></textFieldExpression>
-			</textField>
 			<rectangle>
 				<reportElement x="443" y="0" width="65" height="12"/>
 			</rectangle>
@@ -253,6 +235,13 @@
 					<font size="7"/>
 				</textElement>
 				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{cantSalida}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="1" width="40" height="11"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{fecha}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

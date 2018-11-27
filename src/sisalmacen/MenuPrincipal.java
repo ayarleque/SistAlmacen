@@ -5,6 +5,7 @@
  */
 package sisalmacen;
 
+import clases.GenerarReportes;
 import java.awt.Dimension;
 import javax.swing.JPanel;
 
@@ -76,6 +77,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         MenuIngrProd = new javax.swing.JMenuItem();
         MenuSalidProd = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
+        MenuListaIngProd = new javax.swing.JMenuItem();
+        MenuListaSalidaProd = new javax.swing.JMenuItem();
+        MenuListaMovProvIDProd = new javax.swing.JMenuItem();
+        MenuListaKardex = new javax.swing.JMenuItem();
+        MenuListaProd = new javax.swing.JMenuItem();
+        MenuListaProdxCat = new javax.swing.JMenuItem();
+        MenuListaProdxMarca = new javax.swing.JMenuItem();
+        MenuListaProdxStock = new javax.swing.JMenuItem();
+        MenuListaSalidaProdxTrab = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         MenuInicializaStock = new javax.swing.JMenuItem();
         MenuConciliar = new javax.swing.JMenuItem();
@@ -547,6 +557,97 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 jMenu3ActionPerformed(evt);
             }
         });
+
+        MenuListaIngProd.setFont(new java.awt.Font("Poetsen One", 0, 13)); // NOI18N
+        MenuListaIngProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/validarCompra.png"))); // NOI18N
+        MenuListaIngProd.setText("Ingreso de Prod.");
+        MenuListaIngProd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuListaIngProdActionPerformed(evt);
+            }
+        });
+        jMenu3.add(MenuListaIngProd);
+
+        MenuListaSalidaProd.setFont(new java.awt.Font("Poetsen One", 0, 13)); // NOI18N
+        MenuListaSalidaProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/validarCompra.png"))); // NOI18N
+        MenuListaSalidaProd.setText("Salida de Prod.");
+        MenuListaSalidaProd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuListaSalidaProdActionPerformed(evt);
+            }
+        });
+        jMenu3.add(MenuListaSalidaProd);
+
+        MenuListaMovProvIDProd.setFont(new java.awt.Font("Poetsen One", 0, 13)); // NOI18N
+        MenuListaMovProvIDProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/validarCompra.png"))); // NOI18N
+        MenuListaMovProvIDProd.setText("Movimiento de un Prod.");
+        MenuListaMovProvIDProd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuListaMovProvIDProdActionPerformed(evt);
+            }
+        });
+        jMenu3.add(MenuListaMovProvIDProd);
+
+        MenuListaKardex.setFont(new java.awt.Font("Poetsen One", 0, 13)); // NOI18N
+        MenuListaKardex.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/validarCompra.png"))); // NOI18N
+        MenuListaKardex.setText("Kardex de Almacén");
+        MenuListaKardex.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuListaKardexActionPerformed(evt);
+            }
+        });
+        jMenu3.add(MenuListaKardex);
+
+        MenuListaProd.setFont(new java.awt.Font("Poetsen One", 0, 13)); // NOI18N
+        MenuListaProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/validarCompra.png"))); // NOI18N
+        MenuListaProd.setText("Información de Prod.");
+        MenuListaProd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuListaProdActionPerformed(evt);
+            }
+        });
+        jMenu3.add(MenuListaProd);
+
+        MenuListaProdxCat.setFont(new java.awt.Font("Poetsen One", 0, 13)); // NOI18N
+        MenuListaProdxCat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/validarCompra.png"))); // NOI18N
+        MenuListaProdxCat.setText("Productos por Categoría");
+        MenuListaProdxCat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuListaProdxCatActionPerformed(evt);
+            }
+        });
+        jMenu3.add(MenuListaProdxCat);
+
+        MenuListaProdxMarca.setFont(new java.awt.Font("Poetsen One", 0, 13)); // NOI18N
+        MenuListaProdxMarca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/validarCompra.png"))); // NOI18N
+        MenuListaProdxMarca.setText("Productos por Marca");
+        MenuListaProdxMarca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuListaProdxMarcaActionPerformed(evt);
+            }
+        });
+        jMenu3.add(MenuListaProdxMarca);
+
+        MenuListaProdxStock.setFont(new java.awt.Font("Poetsen One", 0, 13)); // NOI18N
+        MenuListaProdxStock.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/validarCompra.png"))); // NOI18N
+        MenuListaProdxStock.setText("Productos por Stock");
+        MenuListaProdxStock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuListaProdxStockActionPerformed(evt);
+            }
+        });
+        jMenu3.add(MenuListaProdxStock);
+
+        MenuListaSalidaProdxTrab.setFont(new java.awt.Font("Poetsen One", 0, 13)); // NOI18N
+        MenuListaSalidaProdxTrab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/validarCompra.png"))); // NOI18N
+        MenuListaSalidaProdxTrab.setText("Salida de Prod. por Trabajador");
+        MenuListaSalidaProdxTrab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuListaSalidaProdxTrabActionPerformed(evt);
+            }
+        });
+        jMenu3.add(MenuListaSalidaProdxTrab);
+
         jMenuBar1.add(jMenu3);
 
         jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/inventario.png"))); // NOI18N
@@ -779,6 +880,50 @@ public class MenuPrincipal extends javax.swing.JFrame {
         ver.show();
     }//GEN-LAST:event_MenuDiferenciasActionPerformed
 
+    private void MenuListaIngProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuListaIngProdActionPerformed
+        Ventanas.frmEscojeRangoFechas ver = new Ventanas.frmEscojeRangoFechas(1);
+        ver.show();
+    }//GEN-LAST:event_MenuListaIngProdActionPerformed
+
+    private void MenuListaMovProvIDProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuListaMovProvIDProdActionPerformed
+        Ventanas.frmEscojeProd ver = new Ventanas.frmEscojeProd(1);
+        ver.show();
+    }//GEN-LAST:event_MenuListaMovProvIDProdActionPerformed
+
+    private void MenuListaKardexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuListaKardexActionPerformed
+        Ventanas.frmEscojeRangoFechas ver = new Ventanas.frmEscojeRangoFechas(2);
+        ver.show();
+    }//GEN-LAST:event_MenuListaKardexActionPerformed
+
+    private void MenuListaProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuListaProdActionPerformed
+        GenerarReportes.RptListarPorductos();
+    }//GEN-LAST:event_MenuListaProdActionPerformed
+
+    private void MenuListaProdxCatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuListaProdxCatActionPerformed
+        Ventanas.frmEscojeCat ver = new Ventanas.frmEscojeCat(1);
+        ver.show();
+    }//GEN-LAST:event_MenuListaProdxCatActionPerformed
+
+    private void MenuListaProdxMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuListaProdxMarcaActionPerformed
+        Ventanas.frmEscojeMarca ver = new Ventanas.frmEscojeMarca(1);
+        ver.show();
+    }//GEN-LAST:event_MenuListaProdxMarcaActionPerformed
+
+    private void MenuListaProdxStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuListaProdxStockActionPerformed
+        Ventanas.frmEscojeStock ver = new Ventanas.frmEscojeStock(1);
+        ver.show();
+    }//GEN-LAST:event_MenuListaProdxStockActionPerformed
+
+    private void MenuListaSalidaProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuListaSalidaProdActionPerformed
+        Ventanas.frmEscojeRangoFechas ver = new Ventanas.frmEscojeRangoFechas(3);
+        ver.show();
+    }//GEN-LAST:event_MenuListaSalidaProdActionPerformed
+
+    private void MenuListaSalidaProdxTrabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuListaSalidaProdxTrabActionPerformed
+        Ventanas.frmEscojeTrab ver = new Ventanas.frmEscojeTrab(3);
+        ver.show();
+    }//GEN-LAST:event_MenuListaSalidaProdxTrabActionPerformed
+
     private void cargarPanel(JPanel contenedor, JPanel contenedorHijo)
     {
         // Se definen los tamanos iniciales de cada uno
@@ -810,6 +955,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem MenuEliminarTrab;
     private javax.swing.JMenuItem MenuIngrProd;
     private javax.swing.JMenuItem MenuInicializaStock;
+    private javax.swing.JMenuItem MenuListaIngProd;
+    private javax.swing.JMenuItem MenuListaKardex;
+    private javax.swing.JMenuItem MenuListaMovProvIDProd;
+    private javax.swing.JMenuItem MenuListaProd;
+    private javax.swing.JMenuItem MenuListaProdxCat;
+    private javax.swing.JMenuItem MenuListaProdxMarca;
+    private javax.swing.JMenuItem MenuListaProdxStock;
+    private javax.swing.JMenuItem MenuListaSalidaProd;
+    private javax.swing.JMenuItem MenuListaSalidaProdxTrab;
     private javax.swing.JMenuItem MenuModifCat;
     private javax.swing.JMenuItem MenuModifMarca;
     private javax.swing.JMenuItem MenuModifProv;

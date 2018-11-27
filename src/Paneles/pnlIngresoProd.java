@@ -830,6 +830,11 @@ public class pnlIngresoProd extends javax.swing.JPanel {
             Double total=Double.parseDouble(txtPrecUnit.getText())*Double.parseDouble(txtCant.getText());
             modelo.addRow(new Object[]{txtCant.getText(),txtProd.getText(),cboAlmac.getSelectedItem(),txtPrecUnit.getText(),total});                
             SumarTodo();
+            
+            listaCat();
+            listaProd();
+            listaMarca();
+            listaAlmacen();
         }
         else JOptionPane.showMessageDialog(null,"Por favor, complete todos los datos requeridos");
             
@@ -946,7 +951,7 @@ public class pnlIngresoProd extends javax.swing.JPanel {
         
         try{
             con=Conexion.getconnection();
-        
+            System.out.println("idProdcuto: "+id);
             cst=con.prepareCall("{call paMuestraDatosProd(?,?)}");
             cst.setInt(1, id);
             cst.setString(2, serie);
@@ -965,11 +970,13 @@ public class pnlIngresoProd extends javax.swing.JPanel {
                 foto.setIcon(new ImageIcon(rutaProyect+rutaFoto));
                 foto.updateUI();
                 idProduct=rs.getInt(11);
+                
+                cst.close();
+                rs.close();
+                con.close();
             }
             else JOptionPane.showMessageDialog(null,"Producto no encontrado");
-            cst.close();
-            rs.close();
-            con.close();
+            
         }
         catch (SQLException ex){
             JOptionPane.showMessageDialog(null,"Error: "+ ex);
