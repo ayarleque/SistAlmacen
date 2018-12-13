@@ -15,6 +15,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 /**
  *
  * @author CONTABILIDAD_3
@@ -23,37 +24,38 @@ public class PnlRegistrarProd extends javax.swing.JPanel {
 
     String userID;
     String directorio;
-    String nombreArchivo=""; 
+    String nombreArchivo = "";
     String rutatotal;
     String rutaProyect;
     int idCat[];// = new int[2];
     int idMarc[];// = new int[2];
-    
+
     CallableStatement cst;
-    Connection con=null;
+    Connection con = null;
     ResultSet rs;
-    
+
     MenuPrincipal principal;
-            
+
     public PnlRegistrarProd(String idUser, MenuPrincipal princip) {
         initComponents();
-        rutaProyect=new File ("").getAbsolutePath ();
+        rutaProyect = new File("").getAbsolutePath();
         System.out.println(rutaProyect);
         this.cboCategoria.setEditable(true);
         jLabel2.setHorizontalAlignment(SwingConstants.CENTER);
-        userID=idUser;
-        principal=princip;
+        userID = idUser;
+        principal = princip;
         listaCat();
         listaMarca();
     }
 
-    public void listaCat(){
-        idCat=clases.ListaCombos.listaCategoria(cboCategoria,idCat); 
+    public void listaCat() {
+        idCat = clases.ListaCombos.listaCategoria(cboCategoria, idCat);
     }
-    
-    public void listaMarca(){
-        idMarc=clases.ListaCombos.listaMarca(cboMarca,idMarc);
+
+    public void listaMarca() {
+        idMarc = clases.ListaCombos.listaMarca(cboMarca, idMarc);
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -215,6 +217,11 @@ public class PnlRegistrarProd extends javax.swing.JPanel {
         cboMarca.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
 
         txtModelo.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
+        txtModelo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtModeloKeyReleased(evt);
+            }
+        });
 
         btnNvaMarca.setBackground(new java.awt.Color(204, 204, 204));
         btnNvaMarca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/anadir.png"))); // NOI18N
@@ -237,6 +244,11 @@ public class PnlRegistrarProd extends javax.swing.JPanel {
         jLabel11.setText(":");
 
         txtSerie.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
+        txtSerie.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSerieKeyReleased(evt);
+            }
+        });
 
         jLabel12.setFont(new java.awt.Font("Poetsen One", 0, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
@@ -247,6 +259,11 @@ public class PnlRegistrarProd extends javax.swing.JPanel {
         jLabel13.setText(":");
 
         txtUbicacion.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
+        txtUbicacion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtUbicacionKeyReleased(evt);
+            }
+        });
 
         jLabel14.setFont(new java.awt.Font("Poetsen One", 0, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
@@ -267,6 +284,11 @@ public class PnlRegistrarProd extends javax.swing.JPanel {
         jLabel17.setText(":");
 
         txtUnidMed.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
+        txtUnidMed.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtUnidMedKeyReleased(evt);
+            }
+        });
 
         jLabel18.setFont(new java.awt.Font("Poetsen One", 0, 14)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
@@ -539,78 +561,97 @@ public class PnlRegistrarProd extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNuevaCatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevaCatActionPerformed
-        Ventanas.frmNuevaCat ver= new Ventanas.frmNuevaCat(1,null,this,null,null);
+        Ventanas.frmNuevaCat ver = new Ventanas.frmNuevaCat(1, null, this, null, null);
         ver.show();
-        
+
     }//GEN-LAST:event_btnNuevaCatActionPerformed
 
     private void btnNvaMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNvaMarcaActionPerformed
-        Ventanas.frmNvaMarca ver= new Ventanas.frmNvaMarca(1,null,this,null);
+        Ventanas.frmNvaMarca ver = new Ventanas.frmNvaMarca(1, null, this, null);
         ver.show();
     }//GEN-LAST:event_btnNvaMarcaActionPerformed
 
     private void btnExaminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExaminarActionPerformed
         FileDialog dialogoArchivo = null;
-        dialogoArchivo = new FileDialog(principal, "Explorador",FileDialog.LOAD);
+        dialogoArchivo = new FileDialog(principal, "Explorador", FileDialog.LOAD);
         dialogoArchivo.setVisible(true);
 
-        if(dialogoArchivo.getFile()!=null){ /* Validar que se haya Seleccionado un Archivo*/
+        if (dialogoArchivo.getFile() != null) {
+            /* Validar que se haya Seleccionado un Archivo*/
             directorio = dialogoArchivo.getDirectory();
-            nombreArchivo =dialogoArchivo.getFile(); 
+            nombreArchivo = dialogoArchivo.getFile();
             rutatotal = directorio + nombreArchivo;
             //System.out.println(directorio+"---"+nombreArchivo+"---"+rutatotal);
             panelImage.removeAll();
             panelImage.setIcon(new ImageIcon(rutatotal));
             panelImage.updateUI();
-            
-        }
-        else{
+
+        } else {
             rutatotal = "";
             System.out.println("No Seleccionó Archivo");
         }
-        
+
     }//GEN-LAST:event_btnExaminarActionPerformed
-    
+
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        try{
-            String ruta;
-            if (!nombreArchivo.equals("")){
-                copiarArchivo.copiarArchivo(rutatotal,rutaProyect+"\\src\\imgProd\\"+nombreArchivo);
-                ruta="\\src\\imgProd\\"+nombreArchivo;
+        if (!txtSerie.getText().equals("")) {
+            try {
+                String ruta;
+                if (!nombreArchivo.equals("")) {
+                    copiarArchivo.copiarArchivo(rutatotal, rutaProyect + "\\src\\imgProd\\" + nombreArchivo);
+                    ruta = "\\src\\imgProd\\" + nombreArchivo;
+                } else {
+                    ruta = "";
+                }
+
+                con = Conexion.getconnection();
+
+                cst = con.prepareCall("{call paRegistraProd (?,?,?,?,?,?,?,?,?,?)}");
+                cst.setString(1, txtProducto.getText());
+                cst.setString(2, txtSerie.getText());
+                //cst.setString(2,nombreArchivo);
+                cst.setString(3, txtUnidMed.getText());
+                cst.setString(4, txtModelo.getText());
+                cst.setBoolean(5, true);
+                cst.setString(6, txtUbicacion.getText());
+                cst.setString(7, ruta);
+                cst.setInt(8, idMarc[cboMarca.getSelectedIndex()]);
+                cst.setInt(9, idCat[cboCategoria.getSelectedIndex()]);
+                cst.setString(10, txtDescrip.getText());
+
+                cst.execute();
+                JOptionPane.showMessageDialog(null, "Producto Ingresado correctamente");
+                cst.close();
+                con.close();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error: " + ex);
+            } catch (IOException ex) {
+                Logger.getLogger(PnlRegistrarProd.class.getName()).log(Level.SEVERE, null, ex);
             }
-            else ruta="";
-            
-            con=Conexion.getconnection();
-        
-            cst=con.prepareCall("{call paRegistraProd (?,?,?,?,?,?,?,?,?,?)}");
-            cst.setString(1,txtProducto.getText());
-            cst.setString(2,txtSerie.getText());
-            //cst.setString(2,nombreArchivo);
-            cst.setString(3,txtUnidMed.getText());
-            cst.setString(4,txtModelo.getText());
-            cst.setBoolean(5,true);
-            cst.setString(6,txtUbicacion.getText());
-            cst.setString(7,ruta);
-            cst.setInt(8,idMarc[cboMarca.getSelectedIndex()]);
-            cst.setInt(9,idCat[cboCategoria.getSelectedIndex()]);
-            cst.setString(10,txtDescrip.getText());
-            
-            cst.execute();
-            JOptionPane.showMessageDialog(null, "Producto Ingresado correctamente");
-            cst.close();
-            con.close();
         }
-        catch (SQLException ex){
-            JOptionPane.showMessageDialog(null,"Error: "+ ex);
-        } catch (IOException ex) {
-            Logger.getLogger(PnlRegistrarProd.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        else JOptionPane.showMessageDialog(null, "Por favor complete el campo serie.\nEn caso de que el producto no contenga serie\nescribir 'S/S'");
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         principal.panelContenedor.removeAll();
         principal.panelContenedor.updateUI();
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void txtModeloKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtModeloKeyReleased
+        txtModelo.setText(txtModelo.getText().toUpperCase());
+    }//GEN-LAST:event_txtModeloKeyReleased
+
+    private void txtSerieKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSerieKeyReleased
+        txtSerie.setText(txtSerie.getText().toUpperCase());
+    }//GEN-LAST:event_txtSerieKeyReleased
+
+    private void txtUbicacionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUbicacionKeyReleased
+        txtUbicacion.setText(txtUbicacion.getText().toUpperCase());
+    }//GEN-LAST:event_txtUbicacionKeyReleased
+
+    private void txtUnidMedKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUnidMedKeyReleased
+        txtUnidMed.setText(txtUnidMed.getText().toLowerCase());
+    }//GEN-LAST:event_txtUnidMedKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

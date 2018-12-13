@@ -163,6 +163,7 @@ public class ListaCombos {
         return id;
     }
     
+    
     public static int[] listaProductos(DefaultTableModel modelo, int[] id, int idAlmac, boolean band){
         CallableStatement cst;
         Connection con=null;
@@ -198,6 +199,75 @@ public class ListaCombos {
             JOptionPane.showMessageDialog(null,"Error: "+ ex);
         }
         return id;
+    }
+    
+    public static RetornaIDRutaProd listaProductosBusq(DefaultTableModel modelo, int[] id,String[] ruta, String serie, String prod, int idAlmac){
+        CallableStatement cst;
+        Connection con=null;
+        ResultSet rs;
+        RetornaIDRutaProd retorna;
+        id=new int[2];
+        ruta=new String[2];
+        //modelo.removeRow(0);
+        int i=1;
+        try{
+            con=Conexion.getconnection();
+        
+            cst=con.prepareCall("{call paMuestraDatosBusqProd (?,?,?)}");
+            cst.setString(1,serie);
+            cst.setString(2,prod);
+            cst.setInt(3,idAlmac);
+            cst.execute();
+            
+            rs= cst.getResultSet();
+            
+            while(rs.next()){
+                modelo.addRow(new Object[]{rs.getString(1),rs.getDouble(12),rs.getString(3),rs.getString(2),rs.getString(4),rs.getString(5),rs.getString(6), rs.getString(7)});
+                id[i]=rs.getInt(11);
+                ruta[i]=rs.getString(10);
+                id = redimArray.resizeArray(id.length+1,id);
+                ruta=redimArray.resizeArrayStr(ruta.length+1,ruta);
+                i++;
+            }
+            cst.close();
+            rs.close();
+            con.close();
+        }
+        catch (SQLException ex){
+            JOptionPane.showMessageDialog(null,"Error: "+ ex);
+        }
+        
+        retorna=new RetornaIDRutaProd(id, ruta);
+        
+        return retorna;
+    }
+    
+    public static class RetornaIDRutaProd{
+        int[] idProd;
+        String[] Ruta;
+
+        public RetornaIDRutaProd(int[] idProd, String[] Ruta) {
+            this.idProd = idProd;
+            this.Ruta = Ruta;
+        }
+
+        public int[] getIdProd() {
+            return idProd;
+        }
+
+        public void setIdProd(int[] idProd) {
+            this.idProd = idProd;
+        }
+
+        public String[] getRuta() {
+            return Ruta;
+        }
+
+        public void setRuta(String[] Ruta) {
+            this.Ruta = Ruta;
+        }
+
+        
     }
     
     public static int[] listaProveedores(JComboBox cbo, int[] id){

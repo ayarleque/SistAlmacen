@@ -103,6 +103,11 @@ public class frmNvaMarca extends javax.swing.JFrame {
         jLabel4.setText(":");
 
         txtMarca.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
+        txtMarca.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtMarcaKeyReleased(evt);
+            }
+        });
 
         btnGuardar.setBackground(new java.awt.Color(0, 102, 0));
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/guardar.png"))); // NOI18N
@@ -254,6 +259,10 @@ public class frmNvaMarca extends javax.swing.JFrame {
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void txtMarcaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMarcaKeyReleased
+        txtMarca.setText(txtMarca.getText().toUpperCase());
+    }//GEN-LAST:event_txtMarcaKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

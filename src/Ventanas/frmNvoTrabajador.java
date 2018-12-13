@@ -6,11 +6,13 @@
 package Ventanas;
 
 import Conexion.Conexion;
+import Paneles.pnlSalidaProd;
 import clases.ListaCombos;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import sisalmacen.MenuPrincipal;
 
 /**
  *
@@ -19,11 +21,19 @@ import javax.swing.JOptionPane;
 public class frmNvoTrabajador extends javax.swing.JFrame {
 
     int idEmpr[];
+    int tipoLlama;
     
-    public frmNvoTrabajador() {
+    MenuPrincipal menuP;
+    pnlSalidaProd pnlSalida;
+    
+    public frmNvoTrabajador(int tipo, MenuPrincipal menuP, pnlSalidaProd pnlSald) {
         initComponents();
+        this.menuP=menuP;
+        this.pnlSalida=pnlSald;
+        tipoLlama=tipo;
         setLocationRelativeTo(null);
         listaEmpresa();
+        
     }
 
     public void listaEmpresa(){
@@ -118,6 +128,11 @@ public class frmNvoTrabajador extends javax.swing.JFrame {
         jLabel51.setText(":");
 
         txtNombre.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNombreKeyReleased(evt);
+            }
+        });
 
         jLabel52.setFont(new java.awt.Font("Poetsen One", 0, 14)); // NOI18N
         jLabel52.setForeground(new java.awt.Color(255, 255, 255));
@@ -128,6 +143,11 @@ public class frmNvoTrabajador extends javax.swing.JFrame {
         jLabel53.setText(":");
 
         txtApellido.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
+        txtApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtApellidoKeyReleased(evt);
+            }
+        });
 
         txtDirecc.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
 
@@ -365,12 +385,33 @@ public class frmNvoTrabajador extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Trabajador registrado correctamente");
             cst.close();
             con.close();
+            switch (tipoLlama) {
+                case 0: //es llamado por el panel principal
+                    this.dispose();
+                    break;
+                    
+                case 1: //es llamado por panel SalidaProd
+                    //pnlRegProd.cboCategoria.addItem("fdg");
+                    pnlSalida.listaTrab();
+                    break;
+                
+                default:
+                    throw new AssertionError();
+            }
             this.dispose();
         }
         catch (SQLException ex){
             JOptionPane.showMessageDialog(null,"Error: "+ ex);
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void txtNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyReleased
+        txtNombre.setText(txtNombre.getText().toUpperCase());
+    }//GEN-LAST:event_txtNombreKeyReleased
+
+    private void txtApellidoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoKeyReleased
+        txtApellido.setText(txtApellido.getText().toUpperCase());
+    }//GEN-LAST:event_txtApellidoKeyReleased
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private rsbuttom.RSButtonMetro btnCancelar;

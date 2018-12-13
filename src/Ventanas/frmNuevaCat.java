@@ -103,6 +103,11 @@ public class frmNuevaCat extends javax.swing.JFrame {
         jLabel4.setText(":");
 
         txtCategoria.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
+        txtCategoria.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtCategoriaKeyReleased(evt);
+            }
+        });
 
         btnGuardar.setBackground(new java.awt.Color(0, 102, 0));
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/guardar.png"))); // NOI18N
@@ -246,6 +251,10 @@ public class frmNuevaCat extends javax.swing.JFrame {
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void txtCategoriaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCategoriaKeyReleased
+        txtCategoria.setText(txtCategoria.getText().toUpperCase());
+    }//GEN-LAST:event_txtCategoriaKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

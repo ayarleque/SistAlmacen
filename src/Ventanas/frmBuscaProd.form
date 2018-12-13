@@ -271,6 +271,9 @@
                   <Color blue="0" green="66" red="0" type="rgb"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rSButtonMetro3ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="rsbuttom.RSButtonMetro" name="rSButtonMetro4">
               <Properties>

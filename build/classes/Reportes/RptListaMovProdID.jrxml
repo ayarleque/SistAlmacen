@@ -20,7 +20,7 @@
             join almacen al on mp.idAlmacen=al.idAlmacen
             join marca m on p.idMarca=m.idMarca
             where mp.fecha between $P{desde} and $P{hasta} and mp.idProducto=$P{idProd}
-            order by mp.idMovProd;]]>
+            order by mp.fecha;]]>
 	</queryString>
 	<field name="descrip" class="java.lang.String"/>
 	<field name="marca" class="java.lang.String"/>

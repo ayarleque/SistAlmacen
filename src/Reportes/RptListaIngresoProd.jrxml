@@ -11,12 +11,13 @@
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[select p.descrip, m.marca, p.modelo, p.unidMed, al.nomAlmacen, p.ubicacion, mp.cantIngr, mp.fecha, concat(mp.hora,'') hora, mp.stock, concat(t.Nombre,' ',t.Apellidos) usuario 
+		<![CDATA[select p.descrip, m.marca, p.modelo, p.unidMed, al.nomAlmacen, p.ubicacion, mp.cantIngr, mp.fecha, concat(mp.hora,'') hora, mp.stock, concat(t.Nombre,' ',t.Apellidos) usuario, cp.nroComprob
 		from producto p join movprod mp on p.idProducto=mp.idProducto
 			join usuario u on mp.idUsuario=u.idUsuario
             join trabajador t on u.idTrabajador=t.idTrabajador
             join almacen al on mp.idAlmacen=al.idAlmacen
             join marca m on p.idMarca=m.idMarca
+	  JOIN compra cp on mp.idCompra=cp.idCompra
             where mp.cantIngr>0 and (mp.fecha between $P{desde} and $P{hasta});]]>
 	</queryString>
 	<field name="descrip" class="java.lang.String"/>
@@ -30,6 +31,7 @@
 	<field name="hora" class="java.lang.String"/>
 	<field name="stock" class="java.math.BigDecimal"/>
 	<field name="usuario" class="java.lang.String"/>
+	<field name="nroComprob" class="java.lang.String"/>
 	<group name="cat">
 		<groupExpression><![CDATA[]]></groupExpression>
 	</group>
@@ -307,11 +309,11 @@
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{usuario}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="582" y="0" width="37" height="12"/>
-				<textElement verticalAlignment="Middle">
+				<reportElement x="579" y="0" width="45" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="7"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{hora}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nroComprob}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

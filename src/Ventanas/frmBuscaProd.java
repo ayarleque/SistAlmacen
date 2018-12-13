@@ -109,6 +109,11 @@ public class frmBuscaProd extends javax.swing.JFrame {
         rSButtonMetro3.setText("Aceptar");
         rSButtonMetro3.setColorHover(new java.awt.Color(153, 0, 0));
         rSButtonMetro3.setColorNormal(new java.awt.Color(0, 102, 0));
+        rSButtonMetro3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rSButtonMetro3ActionPerformed(evt);
+            }
+        });
 
         rSButtonMetro4.setBackground(new java.awt.Color(0, 102, 0));
         rSButtonMetro4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar.png"))); // NOI18N
@@ -197,6 +202,10 @@ public class frmBuscaProd extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void rSButtonMetro3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rSButtonMetro3ActionPerformed
 
     /**
      * @param args the command line arguments

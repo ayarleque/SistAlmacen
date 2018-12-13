@@ -13,17 +13,12 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import sisalmacen.MenuPrincipal;
 import clases.ListaCombos;
-import java.util.HashMap;
-import net.sf.jasperreports.engine.JREmptyDataSource;
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.view.JasperViewer;
+import java.awt.HeadlessException;
 
 public class pnlIngresoProd extends javax.swing.JPanel {
 
     MenuPrincipal principal;
-    
+
     int idCat[];
     int idProd[];
     int idCompr[];
@@ -32,66 +27,68 @@ public class pnlIngresoProd extends javax.swing.JPanel {
     int idAlmac[];
     int idProdTb[];
     int idAlmTb[];
+    int idCompraTb[];
     Double cantTb[];
     Double stockTb[];
-    
-    String rutaProyect,rutaFoto;
+
+    String rutaProyect, rutaFoto;
     CallableStatement cst;
-    Connection con=null;
+    Connection con = null;
     ResultSet rs;
     DefaultTableModel modelo;
     int UserID, idProduct;
     ListaCombos.RetornaDatosCompra retorna;
-    
+
     public pnlIngresoProd(MenuPrincipal princ, int idUser) {
         initComponents();
-        principal=princ;
-        rutaProyect=new File ("").getAbsolutePath ();
+        principal = princ;
+        rutaProyect = new File("").getAbsolutePath();
         listaCat();
         listaProd();
         listaMarca();
         listaAlmacen();
         dtDetalle.setAutoResizeMode(dtDetalle.AUTO_RESIZE_LAST_COLUMN);
-        
-        modelo=new DefaultTableModel();
+
+        modelo = new DefaultTableModel();
         modelo.addColumn("Cantidad");
         modelo.addColumn("Producto");
         modelo.addColumn("Almacén");
         modelo.addColumn("Precio");
         modelo.addColumn("Total");
-        
+
         dtDetalle.setModel(modelo);
         dtDetalle.getColumnModel().getColumn(0).setPreferredWidth(70);
         dtDetalle.getColumnModel().getColumn(1).setPreferredWidth(350);
-        
-        UserID=idUser;
-        idProdTb=new int[cboProd.getItemCount()];
-        idAlmTb=new int[cboProd.getItemCount()];
-        cantTb=new Double[cboProd.getItemCount()];
-        stockTb=new Double[cboProd.getItemCount()];
+
+        UserID = idUser;
+        idProdTb = new int[cboProd.getItemCount()];
+        idAlmTb = new int[cboProd.getItemCount()];
+        idCompraTb = new int[cboProd.getItemCount()];
+        cantTb = new Double[cboProd.getItemCount()];
+        stockTb = new Double[cboProd.getItemCount()];
     }
 
-    public void listaCat(){
-        idCat=clases.ListaCombos.listaCategoria(cboCat,idCat); 
+    public void listaCat() {
+        idCat = clases.ListaCombos.listaCategoria(cboCat, idCat);
     }
-    
-    public void listaProd(){
-        idProd=ListaCombos.listaProductos(cboProd, idProd);
-        
+
+    public void listaProd() {
+        idProd = ListaCombos.listaProductos(cboProd, idProd);
+
     }
-    
-    public void listaMarca(){
-        retorna=ListaCombos.listaCompras(cboCompra,nomProv,idProv,idCompr);
-        nomProv=retorna.getNomProv();
-        idProv=retorna.getIdProv();
-        idCompr=retorna.getIdCompr();
-        
+
+    public void listaMarca() {
+        retorna = ListaCombos.listaCompras(cboCompra, nomProv, idProv, idCompr);
+        nomProv = retorna.getNomProv();
+        idProv = retorna.getIdProv();
+        idCompr = retorna.getIdCompr();
+
     }
-    
-    public void listaAlmacen(){
-        idAlmac=ListaCombos.listaAlmacen(cboAlmac, idAlmac);
+
+    public void listaAlmacen() {
+        idAlmac = ListaCombos.listaAlmacen(cboAlmac, idAlmac);
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -765,161 +762,155 @@ public class pnlIngresoProd extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtSerieKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSerieKeyPressed
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){ 
-            limpiarDetalles(0,txtSerie.getText());
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            limpiarDetalles(0, txtSerie.getText());
         }
     }//GEN-LAST:event_txtSerieKeyPressed
 
     private void cboCompraItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboCompraItemStateChanged
-        if(cboCompra.getSelectedIndex()!=0 && evt.getStateChange() == ItemEvent.SELECTED){
+        if (cboCompra.getSelectedIndex() != 0 && evt.getStateChange() == ItemEvent.SELECTED) {
             //System.out.println("nombreProv: 0"+nomProv[cboCompra.getSelectedIndex()]);
             txtProv.setText(nomProv[cboCompra.getSelectedIndex()]);
         }
     }//GEN-LAST:event_cboCompraItemStateChanged
 
     private void cboCatItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboCatItemStateChanged
-        if (cboCat.getSelectedIndex()!=0 && evt.getStateChange() == ItemEvent.SELECTED)//evt.getStateChange() == ItemEvent.SELECTED) 
+        if (cboCat.getSelectedIndex() != 0 && evt.getStateChange() == ItemEvent.SELECTED)//evt.getStateChange() == ItemEvent.SELECTED) 
         {
             //System.out.println("entro");
-            idProd=ListaCombos.listaProdxCat(cboProd, idProd, idCat[cboCat.getSelectedIndex()] );
+            idProd = ListaCombos.listaProdxCat(cboProd, idProd, idCat[cboCat.getSelectedIndex()]);
         }
     }//GEN-LAST:event_cboCatItemStateChanged
 
     private void cboProdItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboProdItemStateChanged
-        if (cboProd.getSelectedIndex()!=0 && evt.getStateChange() == ItemEvent.SELECTED)//evt.getStateChange() == ItemEvent.SELECTED) 
+        if (cboProd.getSelectedIndex() != 0 && evt.getStateChange() == ItemEvent.SELECTED)//evt.getStateChange() == ItemEvent.SELECTED) 
         {
-            limpiarDetalles(idProd[cboProd.getSelectedIndex()],txtSerie.getText());
+            limpiarDetalles(idProd[cboProd.getSelectedIndex()], txtSerie.getText());
         }
     }//GEN-LAST:event_cboProdItemStateChanged
 
     private void cboAlmacItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboAlmacItemStateChanged
-        if (cboAlmac.getSelectedIndex()!=0 && evt.getStateChange() == ItemEvent.SELECTED)//evt.getStateChange() == ItemEvent.SELECTED) 
+        if (cboAlmac.getSelectedIndex() != 0 && evt.getStateChange() == ItemEvent.SELECTED)//evt.getStateChange() == ItemEvent.SELECTED) 
         {
-            try{
-            con=Conexion.getconnection();
-        
-            cst=con.prepareCall("{call paRetornaStock(?,?)}");
-            cst.setInt(1, idAlmac[cboAlmac.getSelectedIndex()]);
-            cst.setInt(2, idProduct);
-            cst.execute();
-            
-            rs= cst.getResultSet();
-            
-            if(rs.next()){
-                txtStock.setText(rs.getString(1));
-                
+            try {
+                con = Conexion.getconnection();
+
+                cst = con.prepareCall("{call paRetornaStock(?,?)}");
+                cst.setInt(1, idAlmac[cboAlmac.getSelectedIndex()]);
+                cst.setInt(2, idProduct);
+                cst.execute();
+
+                rs = cst.getResultSet();
+
+                if (rs.next()) {
+                    txtStock.setText(rs.getString(1));
+
+                }
+                //else txtStock.setText("0");
+                cst.close();
+                rs.close();
+                con.close();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error: " + ex);
             }
-            //else txtStock.setText("0");
-            cst.close();
-            rs.close();
-            con.close();
-        }
-        catch (SQLException ex){
-            JOptionPane.showMessageDialog(null,"Error: "+ ex);
-        }
         }
     }//GEN-LAST:event_cboAlmacItemStateChanged
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         try {
-            if(validarCamposVacios()){
-            idProdTb[dtDetalle.getRowCount()]=idProd[cboProd.getSelectedIndex()];
-            idAlmTb[dtDetalle.getRowCount()]=idAlmac[cboAlmac.getSelectedIndex()];
-            cantTb[dtDetalle.getRowCount()]=Double.parseDouble(txtCant.getText());
-            stockTb[dtDetalle.getRowCount()]=Double.parseDouble(txtStock.getText())+Double.parseDouble(txtCant.getText());
-            Double total=Double.parseDouble(txtPrecUnit.getText())*Double.parseDouble(txtCant.getText());
-            modelo.addRow(new Object[]{txtCant.getText(),txtProd.getText(),cboAlmac.getSelectedItem(),txtPrecUnit.getText(),total});                
-            SumarTodo();
-            
-            listaCat();
-            listaProd();
-            listaMarca();
-            listaAlmacen();
-        }
-        else JOptionPane.showMessageDialog(null,"Por favor, complete todos los datos requeridos");
-            
+            //System.out.println("agregó: "+cboCompra.getSelectedIndex());
+            if (validarCamposVacios()) {
+                idProdTb[dtDetalle.getRowCount()] = idProd[cboProd.getSelectedIndex()];
+                idAlmTb[dtDetalle.getRowCount()] = idAlmac[cboAlmac.getSelectedIndex()];
+                idCompraTb[dtDetalle.getRowCount()] = idCompr[cboCompra.getSelectedIndex()];
+                cantTb[dtDetalle.getRowCount()] = Double.parseDouble(txtCant.getText());
+                stockTb[dtDetalle.getRowCount()] = Double.parseDouble(txtStock.getText()) + Double.parseDouble(txtCant.getText());
+                Double total = Double.parseDouble(txtPrecUnit.getText()) * Double.parseDouble(txtCant.getText());
+                modelo.addRow(new Object[]{txtCant.getText(), txtProd.getText(), cboAlmac.getSelectedItem(), txtPrecUnit.getText(), total});
+                SumarTodo();
+
+                listaCat();
+                listaProd();
+                listaMarca();
+                listaAlmacen();
+            } else {
+                JOptionPane.showMessageDialog(null, "Por favor, complete todos los datos requeridos");
+            }
+
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null,"Error: "+e.toString());
+            JOptionPane.showMessageDialog(null, "Error: " + e.toString());
         }
-        
+
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         try {
-            if(dtDetalle.getSelectedRow()!=-1){
-            int temp=0;
-            double tmp;
-            for (int i = dtDetalle.getSelectedRow()+1; i <dtDetalle.getRowCount()+1 ; i++) {
-                //System.out.println("longitud de arreglo de tabla"+idProdTb.length);
-                temp=idProdTb[i];
-                idProdTb[i-1]=temp;
-                
-                temp=idAlmTb[i];
-                idAlmTb[i-1]=temp;
-                
-                tmp=cantTb[i];
-                cantTb[i-1]=tmp;
+            if (dtDetalle.getSelectedRow() != -1) {
+                int temp = 0;
+                int tempAlmac = 0;
+                Double tmp;
+                for (int i = dtDetalle.getSelectedRow() + 1; i < dtDetalle.getRowCount() + 1; i++) {
+                    //System.out.println("longitud de arreglo de tabla" + idProdTb.length);
+                    temp = idProdTb[i];
+                    idProdTb[i - 1] = temp;
+                    
+                    temp = idCompraTb[i];
+                    idCompraTb[i - 1] = temp;
+                    
+                    tempAlmac = idAlmTb[i];
+                    idAlmTb[i - 1] = tempAlmac;
+
+                    tmp = cantTb[i];
+                    cantTb[i - 1] = tmp;
+                }
+                modelo.removeRow(dtDetalle.getSelectedRow());
+                SumarTodo();
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Por favor, seleccione la fila de la tabla que desea eliminar");
             }
-            modelo.removeRow(dtDetalle.getSelectedRow());
-            SumarTodo();
+        } catch (HeadlessException e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e);
         }
-        else JOptionPane.showMessageDialog(null,"Por favor, seleccione la fila de la tabla que desea eliminar");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null,"Error: "+e);
-        }
-        
+
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        if(dtDetalle.getRowCount()==0){
+        if (dtDetalle.getRowCount() == 0) {
             JOptionPane.showMessageDialog(null, "Compra no registrada por no contener productos");
-            String RutaInforme = "C:\\anthony\\GIT\\SistAlmacen\\src\\Reportes\\RptListaProducto.jasper";
-            HashMap parametro = new HashMap();
 
+        } else {
             try {
-                parametro.put("idCat", "1");
-                JasperPrint informe = JasperFillManager.fillReport(RutaInforme, parametro,Conexion.getconnection() );
-                JasperViewer jviewer = new JasperViewer(informe,false);
-                jviewer.setTitle("Reporte");
-                jviewer.setVisible(true);
+                int i = 0;
+                con = Conexion.getconnection();
 
-            } catch (JRException e) {
-
-            }
-        }
-        else{
-            try{
-                int i=0;
-                con=Conexion.getconnection();
-                
-                while (i<dtDetalle.getRowCount()){
-                    cst=con.prepareCall("{call paRegistraIngrProd (?,?,?,?,?,?,?,?)}");
-                    /*System.out.println("id compra: "+idCompr[cboCompra.getSelectedIndex()]);
-                    System.out.println("id producto: "+idProdTb[i]);
+                while (i < dtDetalle.getRowCount()) {
+                    cst = con.prepareCall("{call paRegistraIngrProd (?,?,?,?,?,?,?,?)}");
+                    System.out.println("id compra: " + idCompr[i]);
+                    /*System.out.println("id producto: "+idProdTb[i]);
                     System.out.println("id almacen: "+idAlmTb[i]);*/
-                    cst.setInt(1,idCompr[cboCompra.getSelectedIndex()]);
-                    cst.setInt(2,idProdTb[i]);
-                    cst.setInt(3,idAlmTb[i]);
-                    cst.setDouble(4,cantTb[i]);
-                    cst.setDouble(5,Double.parseDouble(txtPrecUnit.getText()+""));
+                    cst.setInt(1, idCompraTb[i]);
+                    cst.setInt(2, idProdTb[i]);
+                    cst.setInt(3, idAlmTb[i]);
+                    cst.setDouble(4, cantTb[i]);
+                    cst.setDouble(5, Double.parseDouble(txtPrecUnit.getText() + ""));
                     //cst.setInt(6,1);
                     //System.out.println("id user: "+UserID);
-                    cst.setInt(6,UserID);
-                    cst.setBoolean(7,true);
-                    cst.setDouble(8,stockTb[i]);
+                    cst.setInt(6, UserID);
+                    cst.setBoolean(7, true);
+                    cst.setDouble(8, stockTb[i]);
                     i++;
                     cst.execute();
                 }
 
-                JOptionPane.showMessageDialog(null, "Producto ingresado al almacén "+cboAlmac.getSelectedItem()+" correctamente");
+                JOptionPane.showMessageDialog(null, "Producto ingresado al almacén " + cboAlmac.getSelectedItem() + " correctamente");
                 cst.close();
                 con.close();
                 principal.panelContenedor.removeAll();
                 principal.panelContenedor.updateUI();
-            }
-            catch (SQLException ex){
-                
-                JOptionPane.showMessageDialog(null,"Error: "+ ex);
+            } catch (SQLException ex) {
+
+                JOptionPane.showMessageDialog(null, "Error: " + ex);
             }
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
@@ -929,60 +920,60 @@ public class pnlIngresoProd extends javax.swing.JPanel {
         principal.panelContenedor.updateUI();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
-    public void SumarTodo(){
-        double suma=0;
+    public void SumarTodo() {
+        double suma = 0;
         for (int i = 0; i < dtDetalle.getRowCount(); i++) {
-            suma=suma+Double.parseDouble(dtDetalle.getValueAt(i, 4)+"");
+            suma = suma + Double.parseDouble(dtDetalle.getValueAt(i, 4) + "");
         }
-        txtTotal.setText(suma+"");
+        txtTotal.setText(suma + "");
     }
-    
-    public boolean validarCamposVacios(){
-        return cboCompra.getSelectedIndex()>0 && (!txtSerie.getText().equals("") || cboProd.getSelectedIndex()>0) 
-                && cboAlmac.getSelectedIndex()>0 && !txtCant.getText().equals("") && !txtPrecUnit.getText().equals("");
+
+    public boolean validarCamposVacios() {
+        return cboCompra.getSelectedIndex() > 0 && (!txtSerie.getText().equals("") || cboProd.getSelectedIndex() > 0)
+                && cboAlmac.getSelectedIndex() > 0 && !txtCant.getText().equals("") && !txtPrecUnit.getText().equals("");
     }
-    
-    public void limpiarDetalles(int id, String serie){
+
+    public void limpiarDetalles(int id, String serie) {
         txtMarca.setText("");
         txtModelo.setText("");
         txtSerieInfo.setText("");
         foto.removeAll();
         foto.updateUI();
-        
-        try{
-            con=Conexion.getconnection();
-            System.out.println("idProdcuto: "+id);
-            cst=con.prepareCall("{call paMuestraDatosProd(?,?)}");
+
+        try {
+            con = Conexion.getconnection();
+            //System.out.println("idProdcuto: " + id);
+            cst = con.prepareCall("{call paMuestraDatosProd(?,?)}");
             cst.setInt(1, id);
             cst.setString(2, serie);
             cst.execute();
-            
-            rs= cst.getResultSet();
-            
-            if(rs.next()){
+
+            rs = cst.getResultSet();
+
+            if (rs.next()) {
                 txtProd.setText(rs.getString(1));
                 cboProd.setSelectedItem(rs.getString(1));
                 txtMarca.setText(rs.getString(2));
                 txtModelo.setText(rs.getString(4));
                 txtSerieInfo.setText(rs.getString(5));
                 txtUbic.setText(rs.getString(6));
-                rutaFoto=rs.getString(10);
-                foto.setIcon(new ImageIcon(rutaProyect+rutaFoto));
+                rutaFoto = rs.getString(10);
+                foto.setIcon(new ImageIcon(rutaProyect + rutaFoto));
                 foto.updateUI();
-                idProduct=rs.getInt(11);
-                
+                idProduct = rs.getInt(11);
+
                 cst.close();
                 rs.close();
                 con.close();
+            } else {
+                JOptionPane.showMessageDialog(null, "Producto no encontrado");
             }
-            else JOptionPane.showMessageDialog(null,"Producto no encontrado");
-            
-        }
-        catch (SQLException ex){
-            JOptionPane.showMessageDialog(null,"Error: "+ ex);
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error: " + ex);
         }
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private rsbuttom.RSButtonMetro btnAgregar;
     private rsbuttom.RSButtonMetro btnCancelar;

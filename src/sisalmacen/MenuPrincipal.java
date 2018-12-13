@@ -76,6 +76,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu13 = new javax.swing.JMenu();
         MenuIngrProd = new javax.swing.JMenuItem();
         MenuSalidProd = new javax.swing.JMenuItem();
+        MenuBuscarProd = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         MenuListaIngProd = new javax.swing.JMenuItem();
         MenuListaSalidaProd = new javax.swing.JMenuItem();
@@ -546,6 +547,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenu2.add(jMenu13);
 
+        MenuBuscarProd.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_MASK));
+        MenuBuscarProd.setFont(new java.awt.Font("Poetsen One", 0, 13)); // NOI18N
+        MenuBuscarProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/busqueda.png"))); // NOI18N
+        MenuBuscarProd.setText("Buscar Productos");
+        MenuBuscarProd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuBuscarProdActionPerformed(evt);
+            }
+        });
+        jMenu2.add(MenuBuscarProd);
+
         jMenuBar1.add(jMenu2);
 
         jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/reporte.png"))); // NOI18N
@@ -793,7 +805,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void MenuNvoTrabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuNvoTrabActionPerformed
         panelContenedor.removeAll();
         panelContenedor.updateUI();
-        Ventanas.frmNvoTrabajador ver = new Ventanas.frmNvoTrabajador();
+        Ventanas.frmNvoTrabajador ver = new Ventanas.frmNvoTrabajador(0,this, null);
         ver.show();
     }//GEN-LAST:event_MenuNvoTrabActionPerformed
 
@@ -924,6 +936,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         ver.show();
     }//GEN-LAST:event_MenuListaSalidaProdxTrabActionPerformed
 
+    private void MenuBuscarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuBuscarProdActionPerformed
+        Paneles.pnlBuscarProd ver=new Paneles.pnlBuscarProd(this);
+        cargarPanel(panelContenedor,ver );
+    }//GEN-LAST:event_MenuBuscarProdActionPerformed
+
     private void cargarPanel(JPanel contenedor, JPanel contenedorHijo)
     {
         // Se definen los tamanos iniciales de cada uno
@@ -945,6 +962,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem MenuAsigUser;
+    private javax.swing.JMenuItem MenuBuscarProd;
     private javax.swing.JMenuItem MenuConciliar;
     private javax.swing.JMenuItem MenuDiferencias;
     private javax.swing.JMenuItem MenuElimProv;

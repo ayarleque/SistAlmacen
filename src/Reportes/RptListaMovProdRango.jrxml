@@ -17,7 +17,7 @@
             join almacen al on mp.idAlmacen=al.idAlmacen
             join marca m on p.idMarca=m.idMarca
             where mp.fecha between $P{desde} and $P{hasta}
-            order by mp.idMovProd;]]>
+            order by mp.fecha, mp.idMovProd;]]>
 	</queryString>
 	<field name="descrip" class="java.lang.String"/>
 	<field name="marca" class="java.lang.String"/>
@@ -93,76 +93,66 @@
 	<columnHeader>
 		<band height="20" splitType="Stretch">
 			<rectangle>
-				<reportElement x="162" y="0" width="54" height="20" backcolor="#00FF33"/>
+				<reportElement x="202" y="0" width="54" height="20" backcolor="#00FF33"/>
 			</rectangle>
 			<rectangle>
-				<reportElement x="1" y="0" width="161" height="20" backcolor="#00FF33"/>
+				<reportElement x="41" y="0" width="161" height="20" backcolor="#00FF33"/>
 			</rectangle>
 			<rectangle>
-				<reportElement x="216" y="0" width="57" height="20" backcolor="#00FF33"/>
+				<reportElement x="256" y="0" width="57" height="20" backcolor="#00FF33"/>
 			</rectangle>
 			<rectangle>
-				<reportElement x="272" y="0" width="64" height="20" backcolor="#00FF33"/>
+				<reportElement x="312" y="0" width="64" height="20" backcolor="#00FF33"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="1" y="2" width="161" height="17"/>
+				<reportElement x="41" y="2" width="161" height="17"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="7" isBold="true"/>
 				</textElement>
 				<text><![CDATA[DESCRIPCIÓN]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="162" y="2" width="54" height="17"/>
+				<reportElement x="202" y="2" width="54" height="17"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="7" isBold="true"/>
 				</textElement>
 				<text><![CDATA[MARCA]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="216" y="2" width="57" height="17"/>
+				<reportElement x="256" y="2" width="57" height="17"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="7" isBold="true"/>
 				</textElement>
 				<text><![CDATA[MODELO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="273" y="3" width="60" height="16"/>
+				<reportElement x="313" y="3" width="60" height="16"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="7" isBold="true"/>
 				</textElement>
 				<text><![CDATA[UNID. DE MEDID.]]></text>
 			</staticText>
 			<rectangle>
-				<reportElement x="376" y="0" width="55" height="20" backcolor="#00FF33"/>
+				<reportElement x="416" y="0" width="55" height="20" backcolor="#00FF33"/>
 			</rectangle>
 			<rectangle>
-				<reportElement x="431" y="0" width="55" height="20" backcolor="#00FF33"/>
+				<reportElement x="471" y="0" width="55" height="20" backcolor="#00FF33"/>
 			</rectangle>
 			<rectangle>
 				<reportElement x="526" y="0" width="39" height="20" backcolor="#00FF33"/>
 			</rectangle>
 			<rectangle>
-				<reportElement x="485" y="0" width="41" height="20" backcolor="#00FF33"/>
-			</rectangle>
-			<rectangle>
 				<reportElement x="676" y="0" width="126" height="20" backcolor="#00FF33"/>
 			</rectangle>
 			<rectangle>
-				<reportElement x="333" y="0" width="43" height="20" backcolor="#00FF33"/>
+				<reportElement x="373" y="0" width="43" height="20" backcolor="#00FF33"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="429" y="2" width="56" height="16"/>
+				<reportElement x="469" y="2" width="56" height="16"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="7" isBold="true"/>
 				</textElement>
 				<text><![CDATA[CANT. SALIDA]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="485" y="2" width="41" height="16"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="7" isBold="true"/>
-				</textElement>
-				<text><![CDATA[FECHA]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="526" y="2" width="39" height="16"/>
@@ -179,7 +169,7 @@
 				<text><![CDATA[TRABAJADOR]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="333" y="2" width="44" height="16"/>
+				<reportElement x="373" y="2" width="44" height="16"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="7" isBold="true"/>
 				</textElement>
@@ -206,78 +196,78 @@
 				<text><![CDATA[UNIDAD]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="377" y="2" width="54" height="16"/>
+				<reportElement x="417" y="2" width="54" height="16"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="7" isBold="true"/>
 				</textElement>
 				<text><![CDATA[CANT. INGRES.]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="1" y="0" width="41" height="20" backcolor="#00FF33"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="1" y="2" width="41" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="12" splitType="Stretch">
 			<rectangle>
-				<reportElement x="333" y="0" width="44" height="12"/>
+				<reportElement x="373" y="0" width="44" height="12"/>
 			</rectangle>
 			<rectangle>
-				<reportElement x="1" y="0" width="161" height="12"/>
+				<reportElement x="41" y="0" width="161" height="12"/>
 			</rectangle>
 			<rectangle>
-				<reportElement x="162" y="0" width="54" height="12"/>
+				<reportElement x="202" y="0" width="54" height="12"/>
 			</rectangle>
 			<rectangle>
-				<reportElement x="216" y="0" width="57" height="12"/>
+				<reportElement x="256" y="0" width="57" height="12"/>
 			</rectangle>
 			<rectangle>
-				<reportElement x="272" y="0" width="61" height="12"/>
+				<reportElement x="312" y="0" width="61" height="12"/>
 			</rectangle>
 			<textField>
-				<reportElement x="8" y="0" width="154" height="12"/>
+				<reportElement x="48" y="0" width="154" height="12"/>
 				<textElement verticalAlignment="Middle">
 					<font size="7"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{descrip}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="167" y="0" width="43" height="12"/>
+				<reportElement x="207" y="0" width="43" height="12"/>
 				<textElement verticalAlignment="Middle">
 					<font size="7"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{marca}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="222" y="0" width="45" height="12"/>
+				<reportElement x="262" y="0" width="45" height="12"/>
 				<textElement verticalAlignment="Middle">
 					<font size="7"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{modelo}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="278" y="0" width="51" height="12"/>
+				<reportElement x="318" y="0" width="51" height="12"/>
 				<textElement verticalAlignment="Middle">
 					<font size="7"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{unidMed}]]></textFieldExpression>
 			</textField>
 			<rectangle>
-				<reportElement x="376" y="0" width="55" height="12"/>
+				<reportElement x="416" y="0" width="55" height="12"/>
 			</rectangle>
 			<rectangle>
-				<reportElement x="431" y="0" width="55" height="12"/>
-			</rectangle>
-			<rectangle>
-				<reportElement x="485" y="0" width="41" height="12"/>
+				<reportElement x="471" y="0" width="55" height="12"/>
 			</rectangle>
 			<rectangle>
 				<reportElement x="526" y="0" width="39" height="12"/>
 			</rectangle>
-			<textField>
-				<reportElement x="489" y="0" width="34" height="12"/>
-				<textElement verticalAlignment="Middle">
-					<font size="7"/>
-				</textElement>
-				<textFieldExpression class="java.util.Date"><![CDATA[$F{fecha}]]></textFieldExpression>
-			</textField>
 			<textField>
 				<reportElement x="528" y="0" width="35" height="12"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -289,7 +279,7 @@
 				<reportElement x="676" y="0" width="126" height="12"/>
 			</rectangle>
 			<textField>
-				<reportElement x="335" y="0" width="40" height="12"/>
+				<reportElement x="375" y="0" width="40" height="12"/>
 				<textElement verticalAlignment="Middle">
 					<font size="7"/>
 				</textElement>
@@ -323,18 +313,28 @@
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{unidad}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="432" y="1" width="48" height="11"/>
+				<reportElement x="472" y="1" width="48" height="11"/>
 				<textElement textAlignment="Center">
 					<font size="7"/>
 				</textElement>
 				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{cantSalida}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="380" y="0" width="48" height="11"/>
+				<reportElement x="420" y="0" width="48" height="11"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="7"/>
 				</textElement>
 				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{cantIngr}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="1" y="0" width="41" height="12"/>
+			</rectangle>
+			<textField>
+				<reportElement x="5" y="0" width="34" height="12"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{fecha}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

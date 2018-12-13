@@ -215,6 +215,9 @@
                       <Font name="Poetsen One" size="12" style="0"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCategoriaKeyReleased"/>
+                  </Events>
                 </Component>
                 <Component class="rsbuttom.RSButtonMetro" name="btnGuardar">
                   <Properties>

@@ -120,6 +120,7 @@ public class pnlSalidaProd extends javax.swing.JPanel {
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         cboTrab = new javax.swing.JComboBox<>();
+        btnNvoTrab = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
@@ -229,6 +230,18 @@ public class pnlSalidaProd extends javax.swing.JPanel {
 
         cboTrab.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
 
+        btnNvoTrab.setBackground(new java.awt.Color(204, 204, 204));
+        btnNvoTrab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/anadir.png"))); // NOI18N
+        btnNvoTrab.setBorder(null);
+        btnNvoTrab.setContentAreaFilled(false);
+        btnNvoTrab.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnNvoTrab.setPreferredSize(new java.awt.Dimension(20, 20));
+        btnNvoTrab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNvoTrabActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -264,9 +277,11 @@ public class pnlSalidaProd extends javax.swing.JPanel {
                         .addComponent(txtUnid, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(cboTrab, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnNvoTrab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
                 .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48))
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -282,7 +297,8 @@ public class pnlSalidaProd extends javax.swing.JPanel {
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel1)
                                 .addComponent(jLabel4)
-                                .addComponent(txtCant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtCant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnNvoTrab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -791,7 +807,7 @@ public class pnlSalidaProd extends javax.swing.JPanel {
         try {
             if(dtDetalle.getSelectedRow()!=-1){
                 int temp=0;
-                double tmp;
+                Double tmp;
                 String tmpSrt;
                 for (int i = dtDetalle.getSelectedRow()+1; i <dtDetalle.getRowCount()+1 ; i++) {
                     //System.out.println("longitud de arreglo de tabla"+idProdTb.length);
@@ -871,6 +887,11 @@ public class pnlSalidaProd extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
+    private void btnNvoTrabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNvoTrabActionPerformed
+        Ventanas.frmNvoTrabajador ver = new Ventanas.frmNvoTrabajador(1, null, this);
+        ver.show();
+    }//GEN-LAST:event_btnNvoTrabActionPerformed
+
     public boolean validarCamposVacios(){
         return cboTrab.getSelectedIndex()>0 && !txtCant.getText().equals("") && !txtArea.getText().equals("") && !txtUnid.getText().equals("");
     }
@@ -920,6 +941,7 @@ public class pnlSalidaProd extends javax.swing.JPanel {
     private rsbuttom.RSButtonMetro btnCancelar;
     private rsbuttom.RSButtonMetro btnEliminar;
     private rsbuttom.RSButtonMetro btnGuardar;
+    private javax.swing.JButton btnNvoTrab;
     private rsbuttom.RSButtonMetro btnVerificar;
     private javax.swing.JComboBox<String> cboAlmac;
     private javax.swing.JComboBox<String> cboCat;

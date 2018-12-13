@@ -75,6 +75,11 @@ public class frmNvoAlmacen extends javax.swing.JFrame {
         jLabel4.setText(":");
 
         txtAlmacen.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
+        txtAlmacen.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtAlmacenKeyReleased(evt);
+            }
+        });
 
         btnGuardar.setBackground(new java.awt.Color(0, 102, 0));
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/guardar.png"))); // NOI18N
@@ -216,6 +221,10 @@ public class frmNvoAlmacen extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Error al intentar ingresar los datos"+ ex);
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void txtAlmacenKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAlmacenKeyReleased
+        txtAlmacen.setText(txtAlmacen.getText().toUpperCase());
+    }//GEN-LAST:event_txtAlmacenKeyReleased
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

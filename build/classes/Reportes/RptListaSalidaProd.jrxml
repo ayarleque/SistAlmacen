@@ -16,7 +16,8 @@
 	  join trabajador t on mp.idTrabajador=t.idTrabajador
             join almacen al on mp.idAlmacen=al.idAlmacen
             join marca m on p.idMarca=m.idMarca
-            where mp.cantSalida>0 and (mp.fecha between $P{desde} and $P{hasta});]]>
+            where mp.cantSalida>0 and (mp.fecha between $P{desde} and $P{hasta})
+	  order by mp.fecha, mp.hora;]]>
 	</queryString>
 	<field name="descrip" class="java.lang.String"/>
 	<field name="marca" class="java.lang.String"/>

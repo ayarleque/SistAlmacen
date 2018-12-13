@@ -111,6 +111,11 @@ public class frmNvoProveedor extends javax.swing.JFrame {
         jLabel51.setText(":");
 
         txtRazonS.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
+        txtRazonS.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtRazonSKeyReleased(evt);
+            }
+        });
 
         jLabel52.setFont(new java.awt.Font("Poetsen One", 0, 14)); // NOI18N
         jLabel52.setForeground(new java.awt.Color(255, 255, 255));
@@ -358,6 +363,10 @@ public class frmNvoProveedor extends javax.swing.JFrame {
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void txtRazonSKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRazonSKeyReleased
+        txtRazonS.setText(txtRazonS.getText().toUpperCase());
+    }//GEN-LAST:event_txtRazonSKeyReleased
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

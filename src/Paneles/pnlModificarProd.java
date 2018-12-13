@@ -23,43 +23,44 @@ import javax.swing.JOptionPane;
 public class pnlModificarProd extends javax.swing.JPanel {
 
     MenuPrincipal principal;
-    String userID,rutaProyect;
-    
+    String userID, rutaProyect;
+
     String directorio;
-    String nombreArchivo="";
+    String nombreArchivo = "";
     String rutatotal, rutaAnt;
-    
+
     int idCatN[];// = new int[2];
     int idMarc[];//=new int[2];
     int idProd[];// = new int[2];
     int idProdModif;
-    
+
     public pnlModificarProd(String idUser, MenuPrincipal princip) {
         initComponents();
-        userID=idUser;
-        principal=princip;
-        rutaProyect=new File ("").getAbsolutePath ();
+        userID = idUser;
+        principal = princip;
+        rutaProyect = new File("").getAbsolutePath();
         listaCat();
         listaMarca();
         listaProd();
         //JOptionPane.showMessageDialog(null, idMarc.length);
-        
+
         //JOptionPane.showMessageDialog(null, idProd.length);
     }
-    public void listaMarca(){
-        idMarc=ListaCombos.listaMarca(cboMarca,idMarc);
-        
+
+    public void listaMarca() {
+        idMarc = ListaCombos.listaMarca(cboMarca, idMarc);
+
     }
-    
-    public void listaProd(){
-        idProd=ListaCombos.listaProductos(cboProd, idProd);
-        
+
+    public void listaProd() {
+        idProd = ListaCombos.listaProductos(cboProd, idProd);
+
     }
-    
-    public void listaCat(){
-        idCatN=ListaCombos.listaCategoria(cboCatNvo, idCatN);
+
+    public void listaCat() {
+        idCatN = ListaCombos.listaCategoria(cboCatNvo, idCatN);
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -98,7 +99,6 @@ public class pnlModificarProd extends javax.swing.JPanel {
         txtUnidMed = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        panelImagen = new org.edisoncor.gui.panel.PanelImage();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         cboCatNvo = new javax.swing.JComboBox<>();
@@ -109,7 +109,11 @@ public class pnlModificarProd extends javax.swing.JPanel {
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         txtPrecio = new javax.swing.JTextField();
+        btnExaminar = new rsbuttom.RSButtonMetro();
+        panelImagen = new org.edisoncor.gui.panel.PanelImage();
         jPanel5 = new javax.swing.JPanel();
+        btnGuardar = new rsbuttom.RSButtonMetro();
+        btnCancelar = new rsbuttom.RSButtonMetro();
 
         setBackground(new java.awt.Color(0, 135, 236));
 
@@ -236,6 +240,11 @@ public class pnlModificarProd extends javax.swing.JPanel {
         cboMarca.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
 
         txtModelo.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
+        txtModelo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtModeloKeyReleased(evt);
+            }
+        });
 
         btnAgregarMarca.setBackground(new java.awt.Color(204, 204, 204));
         btnAgregarMarca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/anadir.png"))); // NOI18N
@@ -258,6 +267,11 @@ public class pnlModificarProd extends javax.swing.JPanel {
         jLabel11.setText(":");
 
         txtSerie.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
+        txtSerie.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSerieKeyReleased(evt);
+            }
+        });
 
         jLabel12.setFont(new java.awt.Font("Poetsen One", 0, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
@@ -268,6 +282,11 @@ public class pnlModificarProd extends javax.swing.JPanel {
         jLabel13.setText(":");
 
         txtUbicacion.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
+        txtUbicacion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtUbicacionKeyReleased(evt);
+            }
+        });
 
         jLabel14.setFont(new java.awt.Font("Poetsen One", 0, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
@@ -288,6 +307,11 @@ public class pnlModificarProd extends javax.swing.JPanel {
         jLabel17.setText(":");
 
         txtUnidMed.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
+        txtUnidMed.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtUnidMedKeyReleased(evt);
+            }
+        });
 
         jLabel18.setFont(new java.awt.Font("Poetsen One", 0, 14)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
@@ -296,19 +320,6 @@ public class pnlModificarProd extends javax.swing.JPanel {
         jLabel19.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setText(":");
-
-        panelImagen.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        javax.swing.GroupLayout panelImagenLayout = new javax.swing.GroupLayout(panelImagen);
-        panelImagen.setLayout(panelImagenLayout);
-        panelImagenLayout.setHorizontalGroup(
-            panelImagenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        panelImagenLayout.setVerticalGroup(
-            panelImagenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
 
         jLabel20.setFont(new java.awt.Font("Poetsen One", 0, 14)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
@@ -341,6 +352,11 @@ public class pnlModificarProd extends javax.swing.JPanel {
         jLabel23.setText(":");
 
         txtProducto.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
+        txtProducto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtProductoKeyReleased(evt);
+            }
+        });
 
         jLabel24.setFont(new java.awt.Font("Poetsen One", 0, 14)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(255, 255, 255));
@@ -352,6 +368,30 @@ public class pnlModificarProd extends javax.swing.JPanel {
 
         txtPrecio.setFont(new java.awt.Font("Poetsen One", 0, 12)); // NOI18N
 
+        btnExaminar.setBackground(new java.awt.Color(0, 102, 0));
+        btnExaminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/examinarB.png"))); // NOI18N
+        btnExaminar.setText("Examinar");
+        btnExaminar.setColorHover(new java.awt.Color(153, 0, 0));
+        btnExaminar.setColorNormal(new java.awt.Color(0, 102, 0));
+        btnExaminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExaminarActionPerformed(evt);
+            }
+        });
+
+        panelImagen.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        javax.swing.GroupLayout panelImagenLayout = new javax.swing.GroupLayout(panelImagen);
+        panelImagen.setLayout(panelImagenLayout);
+        panelImagenLayout.setHorizontalGroup(
+            panelImagenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 199, Short.MAX_VALUE)
+        );
+        panelImagenLayout.setVerticalGroup(
+            panelImagenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -361,42 +401,6 @@ public class pnlModificarProd extends javax.swing.JPanel {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(jPanel4Layout.createSequentialGroup()
-                                            .addComponent(jLabel12)
-                                            .addGap(49, 49, 49))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                                            .addComponent(jLabel10)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel11)
-                                        .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txtUbicacion)
-                                        .addComponent(txtSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(jPanel4Layout.createSequentialGroup()
-                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addGroup(jPanel4Layout.createSequentialGroup()
-                                            .addComponent(jLabel16)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jLabel17))
-                                        .addGroup(jPanel4Layout.createSequentialGroup()
-                                            .addComponent(jLabel14)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jLabel15)))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtDescrip)
-                                        .addComponent(txtUnidMed)))
-                                .addGroup(jPanel4Layout.createSequentialGroup()
-                                    .addComponent(jLabel7)
-                                    .addGap(64, 64, 64)
-                                    .addComponent(jLabel9)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(txtModelo)))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addGap(70, 70, 70)
@@ -404,7 +408,8 @@ public class pnlModificarProd extends javax.swing.JPanel {
                                     .addGroup(jPanel4Layout.createSequentialGroup()
                                         .addComponent(jLabel23)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(txtProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))
                                     .addGroup(jPanel4Layout.createSequentialGroup()
                                         .addComponent(jLabel8)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -413,27 +418,68 @@ public class pnlModificarProd extends javax.swing.JPanel {
                                         .addComponent(btnAgregarMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(30, 30, 30)
                                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(panelImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                                        .addComponent(jLabel18)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(jLabel19))
-                                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                                        .addComponent(jLabel24)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(jLabel25)))
-                                                .addGap(10, 10, 10)
-                                                .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                                .addComponent(jLabel18)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jLabel19))
+                                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                                .addComponent(jLabel24)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jLabel25)))
+                                        .addGap(10, 10, 10)
+                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(btnExaminar, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel20)
-                                .addGap(47, 47, 47)
-                                .addComponent(jLabel21)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cboCatNvo, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnAgregarCat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addGroup(jPanel4Layout.createSequentialGroup()
+                                                    .addComponent(jLabel12)
+                                                    .addGap(49, 49, 49))
+                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                                                    .addComponent(jLabel10)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel11)
+                                                .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(txtUbicacion)
+                                                .addComponent(txtSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(jPanel4Layout.createSequentialGroup()
+                                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addGroup(jPanel4Layout.createSequentialGroup()
+                                                    .addComponent(jLabel16)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(jLabel17))
+                                                .addGroup(jPanel4Layout.createSequentialGroup()
+                                                    .addComponent(jLabel14)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(jLabel15)))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(txtDescrip)
+                                                .addComponent(txtUnidMed)))
+                                        .addGroup(jPanel4Layout.createSequentialGroup()
+                                            .addComponent(jLabel7)
+                                            .addGap(64, 64, 64)
+                                            .addComponent(jLabel9)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(txtModelo)))
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addComponent(jLabel20)
+                                        .addGap(47, 47, 47)
+                                        .addComponent(jLabel21)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(cboCatNvo, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnAgregarCat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(panelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(225, 225, 225))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel22)
@@ -461,7 +507,7 @@ public class pnlModificarProd extends javax.swing.JPanel {
                         .addComponent(jLabel25)
                         .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -494,14 +540,17 @@ public class pnlModificarProd extends javax.swing.JPanel {
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel16)
                             .addComponent(jLabel17)
-                            .addComponent(txtUnidMed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtUnidMed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel18)
-                            .addComponent(jLabel19))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(panelImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(25, Short.MAX_VALUE))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnExaminar, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel18)
+                                .addComponent(jLabel19)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(panelImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -509,14 +558,14 @@ public class pnlModificarProd extends javax.swing.JPanel {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(59, 59, 59))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -530,15 +579,47 @@ public class pnlModificarProd extends javax.swing.JPanel {
 
         jPanel5.setOpaque(false);
 
+        btnGuardar.setBackground(new java.awt.Color(0, 102, 0));
+        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/guardar.png"))); // NOI18N
+        btnGuardar.setText("Guardar");
+        btnGuardar.setColorHover(new java.awt.Color(153, 0, 0));
+        btnGuardar.setColorNormal(new java.awt.Color(0, 102, 0));
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
+
+        btnCancelar.setBackground(new java.awt.Color(0, 102, 0));
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar.png"))); // NOI18N
+        btnCancelar.setText("Cancelar");
+        btnCancelar.setColorHover(new java.awt.Color(153, 0, 0));
+        btnCancelar.setColorNormal(new java.awt.Color(0, 102, 0));
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 332, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 55, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -548,7 +629,7 @@ public class pnlModificarProd extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(32, Short.MAX_VALUE)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(133, 133, 133)
@@ -556,7 +637,7 @@ public class pnlModificarProd extends javax.swing.JPanel {
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(138, 138, 138)
+                .addGap(125, 125, 125)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -579,7 +660,7 @@ public class pnlModificarProd extends javax.swing.JPanel {
             .addGroup(panelImageLayout.createSequentialGroup()
                 .addGap(52, 52, 52)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         panelImageLayout.setVerticalGroup(
             panelImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -599,31 +680,29 @@ public class pnlModificarProd extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(panelImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(panelImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         CallableStatement cst;
-        Connection con=null;
+        Connection con = null;
         ResultSet rs;
-        
+
         /*JOptionPane.showMessageDialog(null, "Tamaño del arreglo: "+idProd.length);
         JOptionPane.showMessageDialog(null, "Primer id: "+idProd[1]);
         JOptionPane.showMessageDialog(null, "change del combo: "+cboProd.getSelectedIndex());*/
-        try{
-            con=Conexion.getconnection();
-        
-            cst=con.prepareCall("{call paMuestraDatosProd(?,?)}");
+        try {
+            con = Conexion.getconnection();
+
+            cst = con.prepareCall("{call paMuestraDatosProd(?,?)}");
             cst.setInt(1, idProd[cboProd.getSelectedIndex()]);
             cst.setString(2, txtBusqSerie.getText());
             cst.execute();
-            
-            rs= cst.getResultSet();
-            
-            if(rs.next()){
+
+            rs = cst.getResultSet();
+
+            if (rs.next()) {
                 txtProducto.setText(rs.getString(1));
                 cboMarca.setSelectedItem(rs.getString(2));
                 cboCatNvo.setSelectedItem(rs.getString(3));
@@ -633,23 +712,22 @@ public class pnlModificarProd extends javax.swing.JPanel {
                 txtDescrip.setText(rs.getString(7));
                 txtUnidMed.setText(rs.getString(8));
                 txtPrecio.setText(rs.getString(9));
-                rutaAnt=rs.getString(10);
-                idProdModif=rs.getInt(11);
+                rutaAnt = rs.getString(10);
+                idProdModif = rs.getInt(11);
                 panelImagen.removeAll();
-                panelImagen.setIcon(new ImageIcon(rutaProyect+rutaAnt));
+                panelImagen.setIcon(new ImageIcon(rutaProyect + rutaAnt));
                 panelImagen.updateUI();
             }
             cst.close();
             rs.close();
             con.close();
-        }
-        catch (SQLException ex){
-            JOptionPane.showMessageDialog(null,"Error: "+ ex);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error: " + ex);
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnAgregarMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarMarcaActionPerformed
-        Ventanas.frmNvaMarca ver= new Ventanas.frmNvaMarca(2,null,null,this);
+        Ventanas.frmNvaMarca ver = new Ventanas.frmNvaMarca(2, null, null, this);
         ver.show();
     }//GEN-LAST:event_btnAgregarMarcaActionPerformed
 
@@ -659,59 +737,60 @@ public class pnlModificarProd extends javax.swing.JPanel {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void cboProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboProdActionPerformed
-        
+
     }//GEN-LAST:event_cboProdActionPerformed
 
     private void btnAgregarCatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCatActionPerformed
-        Ventanas.frmNuevaCat ver= new Ventanas.frmNuevaCat(2,null,null,this,null);
+        Ventanas.frmNuevaCat ver = new Ventanas.frmNuevaCat(2, null, null, this, null);
         ver.show();
     }//GEN-LAST:event_btnAgregarCatActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        CallableStatement cst;
-        Connection con=null;
-                
-        try{
-            if(nombreArchivo!=""){
-                copiarArchivo.copiarArchivo(rutatotal,rutaProyect+"\\src\\imgProd\\"+nombreArchivo);
+        if (!txtSerie.getText().equals("")) {
+            CallableStatement cst;
+            Connection con = null;
+
+            try {
+                if (nombreArchivo != "") {
+                    copiarArchivo.copiarArchivo(rutatotal, rutaProyect + "\\src\\imgProd\\" + nombreArchivo);
+                }
+
+                con = Conexion.getconnection();
+
+                cst = con.prepareCall("{call paModificarProd (?,?,?,?,?,?,?,?,?,?,?)}");
+                cst.setInt(1, idProdModif);
+                cst.setString(2, txtProducto.getText());
+                cst.setString(3, txtSerie.getText());
+                cst.setString(4, txtUnidMed.getText());
+                cst.setString(5, txtModelo.getText());
+                cst.setDouble(6, Double.parseDouble(txtPrecio.getText()));
+                cst.setString(7, txtUbicacion.getText());
+                if (nombreArchivo != "") {
+                    cst.setString(8, "\\src\\imgProd\\" + nombreArchivo);
+                } else {
+                    cst.setString(8, rutaAnt);
+                }
+
+                cst.setInt(9, idMarc[cboMarca.getSelectedIndex()]);
+                cst.setInt(10, idCatN[cboCatNvo.getSelectedIndex()]);
+                cst.setString(11, txtDescrip.getText());
+
+                cst.execute();
+                JOptionPane.showMessageDialog(null, "Producto Modificado correctamente");
+                cst.close();
+                con.close();
+                limpiar();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error: " + ex);
+            } catch (IOException ex) {
+                Logger.getLogger(pnlModificarProd.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-            con=Conexion.getconnection();
-        
-            cst=con.prepareCall("{call paModificarProd (?,?,?,?,?,?,?,?,?,?,?)}");
-            cst.setInt(1,idProdModif);
-            cst.setString(2,txtProducto.getText());
-            cst.setString(3,txtSerie.getText());
-            cst.setString(4,txtUnidMed.getText());
-            cst.setString(5,txtModelo.getText());
-            cst.setDouble(6,Double.parseDouble(txtPrecio.getText()));
-            cst.setString(7,txtUbicacion.getText());
-            if(nombreArchivo!=""){
-                cst.setString(8,"\\src\\imgProd\\"+nombreArchivo);
-            }
-            else{
-                cst.setString(8,rutaAnt);
-            }
-            
-            cst.setInt(9,idMarc[cboMarca.getSelectedIndex()]);
-            cst.setInt(10,idCatN[cboCatNvo.getSelectedIndex()]);
-            cst.setString(11,txtDescrip.getText());
-            
-            
-            cst.execute();
-            JOptionPane.showMessageDialog(null, "Producto Modificado correctamente");
-            cst.close();
-            con.close();
-            limpiar();
-        }
-        catch (SQLException ex){
-            JOptionPane.showMessageDialog(null,"Error: "+ ex);
-        } catch (IOException ex) {
-            Logger.getLogger(pnlModificarProd.class.getName()).log(Level.SEVERE, null, ex);
+        } else {
+            JOptionPane.showMessageDialog(null, "Por favor complete el campo serie.\nEn caso de que el producto no contenga serie\nescribir 'S/S'");
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
-    public void limpiar(){
+    public void limpiar() {
         cboProd.setSelectedIndex(0);
         txtBusqSerie.setText("");
         txtProducto.setText("");
@@ -723,44 +802,67 @@ public class pnlModificarProd extends javax.swing.JPanel {
         txtDescrip.setText("");
         txtUnidMed.setText("");
         txtPrecio.setText("");
-        
+
         panelImagen.removeAll();
         panelImagen.setIcon(new ImageIcon(rutatotal));
         panelImagen.updateUI();
-        
-        nombreArchivo="";
+
+        nombreArchivo = "";
     }
-    
+
     private void btnExaminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExaminarActionPerformed
         FileDialog dialogoArchivo = null;
-        dialogoArchivo = new FileDialog(principal, "Explorador",FileDialog.LOAD);
+        dialogoArchivo = new FileDialog(principal, "Explorador", FileDialog.LOAD);
         dialogoArchivo.setVisible(true);
 
-        if(dialogoArchivo.getFile()!=null){ /* Validar que se haya Seleccionado un Archivo*/
+        if (dialogoArchivo.getFile() != null) {
+            /* Validar que se haya Seleccionado un Archivo*/
             directorio = dialogoArchivo.getDirectory();
-            nombreArchivo =dialogoArchivo.getFile(); 
+            nombreArchivo = dialogoArchivo.getFile();
             rutatotal = directorio + nombreArchivo;
             //System.out.println(directorio+"---"+nombreArchivo+"---"+rutatotal);
             panelImagen.removeAll();
             panelImagen.setIcon(new ImageIcon(rutatotal));
             panelImagen.updateUI();
-            
-        }
-        else{
+
+        } else {
             rutatotal = "";
             System.out.println("No Seleccionó Archivo");
         }
     }//GEN-LAST:event_btnExaminarActionPerformed
 
     private void cboProdItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboProdItemStateChanged
-        
+
     }//GEN-LAST:event_cboProdItemStateChanged
+
+    private void txtProductoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProductoKeyReleased
+        txtProducto.setText(txtProducto.getText().toUpperCase());
+    }//GEN-LAST:event_txtProductoKeyReleased
+
+    private void txtModeloKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtModeloKeyReleased
+        txtModelo.setText(txtModelo.getText().toUpperCase());
+    }//GEN-LAST:event_txtModeloKeyReleased
+
+    private void txtSerieKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSerieKeyReleased
+        txtSerie.setText(txtSerie.getText().toUpperCase());
+    }//GEN-LAST:event_txtSerieKeyReleased
+
+    private void txtUbicacionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUbicacionKeyReleased
+        txtUbicacion.setText(txtUbicacion.getText().toUpperCase());
+    }//GEN-LAST:event_txtUbicacionKeyReleased
+
+    private void txtUnidMedKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUnidMedKeyReleased
+        txtUnidMed.setText(txtUnidMed.getText().toLowerCase());
+    }//GEN-LAST:event_txtUnidMedKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarCat;
     private javax.swing.JButton btnAgregarMarca;
     private javax.swing.JButton btnBuscar;
+    private rsbuttom.RSButtonMetro btnCancelar;
+    private rsbuttom.RSButtonMetro btnExaminar;
+    private rsbuttom.RSButtonMetro btnGuardar;
     private javax.swing.JComboBox<String> cboCatNvo;
     private javax.swing.JComboBox<String> cboMarca;
     private javax.swing.JComboBox<String> cboProd;
